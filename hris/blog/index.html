@@ -1,0 +1,113 @@
+
+<!doctype html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog — CUK PRODEV | HRIS, AI & Developer Insights</title>
+  <meta name="description" content="Blog CUK PRODEV — artikel mendalam tentang HRIS, AI untuk HR, integrasi developer, dan best practice keamanan data." />
+  <link rel="canonical" href="https://cuk-prodev.github.io/blog/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog — CUK PRODEV | HRIS, AI & Developer Insights" />
+  <meta property="og:description" content="Artikel mendalam tentang HRIS, AI untuk HR, integrasi developer, dan best practice keamanan data." />
+  <meta property="og:image" content="/images/blog-og.png" />
+  <meta property="og:url" content="https://cuk-prodev.github.io/blog/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{ --accent: #06b6d4; --muted: #9aa6bd; }
+    body{ font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial; }
+    .card{ background: linear-gradient(180deg, rgba(6,8,15,0.54), rgba(10,12,20,0.6)); border-radius: 14px; border: 1px solid rgba(255,255,255,0.04); }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 antialiased">
+  <header class="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/images/logo-cuk-white.png" alt="CUK PRODEV" class="h-10 w-auto" loading="lazy">
+      <div>
+        <div class="text-sm font-semibold">CUK PRODEV</div>
+        <div class="text-xs text-slate-400">HRIS • AI • Developer</div>
+      </div>
+    </a>
+    <nav class="hidden md:flex gap-6 text-sm text-slate-300">
+      <a href="/" class="hover:text-white">Beranda</a>
+      <a href="/docs" class="hover:text-white">Docs</a>
+      <a href="/blog" class="text-white font-semibold">Blog</a>
+      <a href="#contact" class="px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-400 text-slate-900">Request Demo</a>
+    </nav>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 pb-20">
+    <section class="mb-8">
+      <div class="card p-8">
+        <h1 class="text-3xl font-extrabold">Blog CUK PRODEV</h1>
+        <p class="text-slate-300 mt-2">Artikel mendalam tentang HRIS, AI untuk SDM, integrasi developer-ready, dan keamanan data. Baru: fokus pada integrasi API & panduan teknis untuk tim engineering.</p>
+      </div>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-6">
+      <!-- Post 1 -->
+      <article class="card p-6">
+        <a href="/blog/hris-ai-developer.html" class="block">
+          <img src="/images/hris-ai-card.png" alt="HRIS + AI" class="w-full h-40 object-cover rounded-md mb-4" loading="lazy">
+          <h2 class="text-xl font-semibold">HRIS + AI: Mentransformasi HR & Integrasi untuk Developer</h2>
+          <p class="text-slate-300 mt-2 text-sm">Bagaimana HRIS dan AI bekerja bersama — technical stack, contoh integrasi API, dan studi kasus implementasi di Indonesia.</p>
+          <div class="text-slate-400 text-xs mt-3">16 Oktober 2025 · 12 menit baca</div>
+        </a>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="card p-6">
+        <a href="#" class="block">
+          <img src="/images/dev-docs-card.png" alt="Developer Docs" class="w-full h-40 object-cover rounded-md mb-4" loading="lazy">
+          <h2 class="text-xl font-semibold">Membangun SDK HRIS: Best Practice untuk Tim Dev</h2>
+          <p class="text-slate-300 mt-2 text-sm">Panduan membuat SDK (Node/Python), versioning, dan cara menyiapkan sandbox environment yang aman.</p>
+          <div class="text-slate-400 text-xs mt-3">coming soon</div>
+        </a>
+      </article>
+
+      <!-- Post 3 -->
+      <article class="card p-6">
+        <a href="#" class="block">
+          <img src="/images/security-card.png" alt="Security" class="w-full h-40 object-cover rounded-md mb-4" loading="lazy">
+          <h2 class="text-xl font-semibold">Keamanan Data HR: Praktik Terbaik & Kepatuhan</h2>
+          <p class="text-slate-300 mt-2 text-sm">Checklist kepatuhan, enkripsi, dan audit trails untuk memastikan keamanan data karyawan.</p>
+          <div class="text-slate-400 text-xs mt-3">coming soon</div>
+        </a>
+      </article>
+
+      <!-- Post 4 -->
+      <article class="card p-6">
+        <a href="#" class="block">
+          <img src="/images/performance-card.png" alt="Performance" class="w-full h-40 object-cover rounded-md mb-4" loading="lazy">
+          <h2 class="text-xl font-semibold">Mengukur KPI HR: Metrics yang Penting</h2>
+          <p class="text-slate-300 mt-2 text-sm">Metric yang harus dipantau setelah implementasi HRIS, termasuk time-to-payroll dan employee NPS.</p>
+          <div class="text-slate-400 text-xs mt-3">coming soon</div>
+        </a>
+      </article>
+    </section>
+
+    <!-- Pagination placeholder -->
+    <div class="mt-12 flex justify-center">
+      <nav class="inline-flex rounded-md" aria-label="Pagination">
+        <a class="px-3 py-2 border border-transparent text-slate-300" href="#">◀ Previous</a>
+        <a class="px-3 py-2 border border-transparent bg-white/6 text-white" href="#">1</a>
+        <a class="px-3 py-2 border border-transparent text-slate-300" href="#">2</a>
+        <a class="px-3 py-2 border border-transparent text-slate-300" href="#">Next ▶</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="max-w-6xl mx-auto px-6 py-8 text-slate-400">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>© 2025 CUK PRODEV · Jakarta</div>
+      <div class="text-sm">Built with ❤️ for developers.</div>
+    </div>
+  </footer>
+</body>
+</html>

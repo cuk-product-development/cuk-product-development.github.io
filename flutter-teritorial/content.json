@@ -1,0 +1,93 @@
+{
+    "title": "Flutter Teritorial — Panduan Lengkap App",
+    "sections": [
+      {
+        "id": "install",
+        "title": "Territory 1 — Instalasi Flutter",
+        "content": [
+          "Petunjuk singkat berikut memuat perintah inti.",
+          "Windows (ZIP): curl -LO https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_*.zip",
+          "macOS (tar): curl -LO https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_*.zip",
+          "Tambahkan PATH:",
+          "Windows: setx PATH \"%PATH%;C:\\src\\flutter\\bin\"",
+          "macOS/Linux: export PATH=\"$PATH:$HOME/flutter/bin\"",
+          "Verifikasi: flutter doctor"
+        ]
+      },
+      {
+        "id": "ide",
+        "title": "Territory 2 — IDE & Android SDK",
+        "content": [
+          "Android Studio: install SDK Platform, Emulator (AVD)",
+          "VS Code (opsional): install extension Dart & Flutter",
+          "Setup device: emulator / device fisik, cek adb",
+          "Cek lagi: flutter doctor -v"
+        ]
+      },
+      {
+        "id": "create",
+        "title": "Territory 3 — Buat Project Flutter Pertama",
+        "content": [
+          "flutter create prodev_territorial_app",
+          "cd prodev_territorial_app",
+          "flutter run",
+          "Gunakan r untuk hot reload, R untuk restart"
+        ]
+      },
+      {
+        "id": "structure",
+        "title": "Territory 4 — Struktur Folder Penting",
+        "content": [
+          "lib/main.dart — entry point",
+          "pubspec.yaml — dependency & assets",
+          "android/ & ios/ — platform-specific"
+        ]
+      },
+      {
+        "id": "code",
+        "title": "Territory 5 — Kode App Sederhana",
+        "content": [
+          "// lib/main.dart\nimport 'package:flutter/material.dart';\nvoid main() => runApp(const MyApp());\nclass MyApp extends StatelessWidget {\n  const MyApp({super.key});\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'Flutter Teritorial',\n      home: Scaffold(appBar: AppBar(title: const Text('Flutter Teritorial')), body: const Center(child: Text('Hello Flutter!'))),\n    );\n  }\n}"
+        ]
+      },
+      {
+        "id": "debug",
+        "title": "Territory 6 — Debug, Hot Reload & Tools",
+        "content": [
+          "Hot reload: tekan r saat flutter run",
+          "Flutter DevTools: performance, widget inspector, network",
+          "Logging: print() atau debugPrint()",
+          "Pro-tip: flutter analyze untuk static analysis, dart format . untuk formatting"
+        ]
+      },
+      {
+        "id": "build",
+        "title": "Territory 7 — Build & Release",
+        "content": [
+          "Android release APK: flutter build apk --release",
+          "iOS release: flutter build ios --release",
+          "Web: flutter build web"
+        ]
+      },
+      {
+        "id": "seo",
+        "title": "Territory 8 — Flutter Web: SEO & PWA",
+        "content": [
+          "Gunakan prerender / SSR jika perlu",
+          "Tambahkan meta tag, Open Graph, structured data di web/index.html",
+          "PWA: sesuaikan web/manifest.json & service worker"
+        ]
+      },
+      {
+        "id": "troubleshoot",
+        "title": "Territory 9 — Troubleshooting Umum",
+        "content": [
+          "Masalah PATH: restart terminal / komputer",
+          "Android license: flutter doctor --android-licenses",
+          "Build error: cek versi Gradle & plugin",
+          "iOS signing: pastikan provisioning profile cocok"
+        ]
+      }
+    ]
+  }
+  

@@ -1,0 +1,30 @@
+{
+    "hero": {
+      "title": "Teknologi & Masa Depan: Wawasan, Peluang, dan Tantangan",
+      "lead": "Analisis mendalam tentang transformasi teknologi—dari AI, IoT, quantum, hingga bioteknologi—dengan rekomendasi praktis untuk organisasi dan pembuat kebijakan."
+    },
+    "sections": [
+      {
+        "id": "ai",
+        "title": "1. Kecerdasan Buatan (AI): Dari Otomasi ke Otonomi",
+        "alt": false,
+        "content": [
+          {"type":"p","text":"Kecerdasan Buatan (AI) telah berevolusi pesat: dari algoritma statistik ke deep learning, lalu ke model besar yang dapat memahami bahasa, gambar, dan konteks secara multimodal."},
+          {"type":"ul","items":[
+            "<strong>AI Prediktif:</strong> sistem yang memprediksi tren atau kemungkinan kegagalan",
+            "<strong>AI Generatif:</strong> model besar yang menulis teks atau membuat gambar/audio",
+            "<strong>Agen Otonom:</strong> sistem yang mengeksekusi tugas otomatis end-to-end"
+          ]}
+        ]
+      },
+      {
+        "id": "iot",
+        "title": "2. Internet of Things (IoT): Data dari Dunia Nyata",
+        "alt": true,
+        "content": [
+          {"type":"p","text":"IoT mengubah objek sehari-hari menjadi sensor yang menghasilkan data kontekstual. Integrasi IoT dengan AI memungkinkan tindakan otomatis."}
+        ]
+      }
+    ]
+  }
+  

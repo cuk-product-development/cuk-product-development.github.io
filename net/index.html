@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>.NET Territorial Guide | Cuk Prodev</title>
+  <meta name="description" content="Panduan lengkap .NET dari instalasi hingga aplikasi pertama menggunakan C#. Oleh Cuk Prodev." />
+  <meta name="keywords" content=".NET, C#, ASP.NET, instalasi .NET, tutorial .NET, Cuk Prodev, pemrograman" />
+  <meta property="og:title" content="Panduan .NET Lengkap | Cuk Prodev" />
+  <meta property="og:description" content="Langkah demi langkah menguasai .NET dari instalasi hingga aplikasi sederhana. Panduan resmi Cuk Prodev." />
+  <!-- <meta property="og:image" content="dotnet.png" /> -->
+  <meta property="og:image" content="https://cuk-prodev.ct.ws/tech.png" />
+  <meta property="og:type" content="article" />
+  <link rel="icon" href="https://cuk-prodev.ct.ws/icon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: #f9fafb; color: #111827; }
+    section { scroll-margin-top: 80px; }
+    .territory { background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; transition: transform 0.3s ease; }
+    .territory:hover { transform: translateY(-4px); }
+    a{text-decoration: none;}
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-indigo-700 text-white p-5 text-center shadow-lg fixed w-full z-50">
+    <h1 class="text-2xl font-bold tracking-wide">.NET Territorial Guide</h1>
+    <p class="text-indigo-200 text-sm">Panduan Lengkap Cuk Prodev — Dari Instalasi hingga App Pertama</p>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 max-w-4xl mx-auto px-5 py-36" id="content">
+    <h1 id="main-title" class="text-3xl font-bold text-indigo-700 mb-8 text-center"></h1>
+    <!-- Konten akan di-inject lewat JSON -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-indigo-900 text-indigo-200 text-center py-6 mt-auto">
+    <p>© 2025 Cuk Prodev — Teknologi Teritorial .NET</p>
+    <a href="../" class="underline hover:text-white">Kembali ke Beranda</a>
+  </footer>
+
+  <!-- SCRIPT JSON -->
+  <script>
+    fetch('content.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('main-title').textContent = data.title;
+        const container = document.getElementById('content');
+        data.sections.forEach(section => {
+          const sec = document.createElement('section');
+          sec.className = 'territory';
+          sec.id = section.id;
+
+          const h2 = document.createElement('h2');
+          h2.textContent = section.title;
+          h2.className = 'text-xl font-semibold text-indigo-700 mb-3';
+          sec.appendChild(h2);
+
+          section.content.forEach(item => {
+            const p = document.createElement('p');
+            p.textContent = item;
+            p.className = 'text-gray-700 leading-relaxed mb-2';
+            sec.appendChild(p);
+          });
+
+          container.appendChild(sec);
+        });
+      });
+  </script>
+</body>
+</html>

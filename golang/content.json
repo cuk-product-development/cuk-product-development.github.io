@@ -1,0 +1,90 @@
+{
+  "title": "Teritorial Golang — Dari Instalasi Hingga REST API CRUD",
+  "sections": [
+    {
+      "id": "instalasi",
+      "title": "1. Instalasi Golang",
+      "content": [
+        "Download & install Go dari https://go.dev/dl/, lalu cek versi:",
+        "go version",
+        "Buat folder project:",
+        "mkdir goapi && cd goapi",
+        "go mod init goapi"
+      ]
+    },
+    {
+      "id": "struktur",
+      "title": "2. Struktur Project",
+      "content": [
+        "goapi/",
+        "│── main.go",
+        "│── config/",
+        "│   └── database.go",
+        "│── models/",
+        "│   └── product.go",
+        "│── controllers/",
+        "│   └── productController.go",
+        "│── routes/",
+        "│   └── routes.go"
+      ]
+    },
+    {
+      "id": "database",
+      "title": "3. Koneksi Database (MySQL)",
+      "content": [
+        "Install driver MySQL:",
+        "go get -u gorm.io/gorm",
+        "go get -u gorm.io/driver/mysql",
+        "Isi file config/database.go:",
+        "package config\n\nimport (\n    \"gorm.io/driver/mysql\"\n    \"gorm.io/gorm\"\n)\n\nvar DB *gorm.DB\n\nfunc ConnectDatabase() {\n    dsn := \"root:@tcp(127.0.0.1:3306)/go_api?charset=utf8mb4&parseTime=True&loc=Local\"\n    database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})\n    if err != nil {\n        panic(\"Gagal konek database!\")\n    }\n    DB = database\n}"
+      ]
+    },
+    {
+      "id": "model",
+      "title": "4. Membuat Model",
+      "content": [
+        "Isi file models/product.go:",
+        "package models\n\ntype Product struct {\n    ID    uint   `json:\"id\" gorm:\"primaryKey\"`\n    Name  string `json:\"name\"`\n    Price int    `json:\"price\"`\n}"
+      ]
+    },
+    {
+      "id": "controller",
+      "title": "5. Controller API",
+      "content": [
+        "Gunakan Gin framework:",
+        "go get -u github.com/gin-gonic/gin",
+        "Isi file controllers/productController.go:",
+        "package controllers\n\nimport (\n    \"net/http\"\n    \"goapi/config\"\n    \"goapi/models\"\n    \"github.com/gin-gonic/gin\"\n)\n\nfunc GetProducts(c *gin.Context) {\n    var products []models.Product\n    config.DB.Find(&products)\n    c.JSON(http.StatusOK, products)\n}\n\nfunc CreateProduct(c *gin.Context) {\n    var product models.Product\n    if err := c.ShouldBindJSON(&product); err != nil {\n        c.JSON(http.StatusBadRequest, gin.H{\"error\": err.Error()})\n        return\n    }\n    config.DB.Create(&product)\n    c.JSON(http.StatusOK, product)\n}\n\nfunc UpdateProduct(c *gin.Context) {\n    var product models.Product\n    id := c.Param(\"id\")\n    config.DB.First(&product, id)\n    if product.ID == 0 {\n        c.JSON(http.StatusNotFound, gin.H{\"message\": \"Data tidak ditemukan\"})\n        return\n    }\n    c.ShouldBindJSON(&product)\n    config.DB.Save(&product)\n    c.JSON(http.StatusOK, product)\n}\n\nfunc DeleteProduct(c *gin.Context) {\n    var product models.Product\n    id := c.Param(\"id\")\n    config.DB.Delete(&product, id)\n    c.JSON(http.StatusOK, gin.H{\"message\": \"Data dihapus\"})\n}"
+      ]
+    },
+    {
+      "id": "routes",
+      "title": "6. Routes",
+      "content": [
+        "Isi file routes/routes.go:",
+        "package routes\n\nimport (\n    \"github.com/gin-gonic/gin\"\n    \"goapi/controllers\"\n)\n\nfunc SetupRouter() *gin.Engine {\n    r := gin.Default()\n    r.GET(\"/api/products\", controllers.GetProducts)\n    r.POST(\"/api/products\", controllers.CreateProduct)\n    r.PUT(\"/api/products/:id\", controllers.UpdateProduct)\n    r.DELETE(\"/api/products/:id\", controllers.DeleteProduct)\n    return r\n}"
+      ]
+    },
+    {
+      "id": "main",
+      "title": "7. Main Go",
+      "content": [
+        "Isi file main.go:",
+        "package main\n\nimport (\n    \"goapi/config\"\n    \"goapi/models\"\n    \"goapi/routes\"\n)\n\nfunc main() {\n    config.ConnectDatabase()\n    config.DB.AutoMigrate(&models.Product{})\n    r := routes.SetupRouter()\n    r.Run(\":8080\")\n}"
+      ]
+    },
+    {
+      "id": "test",
+      "title": "8. Test API",
+      "content": [
+        "Jalankan server:",
+        "go run main.go",
+        "Endpoint tersedia:",
+        "GET    http://localhost:8080/api/products",
+        "POST   http://localhost:8080/api/products",
+        "PUT    http://localhost:8080/api/products/:id",
+        "DELETE http://localhost:8080/api/products/:id"
+      ]
+    }
+  ]
+}

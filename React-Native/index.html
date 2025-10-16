@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO Meta -->
+  <title id="pageTitle">React Native: Panduan Lengkap | Cuk Prodev</title>
+  <meta name="description" content="" id="metaDescription" />
+  <link rel="canonical" href="https://cuk-prodev.ct.ws/" />
+  <meta name="keywords" content="React Native, Expo, Android, iOS, instalasi React Native, build APK, run on device, Cuk Prodev" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="" id="ogTitle" />
+  <meta property="og:description" content="" id="ogDescription" />
+  <meta property="og:image" content="" id="ogImage" />
+  <meta property="og:url" content="https://cuk-prodev.ct.ws/" />
+  <meta property="og:site_name" content="Cuk Prodev" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="" id="twitterTitle" />
+  <meta name="twitter:description" content="" id="twitterDescription" />
+  <meta name="twitter:image" content="" id="twitterImage" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" id="structuredData"></script>
+
+  <!-- Tailwind & Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family:'Poppins', sans-serif; line-height:1.7; margin:0; background:#ffffff; color:#1a1a1a; }
+    .hero { width:100%; max-height:60vh; object-fit:contain; border-bottom:3px solid #00bcd4; background:#f5faff; }
+    main { max-width:900px; margin:-50px auto 80px; padding:0 20px; }
+    .card { background:#ffffff; border-radius:16px; padding:24px; box-shadow:0 10px 40px rgba(0,0,0,0.08); position:relative; z-index:10; }
+    .back-btn { position:fixed; top:18px; left:18px; display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px; background:#f0f9ff; border:1px solid #c8efff; color:#007b8f; font-weight:600; text-decoration:none; box-shadow:0 3px 10px rgba(0,123,143,0.1); transition:.2s ease; }
+    .back-btn:hover { background:#e0f8ff; transform:translateY(-2px); }
+    .kicker { display:inline-block; background:#e0f8ff; color:#007b8f; padding:4px 10px; border-radius:999px; font-size:13px; font-weight:600; }
+    pre { background:#f5faff; padding:12px; border-radius:8px; overflow-x:auto; border:1px solid #e5eff5; }
+    code { background:#f0f9ff; padding:2px 6px; border-radius:6px; color:#007b8f; font-family:'Courier New', monospace; }
+    footer { text-align:center; margin-top:30px; border-top:1px solid #eee; padding-top:20px; color:#666; }
+    @media (max-width:640px){ .hero { max-height:48vh; } main { margin-top:-30px; } }
+  </style>
+</head>
+<body>
+
+  <!-- Back Button -->
+  <a class="back-btn" href="#" id="backHref" title="Kembali" aria-label="Kembali">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+      stroke-linejoin="round" viewBox="0 0 24 24">
+      <path d="M10 19l-7-7 7-7M3 12h18"></path>
+    </svg>
+    <span id="backLabel">Cuk Prodev</span>
+  </a>
+
+  <!-- Hero Image -->
+  <img id="heroImg" class="hero" src="" alt="" loading="lazy">
+
+  <!-- Main Article -->
+  <main id="article" class="card" style="opacity:0; transform:translateY(28px); transition: opacity .9s ease, transform .9s ease;margin-top: 40px;" ></main>
+
+  <script>
+    fetch('content.json')
+      .then(res => res.json())
+      .then(data => {
+        // SEO Meta
+        document.getElementById('pageTitle').textContent = data.meta.title;
+        document.getElementById('metaDescription').setAttribute('content', data.meta.description);
+        document.getElementById('ogTitle').setAttribute('content', data.meta.title);
+        document.getElementById('ogDescription').setAttribute('content', data.meta.description);
+        document.getElementById('ogImage').setAttribute('content', data.meta.image);
+        document.getElementById('twitterTitle').setAttribute('content', data.meta.title);
+        document.getElementById('twitterDescription').setAttribute('content', data.meta.description);
+        document.getElementById('twitterImage').setAttribute('content', data.meta.image);
+        document.getElementById('structuredData').textContent = JSON.stringify({
+          "@context":"https://schema.org",
+          "@type":"Article",
+          "headline": data.title,
+          "description": data.meta.description,
+          "image": data.meta.image,
+          "author": {"@type":"Organization","name":data.meta.author},
+          "publisher": {"@type":"Organization","name":data.meta.author,"logo":{"@type":"ImageObject","url":data.meta.image}},
+          "mainEntityOfPage":{"@type":"WebPage","@id":data.meta.canonical},
+          "datePublished":data.meta.datePublished
+        });
+
+        // Hero & Back
+        const hero = document.getElementById('heroImg');
+        hero.src = data.hero.src;
+        hero.alt = data.hero.alt;
+        document.getElementById('backHref').href = data.backButton.href;
+        document.getElementById('backLabel').textContent = data.backButton.label;
+
+        // Article
+        const article = document.getElementById('article');
+        let html = `
+          <header class="mb-6">
+            <div class="kicker">${data.kicker}</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold mt-3 mb-2">${data.title}</h1>
+            <p style="color:#666; margin-top:6px">Ditulis oleh <strong>${data.meta.author}</strong> • ${data.meta.datePublished} • ≈ ${data.wordCount} kata</p>
+          </header>
+          <nav class="mb-6 toc" aria-label="Daftar isi">
+            <strong>Daftar Isi:</strong>
+            <ul class="mt-2 ml-5 list-disc">
+              ${data.toc.map(item => `<li><a href="#${item.id}">${item.title}</a></li>`).join('')}
+            </ul>
+          </nav>
+        `;
+        data.sections.forEach(sec => {
+          html += `<section id="${sec.id}" class="mb-6"><h2 class="text-2xl font-bold mb-3">${sec.title}</h2>`;
+          if(sec.content) html += `<p>${sec.content}</p>`;
+          if(sec.list) html += `<ul class="ml-6 list-disc">${sec.list.map(li=>`<li>${li}</li>`).join('')}</ul>`;
+          if(sec.orderedList) html += `<ol class="ml-6 list-decimal">${sec.orderedList.map(li=>`<li>${li}</li>`).join('')}</ol>`;
+          if(sec.code) html += `<pre><code>${sec.code}</code></pre>`;
+          if(sec.subsections) sec.subsections.forEach(sub => {
+            html += `<h3 class="text-lg font-semibold mt-3">${sub.title}</h3>`;
+            if(sub.content) html += `<p>${sub.content}</p>`;
+            if(sub.code) html += `<pre><code>${sub.code}</code></pre>`;
+          });
+          html += `</section>`;
+        });
+
+        html += `<footer><p>© ${new Date().getFullYear()} ${data.meta.author} — Semua hak cipta dilindungi.</p></footer>`;
+        article.innerHTML = html;
+
+        function showArticle(){ article.style.opacity=1; article.style.transform='translateY(0)'; }
+        if(hero.complete) showArticle(); else hero.onload=showArticle;
+      });
+  </script>
+</body>
+</html>

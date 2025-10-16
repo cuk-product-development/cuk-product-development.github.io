@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- SEO Meta -->
+  <title id="pageTitle">React JS: Panduan Lengkap | Cuk Prodev</title>
+  <meta name="description" content="" id="metaDescription" />
+  <link rel="canonical" href="https://cuk-prodev.ct.ws/" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="React, React.js, instalasi React, Vite, Create React App, React Hooks, React Router, deployment, Cuk Prodev" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="" id="ogTitle" />
+  <meta property="og:description" content="" id="ogDescription" />
+  <meta property="og:image" content="" id="ogImage" />
+  <meta property="og:url" content="https://cuk-prodev.ct.ws/" />
+  <meta property="og:site_name" content="Cuk Prodev" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="" id="twitterTitle" />
+  <meta name="twitter:description" content="" id="twitterDescription" />
+  <meta name="twitter:image" content="" id="twitterImage" />
+
+  <!-- Structured Data (Article) -->
+  <script type="application/ld+json" id="structuredData"></script>
+
+  <!-- Fonts & Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family:'Poppins', system-ui, sans-serif; background:#070718; color:#eaf3fb; margin:0; line-height:1.7; }
+    .hero { width:100%; max-height:60vh; object-fit:cover; border-bottom-left-radius:18px; border-bottom-right-radius:18px; box-shadow: 0 40px 80px rgba(2,6,23,0.6); }
+    main { max-width:1100px; margin:-42px auto 80px; padding:0 20px; }
+    .card { background: rgba(255,255,255,0.02); border-radius:18px; padding:28px; border:1px solid rgba(255,255,255,0.04); box-shadow:0 10px 30px rgba(2,6,23,0.6); }
+    .back-btn { position:fixed; top:18px; left:18px; display:inline-flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; background: rgba(255,255,255,0.035); color:#00e5ff; text-decoration:none; backdrop-filter: blur(6px); border:1px solid rgba(0,229,255,0.08); }
+    .back-icon { width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:10px; background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); }
+    .kicker { display:inline-block; padding:6px 10px; border-radius:999px; background: rgba(0,229,255,0.06); color:#00e5ff; font-weight:600; font-size:13px; }
+    .toc a { color:#bff7ff; text-decoration:underline }
+    footer { color:#9fb4c9; margin-top:20px; }
+    #footer{
+      margin: 30px;
+      text-align: center;
+    }
+    pre { background: rgba(255,255,255,0.03); padding:12px; border-radius:8px; overflow:auto; border:1px solid rgba(255,255,255,0.02); color:#e6fbff }
+    code { background: rgba(0,0,0,0.2); padding:2px 6px; border-radius:6px; }
+    @media (max-width:640px){ .hero { max-height:48vh; border-bottom-left-radius:12px; border-bottom-right-radius:12px; } main { margin-top:-28px; padding:0 16px; } }
+  </style>
+</head>
+<body>
+
+  <!-- Back Button -->
+  <a class="back-btn" href="#" id="backHref" title="Kembali" aria-label="Kembali">
+    <span class="back-icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M10.5 19.5L4.5 12.75L10.5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M4.5 12.75H19.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span id="backLabel" style="font-size:14px; font-weight:600;">Back</span>
+  </a>
+
+  <!-- Hero Image -->
+  <img id="heroImg" class="hero" src="" alt="" loading="eager" decoding="async">
+
+  <!-- Main Article -->
+  <main id="article" class="card" style="margin-top:30px; opacity:0; transform:translateY(28px); transition: opacity .9s ease, transform .9s ease;"></main>
+
+  <footer id="footer"></footer>
+
+  <script>
+    // Load content.json
+    fetch('content.json')
+      .then(res => res.json())
+      .then(data => {
+        // SEO Meta
+        document.getElementById('pageTitle').textContent = data.meta.title;
+        document.getElementById('metaDescription').setAttribute('content', data.meta.description);
+        document.getElementById('ogTitle').setAttribute('content', data.meta.title);
+        document.getElementById('ogDescription').setAttribute('content', data.meta.description);
+        document.getElementById('ogImage').setAttribute('content', data.meta.image);
+        document.getElementById('twitterTitle').setAttribute('content', data.meta.title);
+        document.getElementById('twitterDescription').setAttribute('content', data.meta.description);
+        document.getElementById('twitterImage').setAttribute('content', data.meta.image);
+        document.getElementById('structuredData').textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": data.title,
+          "description": data.meta.description,
+          "image": data.meta.image,
+          "author": { "@type":"Organization","name": data.meta.author },
+          "publisher": { "@type":"Organization","name": data.meta.author, "logo": { "@type":"ImageObject","url": data.meta.image } },
+          "mainEntityOfPage": { "@type":"WebPage","@id": data.meta.canonical },
+          "datePublished": data.meta.datePublished
+        });
+
+        // Hero & Back
+        const hero = document.getElementById('heroImg');
+        hero.src = data.hero.src;
+        hero.alt = data.hero.alt;
+        document.getElementById('backHref').href = data.backButton.href;
+        document.getElementById('backLabel').textContent = data.backButton.label;
+
+        // Article Header
+        const article = document.getElementById('article');
+        let html = `
+          <header class="mb-6">
+            <div class="kicker">${data.kicker}</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold mt-3 mb-2">${data.title}</h1>
+            <p style="color:#9fb4c9; margin-top:6px">${data.updateInfo}</p>
+          </header>
+          <nav class="mb-6 toc" aria-label="Daftar isi">
+            <strong>Daftar Isi:</strong>
+            <ul class="mt-2 ml-5 list-disc">
+              ${data.toc.map(item => `<li><a href="#${item.id}">${item.title}</a></li>`).join('')}
+            </ul>
+          </nav>
+        `;
+
+        // Sections
+        data.sections.forEach(sec => {
+          html += `<section id="${sec.id}" class="mb-6"><h2 class="text-2xl font-bold mb-3">${sec.title}</h2>`;
+          if(sec.content) html += `<p>${sec.content}</p>`;
+          if(sec.list) html += `<ul class="ml-6 list-disc">${sec.list.map(li=>`<li>${li}</li>`).join('')}</ul>`;
+          if(sec.orderedList) html += `<ol class="ml-6 list-decimal">${sec.orderedList.map(li=>`<li>${li}</li>`).join('')}</ol>`;
+          if(sec.code) html += `<pre><code>${sec.code}</code></pre>`;
+          if(sec.subsections) {
+            sec.subsections.forEach(sub => {
+              html += `<h3 class="text-lg font-semibold mt-3">${sub.title}</h3>`;
+              if(sub.content) html += `<p>${sub.content}</p>`;
+              if(sub.code) html += `<pre><code>${sub.code}</code></pre>`;
+            });
+          }
+          html += `</section>`;
+        });
+
+        article.innerHTML = html;
+
+        // Footer
+        const footer = document.getElementById('footer');
+        footer.innerHTML = `<p><strong>${data.meta.author}</strong> — ${data.footer.content}</p><p style="margin-top:8px">${data.footer.copyright}</p>`;
+
+        // Show article after hero load
+        function showArticle(){
+          article.style.opacity = 1;
+          article.style.transform = 'translateY(0)';
+        }
+        if(hero.complete) showArticle();
+        else hero.onload = showArticle;
+      });
+  </script>
+</body>
+</html>

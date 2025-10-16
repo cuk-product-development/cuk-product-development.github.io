@@ -1,0 +1,47 @@
+{
+    "title": "Express.js — Panduan Lengkap API CRUD | Cuk Prodev",
+    "description": "Pelajari cara membuat REST API dengan Express.js dan MySQL, mulai dari awal hingga CRUD lengkap.",
+    "sections": [
+      {
+        "id": "intro",
+        "title": "🏁 Territory 1 — Pengenalan Express.js",
+        "content": "Express.js adalah framework web minimalis untuk Node.js. Cocok untuk membangun REST API dengan cepat dan fleksibel menggunakan JavaScript di backend."
+      },
+      {
+        "id": "install",
+        "title": "⚙️ Territory 2 — Instalasi Node.js & Express",
+        "content": "Pastikan Node.js terinstal. Buat project baru dan install dependensi:\n\n```\nnpm init -y\nnpm install express mysql2 body-parser cors dotenv\n```"
+      },
+      {
+        "id": "structure",
+        "title": "🗂️ Territory 3 — Struktur Project",
+        "content": "Contoh struktur project:\n```\nexpressapi/\n│── server.js\n│── .env\n│── routes/productRoutes.js\n│── controllers/productController.js\n│── models/db.js\n```"
+      },
+      {
+        "id": "db",
+        "title": "💾 Territory 4 — Koneksi Database (MySQL)",
+        "content": "Isi file .env:\n```\nDB_HOST=localhost\nDB_USER=root\nDB_PASSWORD=\nDB_NAME=express_api\nPORT=3000\n```\n\nIsi file models/db.js dengan koneksi MySQL menggunakan mysql2 dan dotenv."
+      },
+      {
+        "id": "controller",
+        "title": "📂 Territory 5 — Controller API",
+        "content": "Isi file controllers/productController.js:\n```\nconst db = require('../models/db');\n\nexports.getProducts = (req, res) => { db.query('SELECT * FROM products', (err, results) => { if(err) return res.status(500).json({ error: err }); res.json(results); }); };\n\nexports.createProduct = (req, res) => { ... };\n```\nLanjut untuk updateProduct dan deleteProduct."
+      },
+      {
+        "id": "routes",
+        "title": "🛣️ Territory 6 — Routes",
+        "content": "Isi file routes/productRoutes.js:\n```\nconst express = require('express');\nconst router = express.Router();\nconst productController = require('../controllers/productController');\n\nrouter.get('/', productController.getProducts);\nrouter.post('/', productController.createProduct);\nrouter.put('/:id', productController.updateProduct);\nrouter.delete('/:id', productController.deleteProduct);\n\nmodule.exports = router;\n```"
+      },
+      {
+        "id": "server",
+        "title": "🚀 Territory 7 — Server Setup",
+        "content": "Isi server.js:\n```\nconst express = require('express');\nconst bodyParser = require('body-parser');\nconst cors = require('cors');\nconst dotenv = require('dotenv');\nconst productRoutes = require('./routes/productRoutes');\n\ndotenv.config();\nconst app = express();\napp.use(cors());\napp.use(bodyParser.json());\napp.use('/api/products', productRoutes);\nconst PORT = process.env.PORT || 3000;\napp.listen(PORT, () => console.log(`Server running on port ${PORT}`));\n```"
+      },
+      {
+        "id": "test",
+        "title": "✅ Territory 8 — Test API",
+        "content": "Buat tabel MySQL:\n```\nCREATE TABLE products (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  name VARCHAR(255) NOT NULL,\n  price INT NOT NULL\n);\n```\nJalankan server: `node server.js`\nEndpoint:\nGET /api/products\nPOST /api/products\nPUT /api/products/:id\nDELETE /api/products/:id"
+      }
+    ]
+  }
+  

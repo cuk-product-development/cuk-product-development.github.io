@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Panduan Lengkap SEO Modern 2025 — Strategi, Teknik & Tren | Cuk Prodev</title>
+  <meta name="description" content="Panduan SEO lengkap untuk bisnis dan website modern. Pelajari strategi, teknik, optimasi konten, link building, analytics, dan prediksi tren SEO 2025.">
+  <meta name="keywords" content="SEO, Search Engine Optimization, digital marketing, link building, konten, strategi SEO, Cuk Prodev">
+
+  <!-- Tailwind & Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family:'Poppins', sans-serif; background:#fff; color:#0a1e3b; line-height:1.8; }
+    main { max-width:1100px; margin:50px auto; padding:0 20px; }
+    h1,h2,h3 { color:#0a1e3b; }
+    .card { background:#f8fbff; padding:28px; border-radius:16px; border:1px solid #e0e7ff; box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+    .highlight { color:#0ea5e9; font-weight:600; }
+    footer { margin-top:40px; font-size:14px; color:#64748b; }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="card">
+      <header>
+        <h1 class="text-4xl font-bold mb-4" id="page-title">Loading...</h1>
+      </header>
+      <nav class="mb-6 toc" id="toc"></nav>
+      <section id="content"></section>
+      <footer>
+        <p><strong>Cuk Prodev</strong> — Konsultasi SEO & Digital Marketing Modern.</p>
+        <p style="margin-top:8px">Hak cipta © Cuk Prodev • Semua hak dilindungi.</p>
+      </footer>
+    </article>
+  </main>
+
+  <script>
+    async function loadContent() {
+      const res = await fetch('content.json');
+      const data = await res.json();
+
+      // Set judul halaman
+      document.title = data.title + " | Cuk Prodev";
+      document.getElementById('page-title').innerText = data.title;
+
+      // Buat daftar isi
+      const toc = document.getElementById('toc');
+      const ul = document.createElement('ul');
+      ul.className = "ml-5 list-disc";
+      data.sections.forEach(sec => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = "#" + sec.id;
+        a.innerText = sec.heading;
+        a.className = "text-blue-700 hover:underline";
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+      toc.innerHTML = "<strong>Daftar Isi:</strong>";
+      toc.appendChild(ul);
+
+      // Render konten
+      const content = document.getElementById('content');
+      data.sections.forEach(sec => {
+        const s = document.createElement('section');
+        s.id = sec.id;
+        s.className = "mb-6";
+        const h2 = document.createElement('h2');
+        h2.className = "text-2xl font-bold mb-3";
+        h2.innerText = sec.heading;
+        const p = document.createElement('p');
+        p.innerText = sec.content;
+        s.appendChild(h2);
+        s.appendChild(p);
+        content.appendChild(s);
+      });
+    }
+
+    loadContent();
+  </script>
+</body>
+</html>

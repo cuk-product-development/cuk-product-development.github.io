@@ -1,0 +1,106 @@
+{
+    "meta": {
+      "title": "React JS: Panduan Lengkap dari Instalasi hingga Deployment | Cuk Prodev",
+      "description": "Panduan lengkap React.js dalam Bahasa Indonesia: dari instalasi Node.js dan tooling, membuat project dengan Create React App & Vite, struktur folder, komponen, state, hooks, routing, fetching API, testing, build & deployment.",
+      "canonical": "https://cuk-prodev.ct.ws/",
+      "keywords": "React, React.js, instalasi React, Vite, Create React App, React Hooks, React Router, deployment, Cuk Prodev",
+      "datePublished": "2025-10-15",
+      "author": "Cuk Prodev",
+      "image": "react-js.webp"
+    },
+    "hero": {
+      "src": "react-js.webp",
+      "alt": "Illustrasi React.js"
+    },
+    "backButton": {
+      "href": "https://cuk-prodev.ct.ws/",
+      "label": "Cuk Prodev"
+    },
+    "kicker": "Cuk Prodev — React Deep Dive",
+    "title": "React JS: Panduan Lengkap dari Instalasi hingga Deployment",
+    "updateInfo": "Ditulis oleh Cuk Prodev • Diperbarui 15 Oktober 2025 • ≈ 3000 kata",
+    "toc": [
+      {"id": "intro", "title": "Pendahuluan"},
+      {"id": "kenapa", "title": "Mengapa Memilih React?"},
+      {"id": "persiapan", "title": "Persiapan & Instalasi"},
+      {"id": "cara-buat", "title": "Membuat Project (Create React App & Vite)"},
+      {"id": "struktur", "title": "Struktur Project & File Penting"},
+      {"id": "komponen", "title": "Komponen, Props & State"},
+      {"id": "hooks", "title": "Hooks Penting: useState, useEffect, useRef, useMemo"},
+      {"id": "routing", "title": "Routing dengan React Router"},
+      {"id": "data", "title": "Fetching Data & State Management"},
+      {"id": "testing", "title": "Testing & Debugging"},
+      {"id": "build", "title": "Build & Deployment"},
+      {"id": "tips", "title": "Tips Praktis & Best Practices"},
+      {"id": "kesimpulan", "title": "Kesimpulan"}
+    ],
+    "sections": [
+      {
+        "id": "intro",
+        "title": "Pendahuluan",
+        "content": "React.js adalah library JavaScript untuk membangun antarmuka pengguna (UI) yang dibuat dan dipelihara oleh Meta (Facebook). React berfokus pada komponen yang bisa digunakan kembali, membuat pengembangan depan lebih modular, cepat, dan mudah di-maintain. Panduan ini dirancang untuk pemula hingga menengah yang ingin memahami alur kerja React — dari instalasi lingkungan pengembangan, membuat project dengan pilihan tooling modern, hingga deployment ke server atau layanan hosting statis."
+      },
+      {
+        "id": "kenapa",
+        "title": "Mengapa Memilih React?",
+        "content": "Ada beberapa alasan mengapa React sangat populer:",
+        "list": [
+          "Komponen-driven: UI dibagi menjadi komponen kecil yang reusable.",
+          "Virtual DOM: Efisiensi rendering lewat perbandingan state sebelumnya dan sekarang.",
+          "Ecosystem luas: Tooling, library (Redux, React Query, React Router), dan komunitas besar.",
+          "Belajar konsep yang transferable: pola component, props, state, hooks juga berguna di framework lain."
+        ]
+      },
+      {
+        "id": "persiapan",
+        "title": "Persiapan & Instalasi",
+        "content": "Sebelum mulai, pastikan beberapa hal berikut telah terpasang:",
+        "orderedList": [
+          "Node.js & npm/yarn/pnpm — React memerlukan Node.js untuk tooling. Disarankan gunakan Node LTS terbaru (misalnya 18.x atau 20.x saat panduan ini ditulis). Cek versi di terminal dengan:\nnode -v\nnpm -v",
+          "Pilih package manager — npm sudah tersedia bersama Node.js. Alternatif: yarn atau pnpm (lebih hemat disk & cepat).",
+          "Code editor — VS Code sangat direkomendasikan (dilengkapi ekstensi ESLint, Prettier, Tailwind CSS IntelliSense, React/JSX snippets).",
+          "Git — versi kontrol penting saat mengembangkan."
+        ],
+        "subsections": [
+          {
+            "title": "Instalasi singkat",
+            "code": "// pasang Node (jika belum) lalu di terminal:\nnpm install -g npm        // update npm (opsional)\nnpm install -g yarn       // (opsional) pasang yarn\nnpm install -g pnpm       // (opsional) pasang pnpm"
+          }
+        ]
+      },
+      {
+        "id": "cara-buat",
+        "title": "Membuat Project React — Create React App vs Vite",
+        "content": "Dua cara umum membuat proyek React: Create React App (CRA) dan Vite. Saat ini Vite lebih populer karena lebih cepat dan ringan, tapi CRA masih mudah untuk pemula.",
+        "subsections": [
+          {
+            "title": "Dengan Vite (direkomendasikan)",
+            "content": "Perintah cepat:",
+            "code": "npm create vite@latest my-react-app -- --template react\ncd my-react-app\nnpm install\nnpm run dev"
+          },
+          {
+            "title": "Dengan Create React App (CRA)",
+            "code": "npx create-react-app my-react-app\ncd my-react-app\nnpm start"
+          }
+        ]
+      },
+      {
+        "id": "struktur",
+        "title": "Struktur Project & File Penting",
+        "content": "Contoh struktur standar Vite/CRA:",
+        "code": "my-react-app/\n├─ node_modules/\n├─ public/\n│  └─ index.html\n├─ src/\n│  ├─ assets/\n│  ├─ components/\n│  ├─ pages/\n│  ├─ App.jsx\n│  ├─ main.jsx\n│  └─ index.css\n├─ package.json\n└─ vite.config.js (atau config CRA)",
+        "list": [
+          "public/index.html: root HTML; React mount ke elemen div#root.",
+          "src/main.jsx / index.js: entry point; render <App />.",
+          "src/App.jsx: Komponen tingkat atas (routing, layout).",
+          "src/components: komponen kecil yang dapat dipakai ulang (Button, Card, Form).",
+          "src/pages: tampilan halaman (Home, About, Dashboard)."
+        ]
+      }
+    ],
+    "footer": {
+      "content": "Cuk Prodev — Konsultasi pengembangan front-end & implementasi React. Hubungi kami untuk bantuan spesifik atau audit kode.",
+      "copyright": "Hak cipta © Cuk Prodev • Semua hak dilindungi."
+    }
+  }
+  

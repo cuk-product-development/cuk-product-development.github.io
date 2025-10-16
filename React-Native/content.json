@@ -1,0 +1,67 @@
+{
+    "meta": {
+      "title": "React Native: Panduan Lengkap dari Instalasi hingga Build APK | Cuk Prodev",
+      "description": "Panduan lengkap React Native (Bahasa Indonesia): instalasi, Expo vs React Native CLI, membuat project, menjalankan di perangkat/hp, debugging, release APK, dan best practices.",
+      "keywords": "React Native, Expo, Android, iOS, instalasi React Native, build APK, run on device, Cuk Prodev",
+      "author": "Cuk Prodev",
+      "canonical": "https://cuk-prodev.ct.ws/",
+      "datePublished": "2025-10-15"
+    },
+    "hero": {
+      "src": "react-native.png",
+      "alt": "React Native"
+    },
+    "backButton": {
+      "href": "https://cuk-prodev.ct.ws/",
+      "label": "Cuk Prodev"
+    },
+    "kicker": "Cuk Prodev — Mobile Dev Deep Dive",
+    "title": "React Native: Panduan Lengkap dari Instalasi hingga Build APK",
+    "wordCount": 3000,
+    "toc": [
+      { "id": "pendahuluan", "title": "Pendahuluan" },
+      { "id": "persiapan-lingkungan", "title": "Persiapan Lingkungan" },
+      { "id": "membuat-project", "title": "Membuat Project" },
+      { "id": "contoh-aplikasi-sederhana", "title": "Contoh Aplikasi Sederhana" },
+      { "id": "build-apk", "title": "Build APK" }
+    ],
+    "sections": [
+      {
+        "id": "pendahuluan",
+        "title": "Pendahuluan",
+        "content": "React Native adalah framework open-source dari Meta untuk membuat aplikasi mobile Android & iOS menggunakan JavaScript dan React. Dengan React Native, kamu bisa menulis kode satu kali lalu menjalankannya di dua platform dengan performa hampir native."
+      },
+      {
+        "id": "persiapan-lingkungan",
+        "title": "Persiapan Lingkungan",
+        "code": "# Install Node.js LTS\nnode -v\nnpm -v\n\n# Set JAVA_HOME dan ANDROID_SDK_ROOT\nsetx JAVA_HOME \"C:\\Program Files\\Java\\jdk-17\"\nsetx ANDROID_SDK_ROOT \"C:\\Users\\User\\AppData\\Local\\Android\\Sdk\""
+      },
+      {
+        "id": "membuat-project",
+        "title": "Membuat Project",
+        "subsections": [
+          {
+            "title": "Dengan Expo",
+            "code": "npx create-expo-app MyApp\ncd MyApp\nnpm start",
+            "content": "Scan QR di HP dengan aplikasi Expo Go untuk langsung menjalankan aplikasimu."
+          },
+          {
+            "title": "Dengan React Native CLI",
+            "code": "npx react-native init MyApp\ncd MyApp\nnpx react-native run-android"
+          }
+        ]
+      },
+      {
+        "id": "contoh-aplikasi-sederhana",
+        "title": "Contoh Aplikasi Sederhana",
+        "code": "import React, { useState } from 'react';\nimport { View, Text, TextInput, Button, FlatList, StyleSheet } from 'react-native';\n\nexport default function App(){\n  const [task, setTask] = useState('');\n  const [tasks, setTasks] = useState([]);\n\n  const addTask = () => {\n    if(!task.trim()) return;\n    setTasks([...tasks, { id: Date.now().toString(), text: task }]);\n    setTask('');\n  };\n\n  return (\n    <View style={styles.container}>\n      <Text style={styles.title}>Todo App</Text>\n      <TextInput\n        style={styles.input}\n        placeholder=\"Tambah tugas...\"\n        value={task}\n        onChangeText={setTask}\n      />\n      <Button title=\"Tambah\" onPress={addTask} />\n      <FlatList\n        data={tasks}\n        keyExtractor={item => item.id}\n        renderItem={({item}) => <Text>• {item.text}</Text>}\n      />\n    </View>\n  );\n}\n\nconst styles = StyleSheet.create({\n  container: { flex: 1, padding: 20, backgroundColor: '#fff' },\n  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 10 },\n  input: { borderWidth: 1, borderColor: '#ccc', padding: 8, marginBottom: 10, borderRadius: 6 }\n});"
+      },
+      {
+        "id": "build-apk",
+        "title": "Build APK",
+        "code": "# Expo EAS\nnpm install -g eas-cli\neas build -p android --profile production\n\n# React Native CLI\ncd android\ngradlew assembleRelease",
+        "content": "Setelah build selesai, file APK ada di: android/app/build/outputs/apk/release/app-release.apk"
+      }
+    ]
+  }
+  

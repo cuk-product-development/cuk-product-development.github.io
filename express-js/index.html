@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Express.js — Panduan Lengkap API CRUD | Cuk Prodev</title>
+<meta name="description" content="Panduan lengkap Express.js dari instalasi hingga membuat API CRUD dengan database MySQL. Tutorial lengkap untuk pemula dan backend developer oleh Cuk Prodev.">
+<meta name="keywords" content="Express.js, Node.js, REST API, CRUD, MySQL, Tutorial Express, Belajar Backend, Cuk Prodev">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cuk-prodev.ct.ws/express.html">
+<meta property="og:title" content="Express.js — Panduan Lengkap API CRUD | Cuk Prodev">
+<meta property="og:description" content="Belajar membuat REST API dengan Express.js dan MySQL dari awal hingga CRUD lengkap. Tutorial step-by-step oleh Cuk Prodev.">
+<!-- <meta property="og:image" content="https://cuk-prodev.ct.ws/ExpressJS.png"> -->
+<meta property="og:image" content="https://cuk-prodev.ct.ws/tech.png" />
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cuk-prodev.ct.ws/express.html">
+<link rel="icon" href="https://cuk-prodev.ct.ws/icon.png" type="image/png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { background: #0f172a; color: white; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+.section { padding: 4rem 1rem; max-width: 1200px; margin: auto; }
+h1,h2 { color: #38bdf8; font-weight: 700; }
+pre { overflow-x: auto; background: #1e293b; padding: 1rem; border-radius: 0.5rem; }
+a { color: #38bdf8; text-decoration: none; }
+a:hover { text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md text-white flex justify-between px-6 py-4 z-50">
+  <h1 class="text-xl font-bold text-cyan-400">Express.js Teritorial</h1>
+  <a href="../" class="text-sm font-semibold hover:text-cyan-300 flex items-center gap-2">🏠 Home</a>
+</nav>
+
+<!-- HEADER -->
+<section class="section pt-24">
+  <h1 class="text-4xl mb-4">Teritorial Express.js — Panduan Lengkap API CRUD</h1>
+  <p class="text-lg text-gray-300">Tutorial ini membimbing kamu dari setup project Express.js hingga REST API CRUD dengan MySQL.</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<main id="content" class="section"></main>
+
+<!-- FOOTER -->
+<footer class="bg-black py-6 text-center text-gray-400 text-sm">
+  © 2025 Cuk Prodev — All Rights Reserved.
+</footer>
+
+<!-- SCRIPT GENERATE CONTENT DARI JSON -->
+<script>
+fetch('content.json')
+  .then(res => res.json())
+  .then(data => {
+    const contentEl = document.getElementById('content');
+    data.sections.forEach(sec => {
+      const section = document.createElement('section');
+      section.id = sec.id;
+      section.className = 'section bg-gray-900 p-6 rounded-lg mb-6';
+      section.innerHTML = `<h2 class="text-2xl mb-2">${sec.title}</h2><pre>${sec.content.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</pre>`;
+      contentEl.appendChild(section);
+    });
+  });
+</script>
+
+</body>
+</html>

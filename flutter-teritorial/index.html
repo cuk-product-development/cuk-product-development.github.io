@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flutter — Panduan Lengkap App | Cuk Prodev</title>
+
+<!-- META SEO -->
+<meta name="description" content="Panduan langkah-demi-langkah Flutter (instalasi, konfigurasi, buat project, debug, build & deploy). Disusun ala 'territorial' — tiap langkah adalah wilayah yang mudah diikuti." />
+<meta name="keywords" content="Flutter, Instalasi Flutter, Dart, Android Studio, VSCode, Flutter app, panduan, Cuk Prodev" />
+<meta property="og:title" content="Flutter Teritorial — Panduan Lengkap: Dari Instalasi sampai Jadi App" />
+<meta property="og:description" content="Ikuti panduan Flutter teritorial: setiap 'territory' berisi langkah praktis, perintah terminal, dan kode contoh untuk membuat aplikasi sederhana." />
+<meta property="og:image" content="https://cuk-prodev.ct.ws/tech.png" />
+<meta property="og:url" content="https://cuk-prodev.ct.ws/flutter-teritorial" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { overflow-x: hidden; background-color: #0f172a; color: white; font-family: 'Poppins', sans-serif; }
+  .section { padding: 4rem 1rem; max-width: 1200px; margin: auto; }
+  a{text-decoration: none;}
+  h1, h2 { color: #38bdf8; font-weight: 700; }
+  pre { background-color: #1e293b; padding: 1rem; border-radius: 0.5rem; color: #e2e8f0; overflow-x:auto; }
+  code { color: #facc15; font-weight: 600; }
+  .btn { background: linear-gradient(90deg,#38bdf8,#818cf8); padding:0.5rem 1rem; border-radius:0.5rem; font-weight:700; display:inline-block; color:white; text-decoration:none; }
+</style>
+</head>
+<body>
+
+<nav class="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md text-white flex justify-between px-6 py-4 z-50">
+  <h1 class="text-xl font-bold text-cyan-400">Flutter Teritorial</h1>
+  <a href="../" class="text-sm font-semibold hover:text-cyan-300 flex items-center gap-2">Kembali ke Home</a>
+</nav>
+
+<section class="section pt-24">
+  <h1 class="text-4xl mb-4" id="main-title"></h1>
+  <div id="content"></div>
+</section>
+
+<footer class="bg-black py-6 text-center text-gray-400 text-sm">
+  © 2025 Cuk Prodev — All Rights Reserved.
+</footer>
+
+<script>
+fetch('content.json')
+  .then(res => res.json())
+  .then(data => {
+    // Judul utama
+    document.getElementById('main-title').textContent = data.title;
+
+    const container = document.getElementById('content');
+    data.sections.forEach(section => {
+      const sec = document.createElement('section');
+      sec.className = 'section';
+      sec.id = section.id;
+
+      // Judul section
+      const h2 = document.createElement('h2');
+      h2.className = 'text-2xl mb-2';
+      h2.textContent = section.title;
+      sec.appendChild(h2);
+
+      // Konten (pre/code)
+      section.content.forEach(item => {
+        const pre = document.createElement('pre');
+        if(typeof item === 'string') {
+          pre.textContent = item;
+        } else if(item.type === 'code') {
+          const code = document.createElement('code');
+          code.textContent = item.text;
+          pre.appendChild(code);
+        } else {
+          pre.textContent = item.text || '';
+        }
+        sec.appendChild(pre);
+      });
+
+      container.appendChild(sec);
+    });
+  });
+</script>
+
+</body>
+</html>

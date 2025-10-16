@@ -1,0 +1,74 @@
+{
+    "title": ".NET Territorial Guide — Dari Instalasi hingga App Pertama",
+    "sections": [
+      {
+        "id": "intro",
+        "title": "🏁 Territory 1 — Pengenalan .NET",
+        "content": [
+          ".NET adalah framework open-source dari Microsoft untuk membangun aplikasi desktop, web, dan mobile menggunakan bahasa C#.",
+          "Dengan .NET, kamu bisa membuat API, aplikasi web modern (ASP.NET), bahkan microservices.",
+          "Versi terbaru, .NET 8, menghadirkan performa tinggi dan dukungan multi-platform penuh."
+        ]
+      },
+      {
+        "id": "install",
+        "title": "⚙️ Territory 2 — Instalasi .NET SDK",
+        "content": [
+          "Buka situs resmi: https://dotnet.microsoft.com/download",
+          "Pilih versi terbaru (.NET 8 atau lebih baru).",
+          "Unduh dan install SDK sesuai OS kamu (Windows / macOS / Linux).",
+          "Setelah selesai, buka terminal atau PowerShell, lalu jalankan:",
+          "dotnet --version  # Jika muncul angka versi, instalasi berhasil ✅"
+        ]
+      },
+      {
+        "id": "create",
+        "title": "🧩 Territory 3 — Membuat Proyek Baru",
+        "content": [
+          "Setelah SDK terpasang, buat proyek baru:",
+          "dotnet new console -n HelloProdev",
+          "Masuk ke folder proyek:",
+          "cd HelloProdev"
+        ]
+      },
+      {
+        "id": "edit",
+        "title": "💻 Territory 4 — Menulis Kode C# Pertama",
+        "content": [
+          "Buka file Program.cs dan ubah isinya menjadi:",
+          "using System;",
+          "",
+          "namespace HelloProdev",
+          "{",
+          "    class Program",
+          "    {",
+          "        static void Main(string[] args)",
+          "        {",
+          "            Console.WriteLine(\"Halo Dunia dari Cuk Prodev!\");",
+          "        }",
+          "    }",
+          "}"
+        ]
+      },
+      {
+        "id": "run",
+        "title": "▶️ Territory 5 — Menjalankan Aplikasi",
+        "content": [
+          "Jalankan aplikasi dengan perintah:",
+          "dotnet run",
+          "Jika berhasil, output akan muncul:",
+          "Halo Dunia dari Cuk Prodev!"
+        ]
+      },
+      {
+        "id": "next",
+        "title": "🚀 Territory 6 — Langkah Selanjutnya",
+        "content": [
+          "Pelajari ASP.NET untuk membuat website dinamis.",
+          "Coba Entity Framework Core untuk menghubungkan ke database.",
+          "Gunakan Visual Studio Code + ekstensi C# agar coding lebih nyaman."
+        ]
+      }
+    ]
+  }
+  

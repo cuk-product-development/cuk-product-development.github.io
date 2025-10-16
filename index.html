@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CUK-PRODEV — AI-Powered Software Developer Indonesia</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="CUK-PRODEV — Software Developer Indonesia. Solusi digital & AI-powered untuk website, aplikasi, dashboard monitoring, IoT, dan sistem bisnis. Tim berpengalaman untuk pengembangan end-to-end.">
+  <meta name="keywords" content="CUK-PRODEV, software developer indonesia, web developer jakarta, aplikasi android, AI system, IoT dashboard, digital solution, dashboard analitik, development indonesia">
+  <meta name="author" content="CUK-PRODEV">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CUK-PRODEV — AI-Powered Software Developer Indonesia">
+  <meta property="og:description" content="Solusi digital & AI-powered untuk website, aplikasi, dashboard monitoring, IoT, dan sistem bisnis. Tim berpengalaman untuk pengembangan end-to-end.">
+  <meta property="og:image" content="https://cuk-prodev.github.io/preview.jpg">
+  <meta property="og:url" content="https://cuk-prodev.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CUK-PRODEV — AI-Powered Software Developer Indonesia">
+  <meta name="twitter:description" content="Solusi digital & AI-powered untuk website, aplikasi, dashboard monitoring, IoT, dan sistem bisnis.">
+  <meta name="twitter:image" content="https://cuk-prodev.github.io/preview.jpg">
+
+  <!-- Schema JSON-LD (Software Company) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareCompany",
+    "name":"CUK-PRODEV",
+    "url":"https://cuk-prodev.github.io/",
+    "logo":"https://cuk-prodev.github.io/images/logo-cuk.png",
+    "description":"CUK-PRODEV adalah software developer Indonesia yang mengembangkan solusi digital berbasis AI, website, aplikasi mobile, dashboard monitoring, dan sistem IoT untuk bisnis.",
+    "address": {
+      "@type":"PostalAddress",
+      "addressLocality":"Jakarta",
+      "addressCountry":"ID"
+    },
+    "sameAs":[
+      "https://github.com/cuk-prodev",
+      "https://linkedin.com/company/cuk-prodev"
+    ]
+  }
+  </script>
+
+  <!-- TailwindCSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Custom styles for visuals & animations */
+    :root{
+      --primary-1: #06122b;
+      --primary-2: #1e40af;
+      --accent: #06b6d4;
+    }
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--primary-1) 0%, #071133 30%, #071a3a 40%, #081a3f 60%, #0b1229 100%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .fade-up { transform: translateY(12px); opacity:0; transition:all .8s ease; }
+    .fade-up.show { transform:none; opacity:1; }
+    .card-hover:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 12px 30px rgba(2,6,23,0.6); transition: all .28s ease; }
+    /* product image box */
+    .product-img { background: linear-gradient(135deg,#0b1229 0%, #172554 100%); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+    /* responsive tweaks */
+    @media (min-width: 1024px) {
+      .hero-padding { padding-top:5.5rem; padding-bottom:5.5rem; }
+    }
+    @media (max-width: 640px){
+      .hide-sm { display:none; }
+    }
+  </style>
+  <style>
+    :root {
+      --primary-1: #06122b;
+      --primary-2: #1e40af;
+      --accent: #06b6d4;
+    }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--primary-1) 0%, #071133 30%, #071a3a 40%, #081a3f 60%, #0b1229 100%);
+      color: #e6eef8;
+      line-height: 1.6;
+    }
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .fade-up { transform: translateY(12px); opacity: 0; transition: all .8s ease; }
+    .fade-up.show { transform: none; opacity: 1; }
+    .card-hover:hover { transform: translateY(-4px) scale(1.01); transition: all .28s ease; }
+  
+    /* responsive tweaks */
+    @media (min-width: 1024px) {
+      .hero-padding { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+    }
+  
+    @media (max-width: 1024px) {
+      .hero-padding { padding-top: 3rem; padding-bottom: 3rem; }
+    }
+  
+    @media (max-width: 768px) {
+      header .flex { flex-wrap: wrap; gap: 1rem; }
+      .hero-padding { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+      .text-3xl { font-size: 1.75rem; }
+      .product-img { min-height: 250px !important; } /* biar gak kepanjangan di HP */
+      .grid { gap: 1rem; }
+      section { padding: 2rem 1rem !important; }
+      .flex.gap-4 { flex-wrap: wrap; gap: .75rem; }
+    }
+  
+    @media (max-width: 480px) {
+      .text-3xl { font-size: 1.5rem; }
+      .text-2xl { font-size: 1.25rem; }
+      .px-6 { padding-left: 1rem; padding-right: 1rem; }
+      .py-16 { padding-top: 3rem; padding-bottom: 3rem; }
+      .product-img { min-height: 200px !important; }
+      .card p { font-size: .875rem; }
+    }
+
+    a{
+        text-decoration: none !important;
+    }
+  </style>
+
+</head>
+<body>
+<style>
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #030917 0%, #08162c 50%, #0b1229 100%);
+    color: #e6eef8;
+    min-height: 100vh;
+}
+.glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.dropdown-menu, .child-menu {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
+}
+.dropdown-menu.show, .child-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+<header class="fixed top-0 left-0 right-0 z-50 glass flex items-center justify-between px-6 py-4">
+    <div class="text-lg font-bold text-white tracking-wide">CUK-PRODEV</div>
+
+    <nav class="flex items-center gap-6 relative">
+        <a href="#" class="text-sky-200 hover:text-cyan-400 transition-all">Home</a>
+        <!-- <a href="#about" class="text-sky-200 hover:text-cyan-400 transition-all">About</a> -->
+
+        <!-- Dropdown -->
+        <div class="relative">
+        <button id="artikelBtn" class="text-sky-200 hover:text-cyan-400 transition-all flex items-center gap-1">
+            Article <i class="fa-solid fa-chevron-down text-xs"></i>
+        </button>
+
+        <div id="artikelMenu" class="dropdown-menu absolute right-0 bg-[#0a1424]/95 backdrop-blur-lg border border-white/10 rounded-xl mt-3 py-3 min-w-[220px] shadow-xl">
+            <!-- AI -->
+            <div class="relative">
+            <button class="flex justify-between items-center w-full px-5 py-2 text-sky-100 hover:bg-white/10 transition-all child-toggle">
+                <span>AI</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+            <div class="child-menu bg-[#0b1a33]/90 border-l border-white/10 ml-4 mt-1 rounded-lg overflow-hidden">
+                <a href="AI" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">About AI</a>
+                <!-- <a href="AI/machine-learning.html" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Machine Learning</a>
+                <a href="AI/neural-network.html" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Neural Network</a> -->
+            </div>
+            </div>
+
+            <!-- React JS -->
+            <div class="relative">
+            <button class="flex justify-between items-center w-full px-5 py-2 text-sky-100 hover:bg-white/10 transition-all child-toggle">
+                <span>Programming</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+            <div class="child-menu bg-[#0b1a33]/90 border-l border-white/10 ml-4 mt-1 rounded-lg overflow-hidden">
+                <a href="React-JS/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">React JS</a>
+                <a href="React-Native/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">React Native</a>
+                <a href="flutter-teritorial/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Flutter</a>
+                <a href="net/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">.Net</a>
+                <a href="python/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Python</a>
+                <a href="laravel/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Laravel</a>
+                <a href="golang/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Golang</a>
+                <a href="express-js/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Express JS</a>
+            </div>
+            </div>
+
+            <!-- SEO -->
+            <div class="relative">
+            <button class="flex justify-between items-center w-full px-5 py-2 text-sky-100 hover:bg-white/10 transition-all child-toggle">
+                <span>SEO</span>
+                <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+            <div class="child-menu bg-[#0b1a33]/90 border-l border-white/10 ml-4 mt-1 rounded-lg overflow-hidden">
+                <a href="SEO/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Optimasi On-Page</a>
+                <!-- <a href="SEO/backlink.html" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Backlink</a>
+                <a href="SEO/keyword.html" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Keyword Research</a> -->
+            </div>
+            </div>
+
+            <!-- Technology -->
+            <a href="technology/" class="block px-5 py-2 text-sky-100 hover:bg-white/10 transition-all">Technology</a>
+        </div>
+        </div>
+
+        <a href="#contact" class="text-sky-200 hover:text-cyan-400 transition-all">Contact</a>
+    </nav>
+    </header>
+
+    <script>
+    const artikelBtn = document.getElementById("artikelBtn");
+    const artikelMenu = document.getElementById("artikelMenu");
+
+    artikelBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        artikelMenu.classList.toggle("show");
+    });
+
+    // Child menu toggle
+    document.querySelectorAll(".child-toggle").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const submenu = btn.nextElementSibling;
+        submenu.classList.toggle("show");
+
+        // Rotate arrow
+        const icon = btn.querySelector("i");
+        icon.classList.toggle("rotate-90");
+        });
+    });
+
+    // Tutup kalau klik di luar
+    document.addEventListener("click", (e) => {
+        if (!artikelMenu.contains(e.target) && !artikelBtn.contains(e.target)) {
+        artikelMenu.classList.remove("show");
+        document.querySelectorAll(".child-menu").forEach(m => m.classList.remove("show"));
+        }
+    });
+</script>
+<script src="https://kit.fontawesome.com/a2d9a64c1a.js" crossorigin="anonymous"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  .glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  nav a {
+    font-weight: 500;
+  }
+</style>
+<script>
+    const menuBtn = document.getElementById("menu-btn");
+    const navMenu = document.getElementById("nav-menu");
+    
+    menuBtn.addEventListener("click", () => {
+        navMenu.classList.toggle("hidden");
+        navMenu.classList.toggle("flex");
+        navMenu.classList.toggle("flex-col");
+        navMenu.classList.toggle("absolute");
+        navMenu.classList.toggle("top-16");
+        navMenu.classList.toggle("left-0");
+        navMenu.classList.toggle("w-full");
+        navMenu.classList.toggle("bg-[#06122b]/95");
+        navMenu.classList.toggle("p-4");
+        navMenu.classList.toggle("gap-4");
+        navMenu.classList.toggle("border-t");
+        navMenu.classList.toggle("border-white/10");
+    });
+    </script>
+    
+<!-- HERO (Luxury Modern Version) -->
+<section class="relative overflow-hidden py-24 px-6 md:px-10">
+    <!-- background glow -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-3xl top-[-100px] left-[-200px]"></div>
+      <div class="absolute w-[700px] h-[700px] bg-cyan-500/10 rounded-full blur-3xl bottom-[-200px] right-[-150px]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#030917] via-[#071325] to-[#0a1533]"></div>
+    </div>
+  
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <!-- LEFT TEXT -->
+      <div class="space-y-8 fade-up">
+        <div class="inline-block px-4 py-2 rounded-full bg-white/10 text-cyan-300 text-xs tracking-widest uppercase">
+          AI-Driven Innovation
+        </div>
+  
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight text-white">
+          Empower Your Business<br />
+          with <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-300">Smart Digital Solutions</span>
+        </h1>
+  
+        <p class="text-sky-100/80 text-lg max-w-xl">
+          CUK-PRODEV crafts intelligent systems that transform how businesses operate — 
+          delivering data-driven insights, automation, and seamless digital experiences 
+          through web, mobile, and IoT technologies.
+        </p>
+  
+        <div class="flex flex-wrap gap-4">
+          <a href="#products" class="bg-gradient-to-r from-emerald-400 to-cyan-300 text-slate-900 px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-cyan-500/30 hover:scale-[1.03] transition-all">
+            Get Started
+          </a>
+          <a href="#features" class="border border-white/20 px-6 py-3 rounded-full text-white/90 hover:bg-white/10 transition-all">
+            Learn More
+          </a>
+        </div>
+  
+        <div class="flex flex-wrap gap-3 text-xs text-sky-200/80 mt-4">
+          <span class="px-3 py-2 bg-white/5 rounded-full">AI System</span>
+          <span class="px-3 py-2 bg-white/5 rounded-full">Enterprise Dashboard</span>
+          <span class="px-3 py-2 bg-white/5 rounded-full">Mobile Apps</span>
+          <span class="px-3 py-2 bg-white/5 rounded-full">IoT & Integrations</span>
+        </div>
+      </div>
+  
+      <!-- RIGHT IMAGE -->
+      <div class="relative fade-up delay-150">
+        <div class="absolute inset-0 bg-gradient-to-tr from-cyan-400/20 to-emerald-400/10 blur-3xl rounded-full scale-110"></div>
+        <div class="relative rounded-3xl overflow-hidden shadow-[0_0_60px_-10px_rgba(6,182,212,0.3)] ring-1 ring-white/10">
+          <img src="images/hero/AI-finance.png" alt="AI Dashboard Preview" loading="lazy" class="w-full h-auto object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Add fade-up animation -->
+  <style>
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 1s ease forwards;
+    }
+    .fade-up.delay-150 {
+      animation-delay: .15s;
+    }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+  
+  <!-- FEATURES -->
+<section id="features" class="relative max-w-7xl mx-auto px-6 py-20" style="margin: 30px;">
+    <!-- background glow -->
+    <div class="absolute inset-0 bg-gradient-to-br from-sky-900/40 via-indigo-900/30 to-black/60 backdrop-blur-3xl rounded-3xl -z-10"></div>
+  
+    <div class="text-center mb-14">
+      <h2 class="text-4xl font-extrabold text-white tracking-tight mb-4">
+        ✨ Main Features of <span class="text-sky-400">CUK-PRODEV</span>
+      </h2>
+      <p class="text-sky-100/70 max-w-3xl mx-auto text-lg">
+        Integrated solutions for analytics, automation, and business intelligence — 
+        built for performance, scalability, and security.
+      </p>
+    </div>
+  
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card -->
+      <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_25px_-5px_rgba(56,189,248,0.5)]">
+        <div class="text-sky-400 text-4xl mb-4">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">Fast System & High Security</h3>
+        <p class="text-sky-100/80 text-sm">
+          Cloud-ready architecture, encryption, and DevSecOps ensure your system stays stable and secure.
+        </p>
+      </div>
+  
+      <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_25px_-5px_rgba(147,51,234,0.4)]">
+        <div class="text-purple-400 text-4xl mb-4">
+          <i class="fa-solid fa-laptop-code"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">Modern Design</h3>
+        <p class="text-sky-100/80 text-sm">
+          Sleek UI/UX design with full responsiveness for users and administrators alike.
+        </p>
+      </div>
+  
+      <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_25px_-5px_rgba(59,130,246,0.5)]">
+        <div class="text-sky-400 text-4xl mb-4">
+          <i class="fa-solid fa-robot"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">AI & Predictive Analytics</h3>
+        <p class="text-sky-100/80 text-sm">
+          Predictive models for forecasting, anomaly detection, and data-driven decisions.
+        </p>
+      </div>
+  
+      <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_25px_-5px_rgba(236,72,153,0.4)]">
+        <div class="text-pink-400 text-4xl mb-4">
+          <i class="fa-solid fa-rocket"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">Starter Kit & Boilerplate</h3>
+        <p class="text-sky-100/80 text-sm">
+          Rapid development base including auth, roles, and core business modules.
+        </p>
+      </div>
+  
+      <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.4)]">
+        <div class="text-emerald-400 text-4xl mb-4">
+          <i class="fa-solid fa-plug"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">All Essential Integrations</h3>
+        <p class="text-sky-100/80 text-sm">
+          Ready integrations for payment, messaging, and ERP/CRM systems.
+        </p>
+      </div>
+  
+      <div class="p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-all duration-500 hover:shadow-[0_0_25px_-5px_rgba(245,158,11,0.4)]">
+        <div class="text-amber-400 text-4xl mb-4">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2">Support & Maintenance</h3>
+        <p class="text-sky-100/80 text-sm">
+          24/7 enterprise-grade support to keep your systems running flawlessly.
+        </p>
+      </div>
+    </div>
+  </section>
+  <script src="https://kit.fontawesome.com/a2d9a64c1a.js" crossorigin="anonymous"></script>
+  
+
+  <!-- VIDEO -->
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="bg-gradient-to-b from-slate-800/50 to-slate-900/40 rounded-2xl p-6">
+      <h3 class="text-xl font-semibold mb-4">Example Video</h3>
+      <div class="aspect-video rounded-xl overflow-hidden bg-black">
+        <!-- placeholder video: ganti src sesuai filemu -->
+        <video controls poster="/images/video-poster.png" class="w-full h-full object-cover">
+          <source src="https://cuk-prodev.github.io/cuk%203-1_Clip.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIGITAL SOLUTIONS -->
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid lg:grid-cols-2 gap-8 items-center">
+      <div>
+        <h3 class="text-2xl font-bold">Digital Solutions for Your Business</h3>
+        <p class="text-sky-100/70 mt-3">
+            We build end-to-end solutions: from discovery, design, and development to deployment and maintenance.  
+            Our focus is on business outcomes — not just code.  
+            Our experienced team helps your company achieve true digital transformation.
+          </p>
+                  <a href="#contact" class="inline-block mt-6 bg-emerald-400 text-slate-900 px-4 py-2 rounded-md font-semibold">Discuss Project</a>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <!-- <img src="images/office-1.jpg" alt="office" loading="lazy" class="w-full h-40 object-cover rounded-lg shadow-md">
+        <img src="images/office-2.jpg" alt="office" loading="lazy" class="w-full h-40 object-cover rounded-lg shadow-md">
+        <img src="images/office-3.jpg" alt="office" loading="lazy" class="w-full h-40 object-cover rounded-lg shadow-md"> -->
+        <div class="bg-sky-900 rounded-lg p-4 flex flex-col justify-center" style="min-height: 200px;min-width: 200px;">
+          <div class="text-xs text-sky-200" style="font-size: 60px;padding-bottom: 30px;">10+</div>
+          <div class="text-lg font-semibold">Years of experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="products" class="max-w-6xl mx-auto py-8">
+    <div class="flex items-center justify-between mb-6">
+      <h3 class="text-2xl font-bold">Featured Products</h3>
+      <div class="flex gap-3">
+        <button class="px-3 py-2 rounded bg-white/5 text-sky-100" data-filter="all">All</button>
+        <button class="px-3 py-2 rounded bg-white/5 text-sky-100" data-filter="app">App</button>
+        <button class="px-3 py-2 rounded bg-white/5 text-sky-100" data-filter="dashboard">Dashboard</button>
+        <button class="px-3 py-2 rounded bg-white/5 text-sky-100" data-filter="other">Other</button>
+      </div>
+    </div>
+
+    <div id="products-grid" class="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 mb-8"></div>
+
+    <!-- pagination controls -->
+    <div id="pagination" class="flex justify-center items-center gap-4">
+      <button id="prevPage" class="px-4 py-2 rounded bg-white/5 text-sky-100 hover:bg-white/10">Prev</button>
+      <span id="pageIndicator" class="text-sky-100/70"></span>
+      <button id="nextPage" class="px-4 py-2 rounded bg-white/5 text-sky-100 hover:bg-white/10">Next</button>
+    </div>
+  </section>
+
+  <script>
+    const products = [
+    { id: 1, image: "images/AI-Dashboard-Analyst.png", title: "AI Analyst Dashboard", desc: "AI-powered insights & business dashboard with prediction analytics.", category: "app" },
+    { id: 2, image: "images/monitoring-bisnis.png", title: "Business Monitoring Dashboard", desc: "Executive dashboard for finance, operations, server & project status.", category: "dashboard" },
+    { id: 3, image: "images/hris-dashboard.png", title: "HRIS Dashboard", desc: "Comprehensive HR dashboard.", category: "dashboard" },
+    { id: 4, image: "images/hris-laporan.png", title: "HRIS Report", desc: "Performance evaluation and reports.", category: "dashboard" },
+    { id: 5, image: "images/hris-penilaian.png", title: "HRIS Evaluation", desc: "Employee evaluation form & results.", category: "dashboard" },
+    { id: 6, image: "images/aplication-visitor.png", title: "Visitor App — Check-in", desc: "Visitor registration with QR check-in and log history.", category: "app" },
+    { id: 7, image: "images/jasa-kirim.png", title: "Tracking Delivery App", desc: "Track shipments with detailed timeline and realtime map.", category: "app" },
+    { id: 8, image: "images/g-ride.png", title: "G-Ride", desc: "Reliable transportation app.", category: "app" },
+    { id: 9, image: "images/pinjaman-bank-transaksi.png", title: "Bank Loan Transaction Dashboard", desc: "Monitor balance, installments, and loan transaction history.", category: "app" },
+    { id: 10, image: "images/pinjaman-bank.png", title: "Bank Loan Application", desc: "Apply for loans online with flexible limits and tenors.", category: "app" },
+    { id: 11, image: "images/tour.png", title: "Travel APP", desc: "Choose destination easily.", category: "app" },
+    { id: 12, image: "images/sanjaya.png", title: "Booking System", desc: "Real estate website.", category: "company" },
+    { id: 13, image: "images/barugasikola.png", title: "E-Learning & Medsos Barugasikola", desc: "Online learning & medsos platform.", category: "other" },
+    { id: 14, image: "images/kingfruit.png", title: "King of The King Marketplace", desc: "Premium durian website.", category: "other" },
+    { id: 15, image: "images/server-monitoring.png", title: "Server Monitoring", desc: "Realtime server monitoring.", category: "app" },
+    { id: 16, image: "images/grup-rumah-makan-monitoring.png", title: "Restaurant Group Monitoring", desc: "Outlet monitoring.", category: "app" },
+    { id: 17, image: "images/grup-toko-monitoring.png", title: "Retail Store Monitoring", desc: "Monitoring system.", category: "app" },
+    { id: 18, image: "images/medsos.png", title: "Social Media App", desc: "A modern social platform.", category: "app" },
+    { id: 19, image: "images/access-room-meeting.png", title: "Meeting Room Access", desc: "Room booking and QR-based access control.", category: "app" },
+    { id: 20, image: "images/monitoring-hikvision-access.png", title: "Hikvision Door Monitoring", desc: "Realtime door access monitoring with logs and snapshots.", category: "app" },
+    { id: 21, image: "images/kasir.png", title: "POS System", desc: "A powerful cashier system.", category: "app" },
+    { id: 22, image: "images/parkir.png", title: "Smart Parking", desc: "Complete smart parking.", category: "app" },
+    { id: 23, image: "images/market.png", title: "Marketplace App", desc: "An elegant marketplace.", category: "app" },
+    { id: 25, image: "images/AI-Dashboard-Analyst.png", title: "AI Analyst Dashboard", desc: "AI-powered insights & business dashboard with prediction analytics.", category: "dashboard" },
+    { id: 26, image: "images/finance-monitoring.png", title: "Finance & Accounting Dashboard", desc: "Monitor revenue, profit, cashflow & budget performance.", category: "dashboard" },
+    { id: 27, image: "images/sustainability-dashboard.png", title: "Sustainability Dashboard", desc: "Monitor environmental, social & governance metrics for green compliance.", category: "dashboard" },
+    { id: 28, image: "images/sales-monitoring.png", title: "Sales & Marketing Dashboard", desc: "Monitor sales pipeline, targets, leads & campaign performance.", category: "dashboard" },
+    { id: 29, image: "images/hris.png", title: "HRIS Login", desc: "Secure HRIS login system.", category: "dashboard" },
+    { id: 30, image: "images/damia.png", title: "Attendance Report HRIS", desc: "Manage employee attendance.", category: "dashboard" },
+    { id: 31, image: "images/hris_dashboard.png", title: "HRIS Dashboard", desc: "Comprehensive HR dashboard.", category: "dashboard" }
+    ];
+
+    const grid = document.getElementById('products-grid');
+    const prevBtn = document.getElementById('prevPage');
+    const nextBtn = document.getElementById('nextPage');
+    const pageIndicator = document.getElementById('pageIndicator');
+    const perPage = 4;
+    let currentPage = 1;
+    let currentFilter = 'all';
+
+    function escapeHtml(str){ return String(str).replace(/[&<>"']/g,
+      s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]) ); }
+
+    function createCard(p){
+      const el = document.createElement('article');
+      el.className = 'card p-4 glass fade-up card-hover';
+      el.innerHTML = `
+        <div class="product-img h-40 mb-4" style="min-height: 400px;"><img src="${p.image}" alt="${escapeHtml(p.title)}" class="object-contain w-full h-full p-4"></div>
+        <h4 class="font-semibold mb-2">${escapeHtml(p.title)}</h4>
+        <p class="text-sky-100/75 text-sm mb-3">${escapeHtml(p.desc)}</p>
+        <div class="flex items-center justify-between text-xs text-sky-300">
+          <span>${escapeHtml(p.category)}</span>
+          <a href="#contact" class="text-emerald-300">Discuss</a>
+        </div>
+      `;
+      return el;
+    }
+
+    function renderProducts(filter='all', page=1){
+      grid.innerHTML = '';
+      const filtered = filter==='all' ? products : products.filter(p=>p.category===filter);
+      const totalPages = Math.ceil(filtered.length / perPage);
+      if(page > totalPages) currentPage = totalPages;
+      const start = (page - 1) * perPage;
+      const list = filtered.slice(start, start + perPage);
+
+      if(list.length === 0){
+        grid.innerHTML = `<div class="text-center text-sky-100/70 col-span-full">No products found.</div>`;
+      } else {
+        list.forEach(p=>grid.appendChild(createCard(p)));
+      }
+
+      pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+
+      observeFadeUps();
+    }
+
+    document.querySelectorAll('[data-filter]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('[data-filter]').forEach(b=>b.classList.remove('bg-white/10','text-white'));
+        btn.classList.add('bg-white/10','text-white');
+        currentFilter = btn.dataset.filter;
+        currentPage = 1;
+        renderProducts(currentFilter, currentPage);
+      });
+    });
+
+    prevBtn.addEventListener('click', ()=>{ if(currentPage>1){ currentPage--; renderProducts(currentFilter, currentPage);} });
+    nextBtn.addEventListener('click', ()=>{ currentPage++; renderProducts(currentFilter, currentPage); });
+
+    function observeFadeUps(){
+      const els = document.querySelectorAll('.fade-up');
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('show');});
+      },{threshold:0.1});
+      els.forEach(el=>io.observe(el));
+    }
+
+    renderProducts('all', 1);
+  </script>
+
+<section id="pricing" class="max-w-7xl mx-auto px-6 py-20 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Choose Your Plan</h2>
+    <p class="text-sky-100/70 mb-12">
+      Packages for startups to enterprises. Contact us for a custom enterprise solution.
+    </p>
+  
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- BASIC -->
+      <div class="p-8 rounded-3xl border border-sky-400/20 bg-white/5 backdrop-blur-sm shadow-lg hover:shadow-sky-400/20 hover:-translate-y-1 transition-all duration-300">
+        <h3 class="text-2xl font-semibold mb-3 text-sky-100">Basic</h3>
+        <p class="text-sm text-sky-200/80 mb-4">One-time payment</p>
+        <div class="text-4xl font-bold mb-1 text-emerald-400">IDR 5,000,000+</div>
+        <p class="text-sm text-sky-200/70 mb-6">Server & hosting not included</p>
+        <ul class="text-sky-100/80 text-sm mb-8 space-y-2">
+          <li>Ideal for small businesses & startups</li>
+          <li>1-month warranty</li>
+          <li>Extra features incur additional costs</li>
+        </ul>
+        <a href="#contact" class="inline-block px-6 py-2 rounded-full font-semibold bg-emerald-400 text-slate-900 hover:bg-emerald-300 transition-all duration-200">
+          Get Started
+        </a>
+      </div>
+  
+      <!-- PREMIUM -->
+      <div class="p-8 rounded-3xl border border-sky-400/20 bg-white/10 backdrop-blur-md shadow-xl hover:shadow-sky-400/30 hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-emerald-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-bl-lg">
+          Popular
+        </div>
+        <h3 class="text-2xl font-semibold mb-3 text-white">Premium</h3>
+        <p class="text-sm text-sky-200/80 mb-4">One-time payment (includes 1 year of hosting)</p>
+        <div class="text-4xl font-bold mb-1 text-emerald-400">IDR 10,000,000+</div>
+        <p class="text-sm text-sky-200/70 mb-6">Ideal for startups & SMEs</p>
+        <ul class="text-sky-100/80 text-sm mb-8 space-y-2">
+          <li>1-year hosting & support</li>
+          <li>2-month warranty</li>
+          <li>Extra features incur additional costs</li>
+        </ul>
+        <a href="#contact" class="inline-block px-6 py-2 rounded-full font-semibold bg-emerald-400 text-slate-900 hover:bg-emerald-300 transition-all duration-200">
+          Get Started
+        </a>
+      </div>
+  
+      <!-- BUSINESS -->
+      <div class="p-8 rounded-3xl border border-sky-400/20 bg-white/5 backdrop-blur-sm shadow-lg hover:shadow-sky-400/20 hover:-translate-y-1 transition-all duration-300">
+        <h3 class="text-2xl font-semibold mb-3 text-sky-100">Business</h3>
+        <p class="text-sm text-sky-200/80 mb-4">Contract based</p>
+        <div class="text-4xl font-bold mb-1 text-emerald-400">IDR 25,000,000+</div>
+        <p class="text-sm text-sky-200/70 mb-6">Best for large enterprises</p>
+        <ul class="text-sky-100/80 text-sm mb-8 space-y-2">
+          <li>Full AI & integration</li>
+          <li>Warranty per contract</li>
+          <li>Dedicated enterprise support</li>
+        </ul>
+        <a href="#contact" class="inline-block px-6 py-2 rounded-full font-semibold bg-emerald-400 text-slate-900 hover:bg-emerald-300 transition-all duration-200">
+          Contact Sales
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CONTACT -->
+<section id="contact" class="max-w-7xl mx-auto px-6 py-12">
+    <div class="card p-6 glass">
+      <h3 class="text-2xl font-bold mb-3">Contact Us</h3>
+      <p class="text-sky-100/70 mb-4">
+        Interested in building a solution with CUK-PRODEV?
+        Fill out this short form or contact us </p>
+  
+      <form id="contactForm" class="grid md:grid-cols-2 gap-4">
+        <input name="name" type="text" placeholder="Your name" required class="p-3 rounded bg-white/5 border border-white/5" />
+        <input name="email" type="email" placeholder="Email" required class="p-3 rounded bg-white/5 border border-white/5" />
+        <input name="company" type="text" placeholder="Company (optional)" class="p-3 rounded bg-white/5 border border-white/5" />
+        <input name="budget" type="text" placeholder="Estimated budget (optional)" class="p-3 rounded bg-white/5 border border-white/5" />
+        <textarea name="message" placeholder="Describe your project..." rows="4" required class="p-3 rounded bg-white/5 border border-white/5 md:col-span-2"></textarea>
+  
+        <div class="md:col-span-2 flex items-center gap-4">
+          <button type="submit" id="sendBtn" class="bg-emerald-400 text-slate-900 px-6 py-2 rounded font-semibold transition-all duration-200 hover:bg-emerald-300">Send Message</button>
+          <div id="contactResult" class="text-sm"></div>
+        </div>
+      </form>
+    </div>
+  </section>
+  
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contactForm");
+    const result = document.getElementById("contactResult");
+    const sendBtn = document.getElementById("sendBtn");
+  
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      const formData = new FormData(form);
+      const name = formData.get("name") || "-";
+      const email = formData.get("email") || "-";
+      const company = formData.get("company") || "-";
+      const budget = formData.get("budget") || "-";
+      const message = formData.get("message") || "-";
+  
+      if (!name || !email || !message) {
+        result.textContent = "⚠️ Please fill in name, email, and message.";
+        result.className = "text-sm text-red-400";
+        return;
+      }
+  
+      // tampilkan loading
+      sendBtn.disabled = true;
+      sendBtn.textContent = "Sending...";
+  
+      const text = `📬 *New Contact Form Message*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n🏢 *Company:* ${company}\n💰 *Estimated Budget:* ${budget}\n📝 *Message:* ${message}`;
+      const encodedText = encodeURIComponent(text);
+      const phoneNumber = "6281289784331"; // Ganti dengan nomormu tanpa tanda +
+      const waLink = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+  
+      // buka WhatsApp
+      window.open(waLink, "_blank");
+  
+      // reset form
+      form.reset();
+  
+      // tampilkan hasil
+      result.textContent = "✅ Opening WhatsApp…";
+      result.className = "text-sm text-emerald-400";
+  
+      // kembalikan tombol
+      setTimeout(() => {
+        sendBtn.disabled = false;
+        sendBtn.textContent = "Send Message";
+        result.textContent = "";
+      }, 4000);
+    });
+  });
+  </script>
+  
+  <!-- FOOTER -->
+  <footer class="bg-slate-900/70 mt-8">
+    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <div class="flex items-center gap-3">
+          <img src="/images/logo-cuk.png" alt="CUK-PRODEV" class="h-8 w-auto" onerror="this.style.display='none'">
+          <div>
+            <div class="font-semibold">CUK-PRODEV</div>
+            <div class="text-sm text-sky-100/60">We craft AI-driven digital systems — CUK-PRODEV Indonesia.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-sky-100/70 text-sm">
+        © 2025 CUK-PRODEV · Jakarta · <a href="https://cuk-prodev.github.io/" class="underline">cuk-prodev.github.io</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PRODUCTS data & render script -->
+  <script>
+    
+    // small utility to escape html
+    function escapeHtml(str){ return String(str).replace(/[&<>"']/g, 
+      s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]) ); }
+
+    // fade-up observation
+    function observeFadeUps(){
+      const els = document.querySelectorAll('.fade-up');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+      }, { threshold: 0.12 });
+      els.forEach(el => io.observe(el));
+    }
+
+    // contact form simple handler (client-side only)
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const fd = new FormData(this);
+      const data = Object.fromEntries(fd.entries());
+      // for demo: show small message; integrate with backend or WA API as needed
+      document.getElementById('contactResult').textContent = 'Terima kasih! Pesan Anda telah diterima. Kami akan menghubungi Anda.';
+      this.reset();
+    });
+
+    // ensure fade-ins triggered on load for header sections
+    window.addEventListener('load', () => {
+      observeFadeUps();
+    });
+  </script>
+</body>
+</html>

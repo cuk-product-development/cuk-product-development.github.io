@@ -1,0 +1,94 @@
+{
+    "title": "Teritorial Laravel — Dari Instalasi Hingga API",
+    "sections": [
+      {
+        "id": "instalasi",
+        "title": "1. Instalasi Laravel",
+        "content": [
+          "# Pastikan Composer sudah terinstal",
+          "composer create-project laravel/laravel laravelApp",
+          "cd laravelApp",
+          "php artisan serve",
+          "Akses di browser: http://127.0.0.1:8000"
+        ]
+      },
+      {
+        "id": "database",
+        "title": "2. Konfigurasi Database",
+        "content": [
+          "Edit file .env dan ubah pengaturan database:",
+          "DB_CONNECTION=mysql",
+          "DB_HOST=127.0.0.1",
+          "DB_PORT=3306",
+          "DB_DATABASE=laravel_db",
+          "DB_USERNAME=root",
+          "DB_PASSWORD="
+        ]
+      },
+      {
+        "id": "model_migration",
+        "title": "3. Membuat Model dan Migration",
+        "content": [
+          "php artisan make:model Product -m",
+          "Buka file migration di database/migrations/ dan ubah:",
+          "Schema::create('products', function (Blueprint $table) {",
+          "    $table->id();",
+          "    $table->string('name');",
+          "    $table->integer('price');",
+          "    $table->timestamps();",
+          "});",
+          "Jalankan:",
+          "php artisan migrate"
+        ]
+      },
+      {
+        "id": "controller_route",
+        "title": "4. Membuat Controller dan Route API",
+        "content": [
+          "php artisan make:controller Api/ProductController --api",
+          "Edit ProductController.php:",
+          "use App\\Models\\Product;",
+          "use Illuminate\\Http\\Request;",
+          "",
+          "class ProductController extends Controller {",
+          "    public function index() {",
+          "        return Product::all();",
+          "    }",
+          "",
+          "    public function store(Request $request) {",
+          "        return Product::create($request->all());",
+          "    }",
+          "",
+          "    public function show($id) {",
+          "        return Product::findOrFail($id);",
+          "    }",
+          "",
+          "    public function update(Request $request, $id) {",
+          "        $product = Product::findOrFail($id);",
+          "        $product->update($request->all());",
+          "        return $product;",
+          "    }",
+          "",
+          "    public function destroy($id) {",
+          "        return Product::destroy($id);",
+          "    }",
+          "}",
+          "Tambahkan route API di routes/api.php:",
+          "use App\\Http\\Controllers\\Api\\ProductController;",
+          "Route::apiResource('products', ProductController::class);"
+        ]
+      },
+      {
+        "id": "testing",
+        "title": "5. Testing API",
+        "content": [
+          "Gunakan Postman atau curl untuk mengetes endpoint:",
+          "GET  http://127.0.0.1:8000/api/products",
+          "POST http://127.0.0.1:8000/api/products",
+          "PUT  http://127.0.0.1:8000/api/products/{id}",
+          "DELETE http://127.0.0.1:8000/api/products/{id}"
+        ]
+      }
+    ]
+  }
+  

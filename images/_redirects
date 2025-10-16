@@ -1,0 +1,11 @@
+/* /index.html 200
+/about /site/about/page 200
+/pricing /site/pricing/page 200
+/contact /site/contact/page 200
+/blog /site/blog/page 200
+/blog/:slug /site/blog/:slug 200
+/blog/:slug/:subslug /site/blog/:slug/:subslug 200
+/blog/:slug/:subslug/:subsubslug /site/blog/:slug/:subslug/:subsubslug 200
+/blog/:slug/:subslug/:subsubslug/:subsubsubslug /site/blog/:slug/:subslug/:subsubslug/:subsubsubslug 200  
+/blog/:slug/:subslug/:subsubslug/:subsubsubslug/:subsubsubsubslug /site/blog/:slug/:subslug/:subsubslug/:subsubsubslug/:subsubsubsubslug 200
+/blog/:slug/:subslug/:subsubslug/:subsubsubslug/:subsubsubsubslug/:subsubsubsubsubslug /site/blog/:slug/:subslug/:subsubslug/:subsubsubslug/:subsubsubsubslug/:subsubsubsubsubslug 200

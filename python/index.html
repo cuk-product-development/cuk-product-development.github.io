@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Python Territorial Guide | Cuk Prodev</title>
+  <meta name="description" content="Panduan lengkap Python dari instalasi, penggunaan dasar, hingga membuat API CRUD menggunakan Flask. Oleh Cuk Prodev." />
+  <meta name="keywords" content="Python, Flask, API, CRUD, Tutorial Python, Belajar Backend, Cuk Prodev" />
+  <meta property="og:title" content="Panduan Lengkap Python & API CRUD | Cuk Prodev" />
+  <meta property="og:description" content="Belajar Python dari nol hingga membuat API sederhana dan tabel data CRUD. Panduan by Cuk Prodev." />
+  <!-- <meta property="og:image" content="python.png" /> -->
+  <meta property="og:image" content="https://cuk-prodev.ct.ws/tech.png" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://cuk-prodev.ct.ws/" />
+  <link rel="icon" href="https://cuk-prodev.ct.ws/icon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: #f9fafb; color: #111827; }
+    section { scroll-margin-top: 80px; }
+    .territory { background: white; box-shadow: 0 8px 24px rgba(0,0,0,0.05); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; transition: transform 0.3s ease; }
+    .territory:hover { transform: translateY(-4px); }
+    a{text-decoration: none;}
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="bg-blue-700 text-white text-center py-5 shadow-md fixed w-full z-50">
+    <h1 class="text-2xl font-bold tracking-wide">Python Territorial Guide</h1>
+    <p class="text-blue-200 text-sm">Panduan Lengkap Cuk Prodev — Dari Instalasi Hingga API CRUD</p>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 max-w-4xl mx-auto px-5 py-36" id="content">
+    <h1 id="main-title" class="text-3xl font-bold text-blue-700 mb-8 text-center"></h1>
+    <!-- Konten akan di-inject dari JSON -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-blue-200 text-center py-6 mt-auto">
+    <p>© 2025 Cuk Prodev — Python Territorial API Guide</p>
+    <a href="../" class="underline hover:text-white">🏠 Kembali ke Home Page</a>
+  </footer>
+
+  <!-- SCRIPT JSON -->
+  <script>
+    fetch('content.json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('main-title').textContent = data.title;
+        const container = document.getElementById('content');
+        data.sections.forEach(section => {
+          const sec = document.createElement('section');
+          sec.className = 'territory';
+          sec.id = section.id;
+
+          const h2 = document.createElement('h2');
+          h2.textContent = section.title;
+          h2.className = 'text-xl font-semibold text-blue-700 mb-3';
+          sec.appendChild(h2);
+
+          section.content.forEach(item => {
+            const pre = document.createElement('pre');
+            pre.className = 'bg-gray-100 p-3 rounded overflow-x-auto mb-2';
+            pre.innerHTML = item;
+            sec.appendChild(pre);
+          });
+
+          container.appendChild(sec);
+        });
+      });
+  </script>
+</body>
+</html>

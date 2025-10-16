@@ -1,0 +1,48 @@
+{
+    "title": "Python Territorial Guide — Dari Instalasi Hingga API CRUD",
+    "sections": [
+      {
+        "id": "intro",
+        "title": "🐍 Territory 1 — Apa Itu Python?",
+        "content": [
+          "Python adalah bahasa pemrograman serbaguna yang mudah dipelajari dan digunakan di berbagai bidang: web, data, AI, dan otomasi.\nFramework populer seperti Flask dan Django menjadikan Python pilihan ideal untuk membangun API dan aplikasi web."
+        ]
+      },
+      {
+        "id": "install",
+        "title": "⚙️ Territory 2 — Instalasi Python",
+        "content": [
+          "Kunjungi situs resmi: https://www.python.org/downloads/.\nPilih versi terbaru (disarankan Python 3.12+).\nCentang opsi “Add Python to PATH” sebelum klik Install.\nCek instalasi dengan mengetik di terminal: python --version"
+        ]
+      },
+      {
+        "id": "flask",
+        "title": "🧩 Territory 3 — Instalasi Flask",
+        "content": [
+          "Flask adalah framework web ringan untuk membangun API. Jalankan perintah di terminal: pip install flask"
+        ]
+      },
+      {
+        "id": "api",
+        "title": "💻 Territory 4 — Membuat API Sederhana",
+        "content": [
+          "Buat file app.py dan tulis kode Flask berikut: \nfrom flask import Flask, jsonify, request\napp = Flask(__name__)\n# Data dummy\nusers = [{\"id\":1,\"name\":\"Eko\",\"email\":\"eko@cukprodev.com\"},{\"id\":2,\"name\":\"Adam\",\"email\":\"adam@cukprodev.com\"}]\n@app.route('/users', methods=['GET'])\ndef get_users():\n  return jsonify(users)\n@app.route('/users', methods=['POST'])\ndef add_user():\n  data = request.get_json()\n  users.append(data)\n  return jsonify({\"message\":\"User ditambahkan\",\"data\":data}), 201\n@app.route('/users/<int:id>', methods=['PUT'])\ndef update_user(id):\n  for user in users:\n    if user['id']==id:\n      user.update(request.get_json())\n      return jsonify({\"message\":\"User diperbarui\",\"data\":user})\n  return jsonify({\"error\":\"User tidak ditemukan\"}),404\n@app.route('/users/<int:id>', methods=['DELETE'])\ndef delete_user(id):\n  global users\n  users = [u for u in users if u['id']!=id]\n  return jsonify({\"message\":\"User dihapus\"})\nif __name__ == \"__main__\":\n  app.run(debug=True)"
+        ]
+      },
+      {
+        "id": "table",
+        "title": "📊 Territory 5 — Menampilkan Data dalam Tabel",
+        "content": [
+          "&lt;table id='userTable'&gt;&lt;/table&gt;\n&lt;script&gt;\nfetch('http://127.0.0.1:5000/users')\n  .then(res =&gt; res.json())\n  .then(data =&gt; {\n    const table = document.getElementById('userTable');\n    table.innerHTML = `&lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Nama&lt;/th&gt;&lt;th&gt;Email&lt;/th&gt;&lt;/tr&gt;${data.map(u =&gt; `&lt;tr&gt;&lt;td&gt;${u.id}&lt;/td&gt;&lt;td&gt;${u.name}&lt;/td&gt;&lt;td&gt;${u.email}&lt;/td&gt;&lt;/tr&gt;`).join('')}`;\n  });\n&lt;/script&gt;"
+        ]
+      },
+      {
+        "id": "next",
+        "title": "🚀 Territory 6 — Langkah Lanjutan",
+        "content": [
+          "Gunakan SQLite / MySQL dengan library Flask-SQLAlchemy.\nTambahkan autentikasi menggunakan JWT.\nDeploy API ke server (misalnya Render, Vercel, atau VPS)."
+        ]
+      }
+    ]
+  }
+  
