@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "nama": "Kopi Arabika",
+      "harga": 55000,
+      "deskripsi": "Kopi premium dengan aroma khas."
+    },
+    {
+      "id": 2,
+      "nama": "Teh Hijau",
+      "harga": 30000,
+      "deskripsi": "Teh hijau alami kaya antioksidan."
+    },
+    {
+      "id": 3,
+      "nama": "Cokelat Premium",
+      "harga": 45000,
+      "deskripsi": "Cokelat asli dengan rasa lembut."
+    }
+  ]
+  

@@ -167,103 +167,7 @@ body {
     transform: translateY(0);
 }
 </style>
-<header class="fixed top-0 left-0 right-0 z-50 glass flex items-center justify-between px-6 py-4">
-    <div class="text-lg font-bold text-white tracking-wide">CUK-PRODEV</div>
 
-    <nav class="flex items-center gap-6 relative">
-        <!-- <a href="#" class="text-sky-200 hover:text-cyan-400 transition-all">Home</a> -->
-        <!-- <a href="#about" class="text-sky-200 hover:text-cyan-400 transition-all">About</a> -->
-
-        <!-- Dropdown -->
-        <div class="relative">
-        <button id="artikelBtn" class="text-sky-200 hover:text-cyan-400 transition-all flex items-center gap-1">
-            Article <i class="fa-solid fa-chevron-down text-xs"></i>
-        </button>
-
-        <div id="artikelMenu" class="dropdown-menu absolute right-0 bg-[#0a1424]/95 backdrop-blur-lg border border-white/10 rounded-xl mt-3 py-3 min-w-[220px] shadow-xl">
-            <!-- AI -->
-            <div class="relative">
-            <button class="flex justify-between items-center w-full px-5 py-2 text-sky-100 hover:bg-white/10 transition-all child-toggle">
-                <span>AI</span>
-                <i class="fa-solid fa-chevron-right text-xs"></i>
-            </button>
-            <div class="child-menu bg-[#0b1a33]/90 border-l border-white/10 ml-4 mt-1 rounded-lg overflow-hidden">
-                <a href="AI" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">About AI</a>
-                <!-- <a href="AI/machine-learning.html" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Machine Learning</a>
-                <a href="AI/neural-network.html" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Neural Network</a> -->
-            </div>
-            </div>
-
-            <!-- React JS -->
-            <div class="relative">
-            <button class="flex justify-between items-center w-full px-5 py-2 text-sky-100 hover:bg-white/10 transition-all child-toggle">
-                <span>Programming</span>
-                <i class="fa-solid fa-chevron-right text-xs"></i>
-            </button>
-            <div class="child-menu bg-[#0b1a33]/90 border-l border-white/10 ml-4 mt-1 rounded-lg overflow-hidden">
-                <a href="React-JS/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">React JS</a>
-                <a href="React-Native/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">React Native</a>
-                <a href="flutter-teritorial/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Flutter</a>
-                <a href="net/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">.Net</a>
-                <a href="python/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Python</a>
-                <a href="laravel/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Laravel</a>
-                <a href="golang/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Golang</a>
-                <a href="express-js/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Express JS</a>
-            </div>
-            </div>
-
-            <!-- SEO -->
-            <div class="relative">
-            <button class="flex justify-between items-center w-full px-5 py-2 text-sky-100 hover:bg-white/10 transition-all child-toggle">
-                <span>SEO</span>
-                <i class="fa-solid fa-chevron-right text-xs"></i>
-            </button>
-            <div class="child-menu bg-[#0b1a33]/90 border-l border-white/10 ml-4 mt-1 rounded-lg overflow-hidden">
-                <a href="SEO/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Optimasi On-Page</a>
-                <!-- <a href="SEO/backlink.html" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Backlink</a>
-                <a href="SEO/keyword.html" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10 transition-all">Keyword Research</a> -->
-            </div>
-            </div>
-
-            <!-- Technology -->
-            <a href="technology/" class="block px-5 py-2 text-sky-100 hover:bg-white/10 transition-all">Technology</a>
-        </div>
-        </div>
-
-        <a href="#contact" class="text-sky-200 hover:text-cyan-400 transition-all">Contact</a>
-    </nav>
-    </header>
-
-    <script>
-    const artikelBtn = document.getElementById("artikelBtn");
-    const artikelMenu = document.getElementById("artikelMenu");
-
-    artikelBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        artikelMenu.classList.toggle("show");
-    });
-
-    // Child menu toggle
-    document.querySelectorAll(".child-toggle").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const submenu = btn.nextElementSibling;
-        submenu.classList.toggle("show");
-
-        // Rotate arrow
-        const icon = btn.querySelector("i");
-        icon.classList.toggle("rotate-90");
-        });
-    });
-
-    // Tutup kalau klik di luar
-    document.addEventListener("click", (e) => {
-        if (!artikelMenu.contains(e.target) && !artikelBtn.contains(e.target)) {
-        artikelMenu.classList.remove("show");
-        document.querySelectorAll(".child-menu").forEach(m => m.classList.remove("show"));
-        }
-    });
-</script>
 <script src="https://kit.fontawesome.com/a2d9a64c1a.js" crossorigin="anonymous"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -277,6 +181,151 @@ body {
     font-weight: 500;
   }
 </style>
+
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #030917 0%, #08162c 50%, #0b1229 100%);
+    color: #e6eef8;
+  }
+  .glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .dropdown-menu, .child-menu {
+    display: none;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
+  }
+  .dropdown-menu.show, .child-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  a{text-decoration:none!important;}
+</style>
+</head>
+<body>
+
+<header class="fixed top-0 left-0 right-0 z-50 glass flex items-center justify-between px-6 py-4">
+<div class="text-lg font-bold text-white tracking-wide">CUK-PRODEV</div>
+
+<nav class="flex items-center gap-6 relative">
+  <!-- ARTICLE DROPDOWN -->
+  <div class="relative">
+    <button id="artikelBtn" class="text-sky-200 hover:text-cyan-400 transition-all flex items-center gap-1 select-none">
+      Article <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+    </button>
+
+    <div id="artikelMenu"
+      class="dropdown-menu absolute right-0 bg-[#0a1424]/95 backdrop-blur-lg border border-white/10 rounded-xl mt-3 py-3 min-w-[220px] shadow-xl z-50">
+
+      <!-- AI -->
+      <div class="relative">
+        <button class="child-toggle flex justify-between items-center w-full px-5 py-2 text-sky-100 hover:bg-white/10">
+          <span>AI</span><i class="fa-solid fa-chevron-right text-xs"></i>
+        </button>
+        <div class="child-menu bg-[#0b1a33]/90 border-l border-white/10 ml-4 mt-1 rounded-lg overflow-hidden">
+          <a href="AI" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">About AI</a>
+        </div>
+      </div>
+
+      <!-- Programming -->
+      <div class="relative">
+        <button class="child-toggle flex justify-between items-center w-full px-5 py-2 text-sky-100 hover:bg-white/10">
+          <span>Programming</span><i class="fa-solid fa-chevron-right text-xs"></i>
+        </button>
+        <div class="child-menu  ml-4 mt-1 rounded-lg overflow-hidden">
+          <a href="React-JS/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">React JS</a>
+          <a href="React-Native/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">React Native</a>
+          <a href="flutter-teritorial/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">Flutter</a>
+          <a href="net/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">.Net</a>
+          <a href="python/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">Python</a>
+          <a href="laravel/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">Laravel</a>
+          <a href="golang/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">Golang</a>
+          <a href="express-js/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">Express JS</a>
+        </div>
+      </div>
+
+      <!-- SEO -->
+      <div class="relative">
+        <button class="child-toggle flex justify-between items-center w-full px-5 py-2 text-sky-100 hover:bg-white/10">
+          <span>SEO</span><i class="fa-solid fa-chevron-right text-xs"></i>
+        </button>
+        <div class="child-menu bg-[#0b1a33]/90 border-l border-white/10 ml-4 mt-1 rounded-lg overflow-hidden">
+          <a href="SEO/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">Optimasi On-Page</a>
+        </div>
+      </div>
+
+      <!-- Technology -->
+      <a href="technology/" class="block px-5 py-2 text-sky-100 hover:bg-white/10">Technology</a>
+    </div>
+  </div>
+
+  <!-- EXAMPLE DROPDOWN -->
+  <div class="relative">
+    <button id="exampleBtn" class="text-sky-200 hover:text-cyan-400 transition-all flex items-center gap-1 select-none">
+      Example <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200"></i>
+    </button>
+
+    <div id="exampleMenu"
+      class="dropdown-menu absolute right-0 bg-[#0a1424]/95 backdrop-blur-lg border border-white/10 rounded-xl mt-3 py-3 min-w-[220px] shadow-xl z-50">
+      <a href="Example-CRUD-Product/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">CRUD Product</a>
+      <a href="Example-Login/" class="block px-5 py-2 text-sky-100/90 hover:bg-white/10">Example Login</a>
+    </div>
+  </div>
+</nav>
+</header>
+
+<script>
+// === DROPDOWN UTAMA ===
+function setupDropdown(buttonId, menuId, others = []) {
+  const btn = document.getElementById(buttonId);
+  const menu = document.getElementById(menuId);
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    // tutup dropdown lain
+    others.forEach(({menu}) => menu.classList.remove("show"));
+    document.querySelectorAll(".child-menu").forEach((m) => m.classList.remove("show"));
+
+    menu.classList.toggle("show");
+  });
+}
+
+const artikelBtn = document.getElementById("artikelBtn");
+const artikelMenu = document.getElementById("artikelMenu");
+const exampleBtn = document.getElementById("exampleBtn");
+const exampleMenu = document.getElementById("exampleMenu");
+
+setupDropdown("artikelBtn", "artikelMenu", [{menu: exampleMenu}]);
+setupDropdown("exampleBtn", "exampleMenu", [{menu: artikelMenu}]);
+
+// === SUBMENU / CHILD ===
+document.querySelectorAll(".child-toggle").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const menu = btn.nextElementSibling;
+    const isOpen = menu.classList.contains("show");
+
+    // Tutup semua submenu lain
+    document.querySelectorAll(".child-menu").forEach((m) => m.classList.remove("show"));
+
+    if (!isOpen) menu.classList.add("show");
+  });
+});
+
+// Tutup semua dropdown saat klik di luar
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".relative")) {
+    document.querySelectorAll(".dropdown-menu").forEach((m) => m.classList.remove("show"));
+    document.querySelectorAll(".child-menu").forEach((m) => m.classList.remove("show"));
+  }
+});
+</script>
 <script>
     const menuBtn = document.getElementById("menu-btn");
     const navMenu = document.getElementById("nav-menu");
