@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard Rumah Makan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #f8fafc, #ecfeff);
+      font-family: 'Inter', sans-serif;
+    }
+    .card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-gray-700">
+
+  <!-- NAVBAR -->
+  <nav class="bg-cyan-700 text-white sticky top-0 z-20 shadow-lg">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between p-4">
+      <h1 class="text-lg font-bold">🍽️ Rumah Makan Sejahtera</h1>
+      <button id="menuBtn" class="sm:hidden bg-cyan-600 px-3 py-2 rounded-lg">☰</button>
+      <ul id="menuList" class="hidden sm:flex flex-col sm:flex-row gap-3 sm:gap-6 mt-3 sm:mt-0 text-sm font-medium">
+        <li><a href="#" class="hover:text-cyan-200">Dashboard</a></li>
+        <li><a href="#" class="hover:text-cyan-200">Menu</a></li>
+        <li><a href="#" class="hover:text-cyan-200">Karyawan</a></li>
+        <li><a href="#" class="hover:text-cyan-200">Cabang</a></li>
+        <li><a href="#" class="hover:text-cyan-200">Keuangan</a></li>
+        <li><a href="#" class="hover:text-cyan-200">Kontak</a></li>
+      </ul>
+      <button class="hidden sm:block bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm">
+        + Tambah Menu
+      </button>
+    </div>
+  </nav>
+
+  <!-- HEADER MOBILE BUTTON BELOW NAV -->
+  <div class="sm:hidden px-4 mt-2" style="margin: 30px;">
+    <button class="w-full bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm">
+      + Tambah Menu
+    </button>
+  </div>
+
+  <!-- STATISTICS -->
+  <section class="p-4 grid grid-cols-2 md:grid-cols-4 gap-4" style="margin: 30px;">
+    <div class="card p-4 text-center">
+      <p class="text-sm text-gray-500">Pendapatan</p>
+      <h2 id="pendapatan" class="text-xl font-bold text-emerald-600">Rp 0</h2>
+    </div>
+    <div class="card p-4 text-center">
+      <p class="text-sm text-gray-500">Pesanan Hari Ini</p>
+      <h2 id="pesanan" class="text-xl font-bold text-cyan-600">0</h2>
+    </div>
+    <div class="card p-4 text-center">
+      <p class="text-sm text-gray-500">Cabang Aktif</p>
+      <h2 id="cabang" class="text-xl font-bold text-blue-600">0</h2>
+    </div>
+    <div class="card p-4 text-center">
+      <p class="text-sm text-gray-500">Menu Terlaris</p>
+      <h2 id="menu-terlaris" class="text-base font-semibold text-emerald-600">-</h2>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="p-4 grid grid-cols-1 lg:grid-cols-3 gap-4" style="margin: 30px;">
+
+    <!-- CHART SECTION -->
+    <section class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="card p-4">
+        <h3 class="text-base font-semibold text-cyan-700 mb-2">📈 Penjualan Mingguan</h3>
+        <div class="relative h-52">
+          <canvas id="chartPenjualan"></canvas>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <h3 class="text-base font-semibold text-emerald-700 mb-2">🥘 Menu Terlaris</h3>
+        <div class="relative h-52">
+          <canvas id="chartMenu"></canvas>
+        </div>
+      </div>
+
+      <div class="card p-4 sm:col-span-2">
+        <h3 class="text-base font-semibold text-blue-700 mb-2">🏪 Performa Cabang</h3>
+        <div class="relative h-56">
+          <canvas id="chartCabang"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABLE SECTION -->
+    <section class="card p-4 overflow-x-auto">
+      <h3 class="text-base font-semibold text-cyan-700 mb-3">📋 Daftar Menu</h3>
+      <table class="w-full text-sm border-collapse">
+        <thead class="bg-cyan-50 text-cyan-700">
+          <tr>
+            <th class="p-2 border">#</th>
+            <th class="p-2 border">Nama Menu</th>
+            <th class="p-2 border">Kategori</th>
+            <th class="p-2 border">Harga</th>
+            <th class="p-2 border">Terjual</th>
+          </tr>
+        </thead>
+        <tbody id="menuTable" class="divide-y divide-gray-100"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    // === MENU TOGGLE (Mobile) ===
+    const menuBtn = document.getElementById("menuBtn");
+    const menuList = document.getElementById("menuList");
+    menuBtn.addEventListener("click", () => {
+      menuList.classList.toggle("hidden");
+    });
+
+    // === JSON DATA ===
+    const dataDashboard = {
+      pendapatan: 87540000,
+      pesanan: 425,
+      cabang: [
+        { kota: "Jakarta", pendapatan: 26500000 },
+        { kota: "Bandung", pendapatan: 18700000 },
+        { kota: "Surabaya", pendapatan: 21000000 },
+        { kota: "Bali", pendapatan: 14500000 },
+        { kota: "Medan", pendapatan: 15500000 }
+      ],
+      menuTerlaris: "Nasi Goreng Spesial",
+      penjualanMingguan: [10500000, 9800000, 11200000, 12400000, 13700000, 15500000, 16500000],
+      menu: [
+        { nama: "Nasi Goreng Spesial", kategori: "Makanan", harga: 25000, terjual: 1230 },
+        { nama: "Ayam Geprek", kategori: "Makanan", harga: 22000, terjual: 970 },
+        { nama: "Mie Ayam", kategori: "Makanan", harga: 18000, terjual: 850 },
+        { nama: "Soto Ayam", kategori: "Makanan", harga: 20000, terjual: 720 },
+        { nama: "Bakso Urat", kategori: "Makanan", harga: 21000, terjual: 680 },
+        { nama: "Es Teh Manis", kategori: "Minuman", harga: 8000, terjual: 540 },
+        { nama: "Jus Alpukat", kategori: "Minuman", harga: 12000, terjual: 480 }
+      ]
+    };
+
+    // === UPDATE STATISTICS ===
+    document.getElementById("pendapatan").innerText = "Rp " + dataDashboard.pendapatan.toLocaleString();
+    document.getElementById("pesanan").innerText = dataDashboard.pesanan;
+    document.getElementById("cabang").innerText = dataDashboard.cabang.length;
+    document.getElementById("menu-terlaris").innerText = dataDashboard.menuTerlaris;
+
+    // === TABLE RENDER ===
+    const tableBody = document.getElementById("menuTable");
+    dataDashboard.menu.forEach((m, i) => {
+      tableBody.innerHTML += `
+        <tr class="hover:bg-cyan-50 transition">
+          <td class="p-2 border text-gray-600">${i + 1}</td>
+          <td class="p-2 border font-medium text-gray-800">${m.nama}</td>
+          <td class="p-2 border text-gray-500">${m.kategori}</td>
+          <td class="p-2 border text-emerald-600">Rp ${m.harga.toLocaleString()}</td>
+          <td class="p-2 border text-blue-600">${m.terjual}</td>
+        </tr>
+      `;
+    });
+
+    // === CHARTS ===
+    new Chart(document.getElementById("chartPenjualan"), {
+      type: "line",
+      data: {
+        labels: ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"],
+        datasets: [{
+          data: dataDashboard.penjualanMingguan,
+          borderColor: "#0ea5e9",
+          backgroundColor: "rgba(14,165,233,0.15)",
+          fill: true,
+          tension: 0.35,
+          borderWidth: 2
+        }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+    });
+
+    new Chart(document.getElementById("chartMenu"), {
+      type: "doughnut",
+      data: {
+        labels: dataDashboard.menu.map(m => m.nama),
+        datasets: [{ data: dataDashboard.menu.map(m => m.terjual), backgroundColor: ["#06b6d4","#10b981","#3b82f6","#14b8a6","#60a5fa","#22d3ee","#2dd4bf"] }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: "bottom" } } }
+    });
+
+    new Chart(document.getElementById("chartCabang"), {
+      type: "bar",
+      data: {
+        labels: dataDashboard.cabang.map(c => c.kota),
+        datasets: [{ data: dataDashboard.cabang.map(c => c.pendapatan), backgroundColor: "#10b981", borderRadius: 6 }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+    });
+  </script>
+</body>
+</html>
