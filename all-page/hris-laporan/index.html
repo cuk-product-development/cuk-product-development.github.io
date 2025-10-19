@@ -97,7 +97,7 @@
         <nav id="menuContainer" class="space-y-2 text-gray-600 font-medium"></nav>
       </div>
     </div>
-    <div class="p-4 border-t border-gray-100 text-sm text-gray-400">© 2025 MyStore</div>
+    <div class="p-4 border-t border-gray-100 text-sm text-gray-400">© 2025 Design By CUK-Prodev </div>
   </aside>
 
   <!-- MAIN -->
@@ -109,12 +109,156 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="min-h-screen bg-white text-gray-900 flex flex-col items-center justify-center p-8">
+      <h1 class="text-3xl font-bold mb-6 text-indigo-600">📊 HRIS Laporan — Smart AI Insights</h1>
+    
+      <!-- === KARTU LAPORAN === -->
+      <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <!-- Data Karyawan -->
+        <div class="border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition bg-white flex flex-col">
+          <h2 class="text-xl font-semibold mb-2 flex items-center gap-2">
+            <i data-lucide="users"></i> Data Karyawan
+          </h2>
+          <p class="text-gray-500 text-sm mb-3">Total karyawan, status aktif, dan distribusi departemen.</p>
+          <div class="flex-1 flex items-center justify-center">
+            <canvas id="chartKaryawan" class="w-full" height="220"></canvas>
+          </div>
+        </div>
+    
+        <!-- Kehadiran Bulanan -->
+        <div class="border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition bg-white flex flex-col">
+          <h2 class="text-xl font-semibold mb-2 flex items-center gap-2">
+            <i data-lucide="clock"></i> Kehadiran Bulanan
+          </h2>
+          <p class="text-gray-500 text-sm mb-3">Grafik kehadiran per bulan berdasarkan absensi sistem AI.</p>
+          <div class="flex-1 flex items-center justify-center">
+            <canvas id="chartKehadiran" class="w-full" height="220"></canvas>
+          </div>
+        </div>
+    
+        <!-- Performa Divisi -->
+        <div class="border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition bg-white flex flex-col">
+          <h2 class="text-xl font-semibold mb-2 flex items-center gap-2">
+            <i data-lucide="briefcase"></i> Performa Divisi
+          </h2>
+          <p class="text-gray-500 text-sm mb-3">AI menganalisis produktivitas rata-rata setiap divisi.</p>
+          <div class="flex-1 flex items-center justify-center">
+            <canvas id="chartPerforma" class="w-full" height="220"></canvas>
+          </div>
+        </div>
+    
+        <!-- Gaji & Pengeluaran -->
+        <div class="border border-gray-200 rounded-2xl shadow-md p-5 hover:shadow-lg transition bg-white flex flex-col">
+          <h2 class="text-xl font-semibold mb-2 flex items-center gap-2">
+            <i data-lucide="dollar-sign"></i> Gaji & Pengeluaran
+          </h2>
+          <p class="text-gray-500 text-sm mb-3">Laporan total gaji, bonus, dan tunjangan per bulan.</p>
+          <div class="flex-1 flex items-center justify-center">
+            <canvas id="chartGaji" class="w-full" height="220"></canvas>
+          </div>
+        </div>
+      </div>
+    
+      <!-- === AI INSIGHT === -->
+      <section class="w-full max-w-3xl border border-indigo-100 bg-indigo-50 rounded-2xl p-6 text-center shadow-inner">
+        <h3 class="text-lg font-semibold text-indigo-600 mb-3 flex items-center justify-center gap-2">
+          <i data-lucide="sparkles"></i> AI Insight
+        </h3>
+        <p id="aiInsight" class="text-gray-700 italic">Menganalisis laporan HRIS Anda...</p>
+      </section>
+    
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <script>
+        lucide.createIcons();
+    
+        // === CHART: DATA KARYAWAN ===
+        new Chart(document.getElementById("chartKaryawan"), {
+          type: "doughnut",
+          data: {
+            labels: ["Aktif", "Cuti", "Resign"],
+            datasets: [{
+              data: [120, 10, 5],
+              backgroundColor: ["#4F46E5", "#A5B4FC", "#E0E7FF"],
+              borderWidth: 0
+            }]
+          },
+          options: { 
+            maintainAspectRatio: false,
+            plugins: { legend: { position: "bottom" } } 
+          }
+        });
+    
+        // === CHART: KEHADIRAN ===
+        new Chart(document.getElementById("chartKehadiran"), {
+          type: "line",
+          data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"],
+            datasets: [{
+              label: "Kehadiran %",
+              data: [90, 92, 88, 94, 96, 95],
+              borderColor: "#4F46E5",
+              backgroundColor: "#A5B4FC55",
+              tension: 0.4,
+              fill: true
+            }]
+          },
+          options: { 
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } } 
+          }
+        });
+    
+        // === CHART: PERFORMA ===
+        new Chart(document.getElementById("chartPerforma"), {
+          type: "bar",
+          data: {
+            labels: ["HR", "IT", "Finance", "Marketing"],
+            datasets: [{
+              label: "Produktivitas",
+              data: [82, 95, 88, 90],
+              backgroundColor: "#4F46E5"
+            }]
+          },
+          options: { 
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } } 
+          }
+        });
+    
+        // === CHART: GAJI ===
+        new Chart(document.getElementById("chartGaji"), {
+          type: "bar",
+          data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun"],
+            datasets: [{
+              label: "Total Gaji (jt)",
+              data: [320, 310, 330, 340, 355, 370],
+              backgroundColor: "#818CF8"
+            }]
+          },
+          options: { 
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } } 
+          }
+        });
+    
+        // === AI INSIGHT OTOMATIS ===
+        const insights = [
+          "📈 Produktivitas tim IT meningkat 12% bulan ini — hebat!",
+          "💡 Kehadiran karyawan stabil di atas 90% selama 3 bulan terakhir.",
+          "🧠 AI mendeteksi peningkatan pengeluaran gaji 5% sejak Mei.",
+          "⚙️ Divisi Marketing menunjukkan peningkatan performa signifikan."
+        ];
+    
+        let index = 0;
+        setInterval(() => {
+          document.getElementById("aiInsight").textContent = insights[index];
+          index = (index + 1) % insights.length;
+        }, 4000);
+      </script>
     </main>
+    
   </div>
 
   <script>

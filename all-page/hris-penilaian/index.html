@@ -97,7 +97,7 @@
         <nav id="menuContainer" class="space-y-2 text-gray-600 font-medium"></nav>
       </div>
     </div>
-    <div class="p-4 border-t border-gray-100 text-sm text-gray-400">© 2025 MyStore</div>
+    <div class="p-4 border-t border-gray-100 text-sm text-gray-400">© 2025 Design By CUK-Prodev </div>
   </aside>
 
   <!-- MAIN -->
@@ -109,12 +109,93 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="flex-1 fade-in p-6 space-y-8">
+
+      <!-- === STATISTIK KINERJA === -->
+      <section class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-center">
+          <p class="text-gray-500 text-sm">Rata-rata Kinerja</p>
+          <h2 class="text-3xl font-semibold text-blue-600 mt-1">87%</h2>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-center">
+          <p class="text-gray-500 text-sm">Karyawan Unggulan</p>
+          <h2 class="text-3xl font-semibold text-green-600 mt-1">12</h2>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-center">
+          <p class="text-gray-500 text-sm">Perlu Perbaikan</p>
+          <h2 class="text-3xl font-semibold text-red-600 mt-1">3</h2>
+        </div>
+      </section>
+    
+      <!-- === GRAFIK KINERJA === -->
+      <section class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+        <h3 class="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          <i data-lucide="bar-chart-3" class="text-indigo-500"></i> Tren Penilaian Kinerja 2025
+        </h3>
+        <div class="w-full h-[300px]">
+          <canvas id="performanceChart" class="w-full h-full"></canvas>
+        </div>
+      </section>
+    
+      <!-- === REKOMENDASI AI === -->
+      <section class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+        <h3 class="font-semibold text-gray-700 mb-3 flex items-center gap-2">
+          <i data-lucide="cpu" class="text-purple-500"></i> Rekomendasi AI
+        </h3>
+        <p class="text-gray-700 text-sm">
+          AI menyarankan meningkatkan pelatihan untuk departemen <b>Finance</b> dan memberikan penghargaan untuk karyawan dengan skor tertinggi. 
+          Tingkat kepuasan karyawan diprediksi <b>87%</b> bulan ini.
+        </p>
+      </section>
+    
+      <!-- === TABEL PENILAIAN KARYAWAN === -->
+      <section class="bg-white p-6 rounded-2xl shadow-md border border-gray-100">
+        <h3 class="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          <i data-lucide="star" class="text-yellow-500"></i> Penilaian Karyawan
+        </h3>
+        <table class="w-full text-left border-t border-gray-100">
+          <thead>
+            <tr class="text-gray-500 text-sm">
+              <th class="py-2">Nama</th>
+              <th>Departemen</th>
+              <th>Skor</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr><td>Rizky Putra</td><td>IT</td><td class="text-green-600 font-medium">98</td><td>Unggulan</td></tr>
+            <tr><td>Aulia Rahman</td><td>HR</td><td class="text-green-600 font-medium">95</td><td>Unggulan</td></tr>
+            <tr><td>Devi Lestari</td><td>Finance</td><td class="text-yellow-600 font-medium">85</td><td>Perlu Perbaikan</td></tr>
+            <tr><td>Bagus Santoso</td><td>Marketing</td><td class="text-green-600 font-medium">90</td><td>Baik</td></tr>
+            <tr><td>Sari Wulandari</td><td>Operation</td><td class="text-green-600 font-medium">88</td><td>Baik</td></tr>
+          </tbody>
+        </table>
+      </section>
+    
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        const ctx = document.getElementById("performanceChart").getContext("2d");
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: ["IT", "HR", "Finance", "Marketing", "Operation"],
+            datasets: [{
+              label: "Skor Kinerja (%)",
+              data: [98, 95, 85, 90, 88],
+              backgroundColor: ["#6366f1", "#3b82f6", "#f59e0b", "#ec4899", "#10b981"]
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false, // penting biar tinggi sesuai div
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true, max: 100 } }
+          }
+        });
+      </script>
+    
     </main>
+    
   </div>
 
   <script>
