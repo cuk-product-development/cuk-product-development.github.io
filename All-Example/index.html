@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Produk - MyStore</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .fade-in { animation: fadeIn 0.5s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    body { user-select: none; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-indigo-50 min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white/80 backdrop-blur-lg shadow-xl flex flex-col justify-between border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+    <div>
+      <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+          MyStore
+        </h1>
+        <button id="closeSidebar" class="lg:hidden">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <!-- Sidebar -->
+<aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white/80 backdrop-blur-lg shadow-xl flex flex-col justify-between border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+    <div>
+      <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+          MyStore
+        </h1>
+        <button id="closeSidebar" class="lg:hidden">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+  
+      <!-- MENU -->
+      <nav class="p-4 space-y-2 text-gray-600 font-medium">
+        <a href="../all-page/AI-analytics/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="activity"></i> AI Analytics</a>
+        <a href="../all-page/AI-dashboard/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="layout-dashboard"></i> AI Dashboard</a>
+        <a href="../all-page/AI-finance/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="dollar-sign"></i> AI Finance</a>
+        <a href="../all-page/AI-inbox/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="inbox"></i> AI Inbox</a>
+        <a href="../all-page/AI-profile/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="user"></i> AI Profile</a>
+        <a href="../all-page/akses-room/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="door-open"></i> Akses Room</a>
+        <a href="../all-page/bank/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="banknote"></i> Bank</a>
+        <a href="../all-page/finance/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="wallet"></i> Finance</a>
+        <a href="../all-page/hris-dashboard/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="users"></i> HRIS Dashboard</a>
+        <a href="../all-page/hris-laporan/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="file-text"></i> HRIS Laporan</a>
+        <a href="../all-page/hris-penilaian/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="star"></i> HRIS Penilaian</a>
+        <a href="../all-page/inventory/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="boxes"></i> Inventory</a>
+        <a href="../all-page/jasa-kirim/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="truck"></i> Jasa Kirim</a>
+        <a href="../all-page/kasir/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="shopping-cart"></i> Kasir</a>
+        <a href="../all-page/market/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="store"></i> Market</a>
+        <a href="../all-page/medsos/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="share-2"></i> Medsos</a>
+        <a href="../all-page/meeting/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="calendar"></i> Meeting</a>
+        <a href="../all-page/monitor-hikvision/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="camera"></i> Monitor Hikvision</a>
+        <a href="../all-page/monitoring/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="activity"></i> Monitoring</a>
+        <a href="../all-page/parkir/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="car"></i> Parkir</a>
+        <a href="../all-page/rm/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="briefcase"></i> RM</a>
+        <a href="../all-page/sales/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="bar-chart-3"></i> Sales</a>
+        <a href="../all-page/server/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="server"></i> Server</a>
+        <a href="../all-page/Sustainability-Dashboard/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="leaf"></i> Sustainability</a>
+        <a href="../all-page/toko/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="shopping-bag"></i> Toko</a>
+        <a href="../all-page/transaksi-bank/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="credit-card"></i> Transaksi Bank</a>
+        <a href="../all-page/trevel/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="map-pin"></i> Trevel</a>
+        <a href="../all-page/visitor/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700"><i data-lucide="users"></i> Visitor</a>
+      </nav>
+    </div>
+  
+    <div class="p-4 border-t border-gray-100 text-sm text-gray-400">
+      © 2025 MyStore
+    </div>
+  </aside>
+  
+    </div>
+    <div class="p-4 border-t border-gray-100 text-sm text-gray-400">
+      © 2025 MyStore
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col w-full overflow-x-hidden">
+    <!-- Header -->
+    <header class="bg-white/70 backdrop-blur-md shadow-sm p-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <button id="openSidebar" class="lg:hidden">
+          <i data-lucide="menu"></i>
+        </button>
+        <div>
+          <h2 class="text-2xl font-semibold text-gray-800">Dashboard Produk</h2>
+          <p class="text-sm text-gray-500">Pantau performa & kelola produkmu</p>
+        </div>
+      </div>
+      <button id="btnTambah" class="flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 py-2 rounded-lg shadow-lg hover:scale-105 transition">
+        <i data-lucide="plus"></i> Tambah Produk
+      </button>
+    </header>
+
+    <!-- Statistik -->
+    <section class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white rounded-2xl p-5 shadow-md hover:shadow-lg transition fade-in">
+        <div class="flex items-center justify-between">
+          <h4 class="text-gray-600 font-medium">Total Produk</h4>
+          <i data-lucide="package" class="text-indigo-500"></i>
+        </div>
+        <p id="totalProduk" class="text-2xl font-bold mt-2 text-gray-800">0</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-md hover:shadow-lg transition fade-in">
+        <div class="flex items-center justify-between">
+          <h4 class="text-gray-600 font-medium">Rata-rata Harga</h4>
+          <i data-lucide="tag" class="text-purple-500"></i>
+        </div>
+        <p id="avgHarga" class="text-2xl font-bold mt-2 text-gray-800">-</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-md hover:shadow-lg transition fade-in">
+        <div class="flex items-center justify-between">
+          <h4 class="text-gray-600 font-medium">Produk Terbaru</h4>
+          <i data-lucide="clock" class="text-pink-500"></i>
+        </div>
+        <p id="produkTerbaru" class="text-2xl font-bold mt-2 text-gray-800">-</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 shadow-md hover:shadow-lg transition fade-in">
+        <div class="flex items-center justify-between">
+          <h4 class="text-gray-600 font-medium">Nilai Stok</h4>
+          <i data-lucide="dollar-sign" class="text-green-500"></i>
+        </div>
+        <p id="nilaiStok" class="text-2xl font-bold mt-2 text-gray-800">-</p>
+      </div>
+    </section>
+
+    <!-- Grid Produk -->
+    <main class="p-6" style="padding-bottom: 100px;">
+      <h3 class="text-lg font-semibold text-gray-700 mb-4">Daftar Produk</h3>
+      <div id="produkList" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-md fade-in">
+      <h3 id="modalTitle" class="text-xl font-semibold text-gray-800 mb-4">Tambah Produk</h3>
+      <form id="produkForm" class="space-y-4">
+        <input type="hidden" id="produkId" />
+        <div>
+          <label class="block text-sm font-medium text-gray-600">Nama Produk</label>
+          <input type="text" id="nama" class="w-full mt-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500" required />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-600">Harga</label>
+          <input type="number" id="harga" class="w-full mt-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500" required />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-600">Deskripsi</label>
+          <textarea id="deskripsi" class="w-full mt-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500" required></textarea>
+        </div>
+        <div class="flex justify-end space-x-3">
+          <button type="button" id="btnBatal" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100">Batal</button>
+          <button type="submit" class="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:scale-105 transition">Simpan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // ===== Sidebar Toggle (Mobile) =====
+    const sidebar = document.getElementById("sidebar");
+    const openSidebar = document.getElementById("openSidebar");
+    const closeSidebar = document.getElementById("closeSidebar");
+
+    openSidebar.addEventListener("click", () => sidebar.classList.remove("-translate-x-full"));
+    closeSidebar.addEventListener("click", () => sidebar.classList.add("-translate-x-full"));
+
+    // ===== Data Produk =====
+    let produkData = [
+      { id: 1, nama: "Kopi Arabika", harga: 55000, deskripsi: "Kopi premium dengan aroma khas." },
+      { id: 2, nama: "Teh Hijau", harga: 30000, deskripsi: "Teh hijau alami kaya antioksidan." },
+      { id: 3, nama: "Cokelat Premium", harga: 45000, deskripsi: "Cokelat asli dengan rasa lembut." }
+    ];
+
+    const produkList = document.getElementById("produkList");
+    const modal = document.getElementById("modal");
+    const btnTambah = document.getElementById("btnTambah");
+    const btnBatal = document.getElementById("btnBatal");
+    const produkForm = document.getElementById("produkForm");
+    const modalTitle = document.getElementById("modalTitle");
+
+    lucide.createIcons();
+
+    function renderProduk() {
+      produkList.innerHTML = "";
+      produkData.forEach((p) => {
+        const card = document.createElement("div");
+        card.className =
+          "bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:scale-[1.02] transition transform fade-in";
+        card.innerHTML = `
+          <div class="bg-gradient-to-br from-indigo-100 to-purple-100 h-32 flex items-center justify-center">
+            <i data-lucide="box" class="w-12 h-12 text-indigo-500"></i>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800">${p.nama}</h3>
+            <p class="text-sm text-gray-500 mb-2">Rp ${p.harga.toLocaleString()}</p>
+            <p class="text-gray-600 text-sm mb-3">${p.deskripsi}</p>
+            <div class="flex justify-end space-x-2">
+              <button onclick="editProduk(${p.id})" class="flex items-center gap-1 px-3 py-1 bg-yellow-400 text-white rounded-lg hover:bg-yellow-500 text-sm"><i data-lucide='edit-3'></i>Edit</button>
+              <button onclick="hapusProduk(${p.id})" class="flex items-center gap-1 px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 text-sm"><i data-lucide='trash-2'></i>Hapus</button>
+            </div>
+          </div>
+        `;
+        produkList.appendChild(card);
+      });
+      renderStats();
+      lucide.createIcons();
+    }
+
+    function renderStats() {
+      document.getElementById("totalProduk").innerText = produkData.length;
+      const avg = produkData.length ? Math.round(produkData.reduce((a,b)=>a+b.harga,0)/produkData.length) : 0;
+      document.getElementById("avgHarga").innerText = "Rp " + avg.toLocaleString();
+      document.getElementById("produkTerbaru").innerText = produkData.length ? produkData[produkData.length-1].nama : "-";
+      document.getElementById("nilaiStok").innerText = "Rp " + (produkData.reduce((a,b)=>a+b.harga,0)*3).toLocaleString();
+    }
+
+    btnTambah.onclick = () => {
+      modalTitle.textContent = "Tambah Produk";
+      produkForm.reset();
+      document.getElementById("produkId").value = "";
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    };
+
+    btnBatal.onclick = () => modal.classList.add("hidden");
+
+    produkForm.onsubmit = (e) => {
+      e.preventDefault();
+      const id = document.getElementById("produkId").value;
+      const nama = document.getElementById("nama").value;
+      const harga = parseInt(document.getElementById("harga").value);
+      const deskripsi = document.getElementById("deskripsi").value;
+
+      if (id) {
+        const idx = produkData.findIndex(p => p.id == id);
+        produkData[idx] = { id: Number(id), nama, harga, deskripsi };
+      } else {
+        const newId = produkData.length ? Math.max(...produkData.map(p => p.id)) + 1 : 1;
+        produkData.push({ id: newId, nama, harga, deskripsi });
+      }
+
+      modal.classList.add("hidden");
+      renderProduk();
+    };
+
+    window.editProduk = (id) => {
+      const produk = produkData.find(p => p.id === id);
+      modalTitle.textContent = "Edit Produk";
+      document.getElementById("produkId").value = produk.id;
+      document.getElementById("nama").value = produk.nama;
+      document.getElementById("harga").value = produk.harga;
+      document.getElementById("deskripsi").value = produk.deskripsi;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    };
+
+    window.hapusProduk = (id) => {
+      if (confirm("Yakin ingin menghapus produk ini?")) {
+        produkData = produkData.filter(p => p.id !== id);
+        renderProduk();
+      }
+    };
+
+    renderProduk();
+  </script>
+</body>
+</html>

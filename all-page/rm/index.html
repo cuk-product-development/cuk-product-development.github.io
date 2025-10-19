@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind + Lucide -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    // === DATA MENU + SEO OTOMATIS ===
+    const pages = {
+      "AI-analytics": { title: "AI Analytics", icon: "activity", desc: "Pantau performa bisnis dan data AI secara real-time dengan AI Analytics Dashboard.", keywords: "AI analytics, dashboard AI, data intelligence, analitik bisnis, machine learning" },
+      "AI-dashboard": { title: "AI Dashboard", icon: "layout-dashboard", desc: "Dashboard cerdas berbasis AI untuk monitoring performa sistem dan pengguna.", keywords: "AI dashboard, sistem monitoring, data AI, analytics system" },
+      "AI-finance": { title: "AI Finance", icon: "dollar-sign", desc: "Sistem keuangan modern berbasis AI untuk prediksi, laporan, dan efisiensi finansial.", keywords: "AI finance, keuangan AI, financial dashboard, smart finance" },
+      "AI-inbox": { title: "AI Inbox", icon: "inbox", desc: "Inbox AI untuk mengelola pesan otomatis dengan kecerdasan buatan.", keywords: "AI inbox, pesan AI, chatbot, komunikasi pintar" },
+      "AI-profile": { title: "AI Profile", icon: "user", desc: "Profil cerdas dengan analisis data pengguna berbasis AI.", keywords: "AI profile, user AI, profil pengguna, data analysis" },
+      "akses-room": { title: "Akses Room", icon: "door-open", desc: "Sistem akses ruangan otomatis berbasis keamanan AI.", keywords: "akses ruangan, security AI, door system" },
+      "bank": { title: "Bank", icon: "banknote", desc: "Kelola informasi bank dan transaksi keuangan secara efisien.", keywords: "bank, transaksi, keuangan digital" },
+      "finance": { title: "Finance", icon: "wallet", desc: "Sistem keuangan lengkap untuk pengelolaan bisnis modern.", keywords: "finance, keuangan, laporan finansial" },
+      "hris-dashboard": { title: "HRIS Dashboard", icon: "users", desc: "Dashboard HRIS untuk memantau data karyawan dan performa SDM.", keywords: "HRIS, dashboard HR, SDM, kepegawaian" },
+      "hris-laporan": { title: "HRIS Laporan", icon: "file-text", desc: "Laporan HRIS otomatis dan akurat untuk perusahaan.", keywords: "laporan HRIS, data HR, kepegawaian" },
+      "hris-penilaian": { title: "HRIS Penilaian", icon: "star", desc: "Penilaian kinerja karyawan berbasis AI dan HRIS.", keywords: "penilaian HRIS, AI HR, evaluasi kinerja" },
+      "inventory": { title: "Inventory", icon: "boxes", desc: "Sistem manajemen stok dan barang dengan data real-time.", keywords: "inventory, stok barang, warehouse" },
+      "jasa-kirim": { title: "Jasa Kirim", icon: "truck", desc: "Kelola pengiriman barang dan jasa logistik dengan mudah.", keywords: "jasa kirim, logistik, pengiriman barang" },
+      "kasir": { title: "Kasir", icon: "shopping-cart", desc: "Sistem kasir digital dengan fitur laporan penjualan otomatis.", keywords: "kasir digital, POS, sistem kasir" },
+      "market": { title: "Market", icon: "store", desc: "Platform pasar digital untuk pengelolaan produk dan penjualan.", keywords: "marketplace, jual beli, e-commerce" },
+      "medsos": { title: "Medsos", icon: "share-2", desc: "Manajemen media sosial bisnis dalam satu dashboard terpadu.", keywords: "medsos, social media, manajemen konten" },
+      "meeting": { title: "Meeting", icon: "calendar", desc: "Sistem rapat digital dengan integrasi kalender dan peserta.", keywords: "meeting, jadwal rapat, online meeting" },
+      "monitor-hikvision": { title: "Monitor Hikvision", icon: "camera", desc: "Pantau kamera Hikvision secara langsung melalui dashboard.", keywords: "hikvision, monitor CCTV, keamanan" },
+      "monitoring": { title: "Monitoring", icon: "activity", desc: "Sistem monitoring real-time untuk performa aplikasi & server.", keywords: "monitoring, server, dashboard performance" },
+      "parkir": { title: "Parkir", icon: "car", desc: "Sistem parkir digital untuk manajemen kendaraan otomatis.", keywords: "parkir, manajemen kendaraan, parkir digital" },
+      "rm": { title: "RM", icon: "briefcase", desc: "Relationship Management untuk pelanggan & bisnis.", keywords: "RM, customer management, CRM" },
+      "sales": { title: "Sales", icon: "bar-chart-3", desc: "Kelola data penjualan dan laporan performa bisnis.", keywords: "sales, penjualan, laporan bisnis" },
+      "server": { title: "Server", icon: "server", desc: "Manajemen server dan sistem jaringan terpusat.", keywords: "server, network, management" },
+      "Sustainability-Dashboard": { title: "Sustainability", icon: "leaf", desc: "Pantau data keberlanjutan bisnis dan energi hijau.", keywords: "sustainability, lingkungan, green tech" },
+      "toko": { title: "Toko", icon: "shopping-bag", desc: "Kelola toko fisik dan digital dengan dashboard modern.", keywords: "toko, e-commerce, retail" },
+      "transaksi-bank": { title: "Transaksi Bank", icon: "credit-card", desc: "Kelola transaksi bank dan laporan keuangan otomatis.", keywords: "transaksi bank, keuangan, finance" },
+      "trevel": { title: "Trevel", icon: "map-pin", desc: "Manajemen perjalanan dan reservasi transportasi.", keywords: "travel, booking, perjalanan" },
+      "visitor": { title: "Visitor", icon: "users", desc: "Sistem pencatatan dan pemantauan pengunjung.", keywords: "visitor management, tamu, monitoring" }
+    };
+
+    const path = window.location.pathname;
+    const currentPage = Object.keys(pages).find(k => path.includes(k)) || "AI-analytics";
+    const data = pages[currentPage];
+
+    document.title = `${data.title} — All Example`;
+
+    document.write(`
+      <meta name="description" content="${data.desc}">
+      <meta name="keywords" content="${data.keywords}">
+      <meta property="og:title" content="${data.title} — All Example">
+      <meta property="og:description" content="${data.desc}">
+      <meta property="og:type" content="website">
+      <meta name="robots" content="index, follow">
+    `);
+  </script>
+
+  <style>
+    .fade-in { animation: fadeIn 0.5s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    body { user-select: none; }
+    .active-link { background-color: #eef2ff; color: #4f46e5; font-weight: 600; }
+
+    /* === Tambahan scroll sidebar === */
+    #menuScroll {
+      max-height: calc(100vh - 160px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #6366f1 #f1f5f9;
+    }
+    #menuScroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    #menuScroll::-webkit-scrollbar-thumb {
+      background-color: #6366f1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-50 to-indigo-50 min-h-screen flex">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white/80 backdrop-blur-lg shadow-xl flex flex-col justify-between border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+    <div>
+      <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">All Example</h1>
+        <button id="closeSidebar" class="lg:hidden"><i data-lucide="x"></i></button>
+      </div>
+
+      <!-- Scrollable menu -->
+      <div id="menuScroll" class="p-4">
+        <nav id="menuContainer" class="space-y-2 text-gray-600 font-medium"></nav>
+      </div>
+    </div>
+    <div class="p-4 border-t border-gray-100 text-sm text-gray-400">© 2025 MyStore</div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 flex flex-col w-full overflow-x-hidden">
+    <header class="bg-white/70 backdrop-blur-md shadow-sm p-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <button id="openSidebar" class="lg:hidden"><i data-lucide="menu"></i></button>
+        <div id="pageHeader"></div>
+      </div>
+    </header>
+
+    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
+      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
+      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
+      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
+      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    </main>
+  </div>
+
+  <script>
+    // === RENDER SIDEBAR MENU OTOMATIS ===
+    const menuContainer = document.getElementById("menuContainer");
+    for (const key in pages) {
+      const p = pages[key];
+      const active = key === currentPage ? "active-link" : "";
+      menuContainer.innerHTML += `
+        <a href="../${key}/" class="flex items-center gap-3 p-3 rounded-xl hover:bg-indigo-100 hover:text-indigo-700 ${active}">
+          <i data-lucide="${p.icon}"></i> ${p.title}
+        </a>
+      `;
+    }
+
+    // === Header dinamis ===
+    document.getElementById("pageHeader").innerHTML = `
+      <p class="text-sm text-gray-500 flex items-center gap-2">
+        <i data-lucide="${data.icon}"></i> ${data.title}
+      </p>
+    `;
+
+    // Sidebar toggle mobile
+    const sidebar = document.getElementById("sidebar");
+    document.getElementById("openSidebar").addEventListener("click", () => sidebar.classList.remove("-translate-x-full"));
+    document.getElementById("closeSidebar").addEventListener("click", () => sidebar.classList.add("-translate-x-full"));
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
