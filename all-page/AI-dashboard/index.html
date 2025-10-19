@@ -15,7 +15,6 @@
       "AI-dashboard": { title: "AI Dashboard", icon: "layout-dashboard", desc: "Dashboard cerdas berbasis AI untuk monitoring performa sistem dan pengguna.", keywords: "AI dashboard, sistem monitoring, data AI, analytics system" },
       "AI-finance": { title: "AI Finance", icon: "dollar-sign", desc: "Sistem keuangan modern berbasis AI untuk prediksi, laporan, dan efisiensi finansial.", keywords: "AI finance, keuangan AI, financial dashboard, smart finance" },
       "AI-inbox": { title: "AI Inbox", icon: "inbox", desc: "Inbox AI untuk mengelola pesan otomatis dengan kecerdasan buatan.", keywords: "AI inbox, pesan AI, chatbot, komunikasi pintar" },
-      "AI-profile": { title: "AI Profile", icon: "user", desc: "Profil cerdas dengan analisis data pengguna berbasis AI.", keywords: "AI profile, user AI, profil pengguna, data analysis" },
       "akses-room": { title: "Akses Room", icon: "door-open", desc: "Sistem akses ruangan otomatis berbasis keamanan AI.", keywords: "akses ruangan, security AI, door system" },
       "bank": { title: "Bank", icon: "banknote", desc: "Kelola informasi bank dan transaksi keuangan secara efisien.", keywords: "bank, transaksi, keuangan digital" },
       "finance": { title: "Finance", icon: "wallet", desc: "Sistem keuangan lengkap untuk pengelolaan bisnis modern.", keywords: "finance, keuangan, laporan finansial" },
@@ -45,12 +44,12 @@
     const currentPage = Object.keys(pages).find(k => path.includes(k)) || "AI-analytics";
     const data = pages[currentPage];
 
-    document.title = `${data.title} — All Example`;
+    document.title = `${data.title} — CUK-Prodev`;
 
     document.write(`
       <meta name="description" content="${data.desc}">
       <meta name="keywords" content="${data.keywords}">
-      <meta property="og:title" content="${data.title} — All Example">
+      <meta property="og:title" content="${data.title} — CUK-Prodev">
       <meta property="og:description" content="${data.desc}">
       <meta property="og:type" content="website">
       <meta name="robots" content="index, follow">
@@ -89,7 +88,7 @@
   <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white/80 backdrop-blur-lg shadow-xl flex flex-col justify-between border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
     <div>
       <div class="p-6 border-b border-gray-100 flex items-center justify-between">
-        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">All Example</h1>
+        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">CUK-Prodev</h1>
         <button id="closeSidebar" class="lg:hidden"><i data-lucide="x"></i></button>
       </div>
 
@@ -110,12 +109,179 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="flex-1 p-6 fade-in">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">AI Dashboard</h2>
+    
+      <!-- TOP STAT CARDS -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white shadow-md p-5 rounded-2xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-500">AI Models Running</span>
+            <i data-lucide="cpu" class="w-5 h-5 text-indigo-500"></i>
+          </div>
+          <p class="text-2xl font-semibold">12</p>
+          <span class="text-green-500 text-sm">+2 new deployed</span>
+        </div>
+    
+        <div class="bg-white shadow-md p-5 rounded-2xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-500">Accuracy Rate</span>
+            <i data-lucide="target" class="w-5 h-5 text-indigo-500"></i>
+          </div>
+          <p class="text-2xl font-semibold">94.7%</p>
+          <span class="text-green-500 text-sm">+1.3% this month</span>
+        </div>
+    
+        <div class="bg-white shadow-md p-5 rounded-2xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-500">Response Latency</span>
+            <i data-lucide="activity" class="w-5 h-5 text-indigo-500"></i>
+          </div>
+          <p class="text-2xl font-semibold">187ms</p>
+          <span class="text-yellow-500 text-sm">Stable</span>
+        </div>
+    
+        <div class="bg-white shadow-md p-5 rounded-2xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-500">System Uptime</span>
+            <i data-lucide="clock" class="w-5 h-5 text-indigo-500"></i>
+          </div>
+          <p class="text-2xl font-semibold">99.98%</p>
+          <span class="text-green-500 text-sm">Operational</span>
+        </div>
+      </div>
+    
+      <!-- CHART SECTION -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div class="bg-white rounded-2xl shadow-md p-5">
+          <h3 class="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-indigo-500"></i>
+            Model Performance Overview
+          </h3>
+          <canvas id="modelChart" height="120"></canvas>
+        </div>
+    
+        <div class="bg-white rounded-2xl shadow-md p-5">
+          <h3 class="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+            <i data-lucide="line-chart" class="w-5 h-5 text-indigo-500"></i>
+            AI Prediction Trends
+          </h3>
+          <canvas id="trendChart" height="120"></canvas>
+        </div>
+      </div>
+    
+      <!-- SYSTEM STATUS -->
+      <div class="bg-white shadow-md rounded-2xl p-6 mb-8">
+        <h3 class="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          <i data-lucide="monitor" class="w-5 h-5 text-indigo-500"></i>
+          Real-Time System Status
+        </h3>
+    
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-4 border rounded-xl flex items-center gap-4">
+            <i data-lucide="server" class="w-6 h-6 text-indigo-500"></i>
+            <div>
+              <p class="font-semibold">API Server</p>
+              <p class="text-sm text-green-600">Online</p>
+            </div>
+          </div>
+    
+          <div class="p-4 border rounded-xl flex items-center gap-4">
+            <i data-lucide="database" class="w-6 h-6 text-indigo-500"></i>
+            <div>
+              <p class="font-semibold">Database</p>
+              <p class="text-sm text-green-600">Connected</p>
+            </div>
+          </div>
+    
+          <div class="p-4 border rounded-xl flex items-center gap-4">
+            <i data-lucide="cloud" class="w-6 h-6 text-indigo-500"></i>
+            <div>
+              <p class="font-semibold">Cloud Model Sync</p>
+              <p class="text-sm text-green-600">Active</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- AI DECISION INSIGHTS -->
+      <div class="bg-white shadow-md rounded-2xl p-6">
+        <h3 class="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          <i data-lucide="brain" class="w-5 h-5 text-indigo-500"></i>
+          AI Decision Insights
+        </h3>
+    
+        <ul class="space-y-3 text-left">
+          <li class="p-4 border rounded-xl hover:bg-indigo-50 transition">
+            <p class="font-semibold text-gray-800">🔹 Sales Strategy Adjustment</p>
+            <p class="text-sm text-gray-500 mt-1">AI suggests prioritizing marketing budget toward product segments with +15% growth potential this quarter.</p>
+          </li>
+    
+          <li class="p-4 border rounded-xl hover:bg-indigo-50 transition">
+            <p class="font-semibold text-gray-800">🔹 Server Optimization</p>
+            <p class="text-sm text-gray-500 mt-1">Reducing redundant API calls decreased latency by 12%. Next recommendation: enable caching for static ML responses.</p>
+          </li>
+    
+          <li class="p-4 border rounded-xl hover:bg-indigo-50 transition">
+            <p class="font-semibold text-gray-800">🔹 Predictive Maintenance</p>
+            <p class="text-sm text-gray-500 mt-1">AI forecasts potential downtime risk for Node #4 due to CPU load increase. Scheduled maintenance recommended.</p>
+          </li>
+    
+          <li class="p-4 border rounded-xl hover:bg-indigo-50 transition">
+            <p class="font-semibold text-gray-800">🔹 Customer Behavior Shift</p>
+            <p class="text-sm text-gray-500 mt-1">User engagement for premium features increased by 27%. AI recommends offering limited-time discounts to retain conversion.</p>
+          </li>
+        </ul>
+      </div>
     </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // === CHART 1: Model Performance ===
+      const ctx1 = document.getElementById('modelChart').getContext('2d');
+      new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: ['Model A', 'Model B', 'Model C', 'Model D'],
+          datasets: [{
+            label: 'Accuracy %',
+            data: [92, 89, 95, 94],
+            backgroundColor: 'rgba(99, 102, 241, 0.7)',
+            borderRadius: 8
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, max: 100 } },
+          responsive: true
+        }
+      });
+    
+      // === CHART 2: AI Prediction Trends ===
+      const ctx2 = document.getElementById('trendChart').getContext('2d');
+      new Chart(ctx2, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          datasets: [{
+            label: 'Predictions Made',
+            data: [4200, 4800, 5100, 5500, 6000, 6450, 7100],
+            borderColor: 'rgba(99, 102, 241, 1)',
+            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } },
+          responsive: true
+        }
+      });
+    
+      lucide.createIcons();
+    </script>
+    
   </div>
 
   <script>

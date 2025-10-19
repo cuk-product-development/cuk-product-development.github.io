@@ -15,7 +15,6 @@
       "AI-dashboard": { title: "AI Dashboard", icon: "layout-dashboard", desc: "Dashboard cerdas berbasis AI untuk monitoring performa sistem dan pengguna.", keywords: "AI dashboard, sistem monitoring, data AI, analytics system" },
       "AI-finance": { title: "AI Finance", icon: "dollar-sign", desc: "Sistem keuangan modern berbasis AI untuk prediksi, laporan, dan efisiensi finansial.", keywords: "AI finance, keuangan AI, financial dashboard, smart finance" },
       "AI-inbox": { title: "AI Inbox", icon: "inbox", desc: "Inbox AI untuk mengelola pesan otomatis dengan kecerdasan buatan.", keywords: "AI inbox, pesan AI, chatbot, komunikasi pintar" },
-      "AI-profile": { title: "AI Profile", icon: "user", desc: "Profil cerdas dengan analisis data pengguna berbasis AI.", keywords: "AI profile, user AI, profil pengguna, data analysis" },
       "akses-room": { title: "Akses Room", icon: "door-open", desc: "Sistem akses ruangan otomatis berbasis keamanan AI.", keywords: "akses ruangan, security AI, door system" },
       "bank": { title: "Bank", icon: "banknote", desc: "Kelola informasi bank dan transaksi keuangan secara efisien.", keywords: "bank, transaksi, keuangan digital" },
       "finance": { title: "Finance", icon: "wallet", desc: "Sistem keuangan lengkap untuk pengelolaan bisnis modern.", keywords: "finance, keuangan, laporan finansial" },
@@ -45,12 +44,12 @@
     const currentPage = Object.keys(pages).find(k => path.includes(k)) || "AI-analytics";
     const data = pages[currentPage];
 
-    document.title = `${data.title} — All Example`;
+    document.title = `${data.title} — CUK-Prodev`;
 
     document.write(`
       <meta name="description" content="${data.desc}">
       <meta name="keywords" content="${data.keywords}">
-      <meta property="og:title" content="${data.title} — All Example">
+      <meta property="og:title" content="${data.title} — CUK-Prodev">
       <meta property="og:description" content="${data.desc}">
       <meta property="og:type" content="website">
       <meta name="robots" content="index, follow">
@@ -89,7 +88,7 @@
   <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white/80 backdrop-blur-lg shadow-xl flex flex-col justify-between border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
     <div>
       <div class="p-6 border-b border-gray-100 flex items-center justify-between">
-        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">All Example</h1>
+        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">CUK-Prodev</h1>
         <button id="closeSidebar" class="lg:hidden"><i data-lucide="x"></i></button>
       </div>
 
@@ -109,13 +108,129 @@
         <div id="pageHeader"></div>
       </div>
     </header>
-
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="flex-1 p-6 fade-in bg-white/70 backdrop-blur-md rounded-2xl shadow-lg mx-6 my-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <i data-lucide="wallet"></i> Finance
+      </h2>
+    
+      <!-- RINGKASAN KEUANGAN -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white p-5 rounded-2xl shadow-md">
+          <h3 class="text-sm opacity-80">Total Pendapatan</h3>
+          <p class="text-3xl font-bold mt-1">Rp 120.500.000</p>
+        </div>
+    
+        <div class="bg-gradient-to-r from-red-500 to-rose-600 text-white p-5 rounded-2xl shadow-md">
+          <h3 class="text-sm opacity-80">Total Pengeluaran</h3>
+          <p class="text-3xl font-bold mt-1">Rp 82.300.000</p>
+        </div>
+    
+        <div class="bg-gradient-to-r from-indigo-500 to-blue-600 text-white p-5 rounded-2xl shadow-md">
+          <h3 class="text-sm opacity-80">Laba Bersih</h3>
+          <p class="text-3xl font-bold mt-1">Rp 38.200.000</p>
+        </div>
+      </section>
+    
+      <!-- GRAFIK KEUANGAN -->
+      <section class="bg-white border border-gray-200 rounded-2xl p-6 mb-8 shadow-sm">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+          <i data-lucide="bar-chart-3"></i> Grafik Keuangan Bulanan
+        </h3>
+        <canvas id="financeChart" class="w-full h-64"></canvas>
+      </section>
+    
+      <!-- TABEL TRANSAKSI -->
+      <section class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-x-auto">
+        <h3 class="text-lg font-semibold text-gray-800 p-6 pb-0 flex items-center gap-2">
+          <i data-lucide="list"></i> Transaksi Terbaru
+        </h3>
+        <table class="min-w-full text-sm text-left mt-4">
+          <thead class="bg-indigo-600 text-white">
+            <tr>
+              <th class="py-3 px-4">Tanggal</th>
+              <th class="py-3 px-4">Deskripsi</th>
+              <th class="py-3 px-4">Kategori</th>
+              <th class="py-3 px-4">Jumlah</th>
+              <th class="py-3 px-4">Status</th>
+            </tr>
+          </thead>
+          <tbody id="transactionTable" class="divide-y divide-gray-100"></tbody>
+        </table>
+      </section>
+    
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        // === DATA TRANSAKSI DUMMY ===
+        const transactions = [
+          { date: "2025-10-19", desc: "Pembelian perangkat kantor", category: "Operasional", amount: -2500000, status: "Selesai" },
+          { date: "2025-10-18", desc: "Pendapatan proyek AI Analytics", category: "Pendapatan", amount: 10000000, status: "Selesai" },
+          { date: "2025-10-18", desc: "Langganan server bulanan", category: "Infrastruktur", amount: -1200000, status: "Selesai" },
+          { date: "2025-10-17", desc: "Konsultasi klien baru", category: "Pendapatan", amount: 5000000, status: "Selesai" },
+          { date: "2025-10-17", desc: "Gaji karyawan", category: "SDM", amount: -15000000, status: "Diproses" },
+        ];
+    
+        const table = document.getElementById("transactionTable");
+    
+        // === RENDER TRANSAKSI ===
+        function renderTransactions() {
+          table.innerHTML = "";
+          transactions.forEach(t => {
+            const row = document.createElement("tr");
+            const isExpense = t.amount < 0;
+            row.className = "hover:bg-indigo-50 transition";
+            row.innerHTML = `
+              <td class="py-3 px-4">${t.date}</td>
+              <td class="py-3 px-4">${t.desc}</td>
+              <td class="py-3 px-4">${t.category}</td>
+              <td class="py-3 px-4 font-semibold ${isExpense ? 'text-red-600' : 'text-green-600'}">
+                ${isExpense ? '-' : '+'}Rp ${Math.abs(t.amount).toLocaleString('id-ID')}
+              </td>
+              <td class="py-3 px-4 text-gray-700">${t.status}</td>
+            `;
+            table.appendChild(row);
+          });
+        }
+    
+        // === GRAFIK KEUANGAN ===
+        document.addEventListener("DOMContentLoaded", function () {
+          const ctx = document.getElementById("financeChart").getContext("2d");
+          new Chart(ctx, {
+            type: "line",
+            data: {
+              labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt"],
+              datasets: [
+                {
+                  label: "Pendapatan",
+                  data: [12, 19, 14, 22, 28, 30, 25, 32, 35, 38],
+                  borderWidth: 3,
+                  borderColor: "rgb(34,197,94)",
+                  tension: 0.3
+                },
+                {
+                  label: "Pengeluaran",
+                  data: [8, 12, 10, 15, 20, 18, 22, 25, 27, 30],
+                  borderWidth: 3,
+                  borderColor: "rgb(239,68,68)",
+                  tension: 0.3
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { position: "bottom" }
+              },
+              scales: {
+                y: { beginAtZero: true }
+              }
+            }
+          });
+          renderTransactions();
+          lucide.createIcons();
+        });
+      </script>
     </main>
+    
   </div>
 
   <script>

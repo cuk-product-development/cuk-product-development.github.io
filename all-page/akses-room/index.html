@@ -15,7 +15,6 @@
       "AI-dashboard": { title: "AI Dashboard", icon: "layout-dashboard", desc: "Dashboard cerdas berbasis AI untuk monitoring performa sistem dan pengguna.", keywords: "AI dashboard, sistem monitoring, data AI, analytics system" },
       "AI-finance": { title: "AI Finance", icon: "dollar-sign", desc: "Sistem keuangan modern berbasis AI untuk prediksi, laporan, dan efisiensi finansial.", keywords: "AI finance, keuangan AI, financial dashboard, smart finance" },
       "AI-inbox": { title: "AI Inbox", icon: "inbox", desc: "Inbox AI untuk mengelola pesan otomatis dengan kecerdasan buatan.", keywords: "AI inbox, pesan AI, chatbot, komunikasi pintar" },
-      "AI-profile": { title: "AI Profile", icon: "user", desc: "Profil cerdas dengan analisis data pengguna berbasis AI.", keywords: "AI profile, user AI, profil pengguna, data analysis" },
       "akses-room": { title: "Akses Room", icon: "door-open", desc: "Sistem akses ruangan otomatis berbasis keamanan AI.", keywords: "akses ruangan, security AI, door system" },
       "bank": { title: "Bank", icon: "banknote", desc: "Kelola informasi bank dan transaksi keuangan secara efisien.", keywords: "bank, transaksi, keuangan digital" },
       "finance": { title: "Finance", icon: "wallet", desc: "Sistem keuangan lengkap untuk pengelolaan bisnis modern.", keywords: "finance, keuangan, laporan finansial" },
@@ -45,12 +44,12 @@
     const currentPage = Object.keys(pages).find(k => path.includes(k)) || "AI-analytics";
     const data = pages[currentPage];
 
-    document.title = `${data.title} — All Example`;
+    document.title = `${data.title} — CUK-Prodev`;
 
     document.write(`
       <meta name="description" content="${data.desc}">
       <meta name="keywords" content="${data.keywords}">
-      <meta property="og:title" content="${data.title} — All Example">
+      <meta property="og:title" content="${data.title} — CUK-Prodev">
       <meta property="og:description" content="${data.desc}">
       <meta property="og:type" content="website">
       <meta name="robots" content="index, follow">
@@ -89,7 +88,7 @@
   <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white/80 backdrop-blur-lg shadow-xl flex flex-col justify-between border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
     <div>
       <div class="p-6 border-b border-gray-100 flex items-center justify-between">
-        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">All Example</h1>
+        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">CUK-Prodev</h1>
         <button id="closeSidebar" class="lg:hidden"><i data-lucide="x"></i></button>
       </div>
 
@@ -110,12 +109,132 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="flex-1 p-6 fade-in bg-white/70 backdrop-blur-md rounded-2xl shadow-lg mx-6 my-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <i data-lucide="door-open"></i> Akses Room
+      </h2>
+    
+      <!-- STATUS ROOM -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-5 rounded-2xl shadow-md flex justify-between items-center">
+          <div>
+            <h3 class="text-sm opacity-80">Status Pintu</h3>
+            <p id="doorStatus" class="text-2xl font-semibold mt-1">Tertutup</p>
+          </div>
+          <i id="doorIcon" data-lucide="lock" class="w-8 h-8"></i>
+        </div>
+    
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+          <h3 class="text-sm text-gray-500">Akses Terakhir</h3>
+          <p id="lastAccess" class="text-lg font-semibold text-gray-800 mt-1">-</p>
+        </div>
+    
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm">
+          <h3 class="text-sm text-gray-500">Jumlah Akses Hari Ini</h3>
+          <p id="accessCount" class="text-3xl font-bold text-indigo-600 mt-1">0</p>
+        </div>
+      </section>
+    
+      <!-- TOMBOL AKSI -->
+      <div class="flex flex-wrap gap-4 mb-8">
+        <button id="openDoor" class="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white py-2 px-5 rounded-lg shadow transition">
+          <i data-lucide="unlock"></i> Buka Pintu
+        </button>
+        <button id="closeDoor" class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white py-2 px-5 rounded-lg shadow transition">
+          <i data-lucide="lock"></i> Tutup Pintu
+        </button>
+      </div>
+    
+      <!-- LOG AKSES -->
+      <section class="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-x-auto">
+        <table class="min-w-full text-sm text-left">
+          <thead class="bg-indigo-600 text-white">
+            <tr>
+              <th class="py-3 px-4">Waktu</th>
+              <th class="py-3 px-4">Nama Pengguna</th>
+              <th class="py-3 px-4">Aksi</th>
+              <th class="py-3 px-4">Status</th>
+            </tr>
+          </thead>
+          <tbody id="accessLog" class="divide-y divide-gray-100"></tbody>
+        </table>
+      </section>
+    
+      <script>
+        // === DATA DUMMY ===
+        const accessLogData = [
+          { time: "2025-10-19 10:12", user: "Eko Prasetyo", action: "Buka", status: "Berhasil" },
+          { time: "2025-10-19 08:45", user: "Rina Saputri", action: "Tutup", status: "Berhasil" },
+          { time: "2025-10-19 07:30", user: "Admin", action: "Buka", status: "Berhasil" }
+        ];
+    
+        const accessLog = document.getElementById("accessLog");
+        const doorStatus = document.getElementById("doorStatus");
+        const doorIcon = document.getElementById("doorIcon");
+        const lastAccess = document.getElementById("lastAccess");
+        const accessCount = document.getElementById("accessCount");
+    
+        let isOpen = false;
+        let count = accessLogData.length;
+    
+        // === RENDER DATA AWAL ===
+        function renderLog() {
+          accessLog.innerHTML = "";
+          accessLogData.forEach(item => {
+            const row = document.createElement("tr");
+            row.className = "hover:bg-indigo-50 transition";
+            row.innerHTML = `
+              <td class="py-3 px-4">${item.time}</td>
+              <td class="py-3 px-4">${item.user}</td>
+              <td class="py-3 px-4">${item.action}</td>
+              <td class="py-3 px-4 text-green-600 font-medium">${item.status}</td>
+            `;
+            accessLog.appendChild(row);
+          });
+          lastAccess.textContent = accessLogData[0].time + " — " + accessLogData[0].user;
+          accessCount.textContent = count;
+        }
+    
+        // === SIMULASI AKSI ===
+        document.getElementById("openDoor").addEventListener("click", () => {
+          if (!isOpen) {
+            isOpen = true;
+            doorStatus.textContent = "Terbuka";
+            doorIcon.setAttribute("data-lucide", "unlock");
+            accessLogData.unshift({
+              time: new Date().toLocaleString("id-ID"),
+              user: "Sistem Otomatis",
+              action: "Buka",
+              status: "Berhasil"
+            });
+            count++;
+            renderLog();
+            lucide.createIcons();
+          }
+        });
+    
+        document.getElementById("closeDoor").addEventListener("click", () => {
+          if (isOpen) {
+            isOpen = false;
+            doorStatus.textContent = "Tertutup";
+            doorIcon.setAttribute("data-lucide", "lock");
+            accessLogData.unshift({
+              time: new Date().toLocaleString("id-ID"),
+              user: "Sistem Otomatis",
+              action: "Tutup",
+              status: "Berhasil"
+            });
+            count++;
+            renderLog();
+            lucide.createIcons();
+          }
+        });
+    
+        renderLog();
+        lucide.createIcons();
+      </script>
     </main>
+    
   </div>
 
   <script>

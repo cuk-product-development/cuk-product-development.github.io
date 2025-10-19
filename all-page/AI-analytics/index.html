@@ -15,7 +15,6 @@
       "AI-dashboard": { title: "AI Dashboard", icon: "layout-dashboard", desc: "Dashboard cerdas berbasis AI untuk monitoring performa sistem dan pengguna.", keywords: "AI dashboard, sistem monitoring, data AI, analytics system" },
       "AI-finance": { title: "AI Finance", icon: "dollar-sign", desc: "Sistem keuangan modern berbasis AI untuk prediksi, laporan, dan efisiensi finansial.", keywords: "AI finance, keuangan AI, financial dashboard, smart finance" },
       "AI-inbox": { title: "AI Inbox", icon: "inbox", desc: "Inbox AI untuk mengelola pesan otomatis dengan kecerdasan buatan.", keywords: "AI inbox, pesan AI, chatbot, komunikasi pintar" },
-      "AI-profile": { title: "AI Profile", icon: "user", desc: "Profil cerdas dengan analisis data pengguna berbasis AI.", keywords: "AI profile, user AI, profil pengguna, data analysis" },
       "akses-room": { title: "Akses Room", icon: "door-open", desc: "Sistem akses ruangan otomatis berbasis keamanan AI.", keywords: "akses ruangan, security AI, door system" },
       "bank": { title: "Bank", icon: "banknote", desc: "Kelola informasi bank dan transaksi keuangan secara efisien.", keywords: "bank, transaksi, keuangan digital" },
       "finance": { title: "Finance", icon: "wallet", desc: "Sistem keuangan lengkap untuk pengelolaan bisnis modern.", keywords: "finance, keuangan, laporan finansial" },
@@ -45,12 +44,12 @@
     const currentPage = Object.keys(pages).find(k => path.includes(k)) || "AI-analytics";
     const data = pages[currentPage];
 
-    document.title = `${data.title} — All Example`;
+    document.title = `${data.title} — CUK-Prodev`;
 
     document.write(`
       <meta name="description" content="${data.desc}">
       <meta name="keywords" content="${data.keywords}">
-      <meta property="og:title" content="${data.title} — All Example">
+      <meta property="og:title" content="${data.title} — CUK-Prodev">
       <meta property="og:description" content="${data.desc}">
       <meta property="og:type" content="website">
       <meta name="robots" content="index, follow">
@@ -89,7 +88,7 @@
   <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white/80 backdrop-blur-lg shadow-xl flex flex-col justify-between border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
     <div>
       <div class="p-6 border-b border-gray-100 flex items-center justify-between">
-        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">All Example</h1>
+        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">CUK-Prodev</h1>
         <button id="closeSidebar" class="lg:hidden"><i data-lucide="x"></i></button>
       </div>
 
@@ -110,12 +109,113 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="flex-1 p-6 fade-in">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">AI Analytics Dashboard</h2>
+    
+      <!-- KPI CARDS -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white shadow-md p-5 rounded-2xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-500">Active Users</span>
+            <i data-lucide="users" class="w-5 h-5 text-indigo-500"></i>
+          </div>
+          <p class="text-2xl font-semibold">4,582</p>
+          <span class="text-green-500 text-sm">+8.3% this week</span>
+        </div>
+    
+        <div class="bg-white shadow-md p-5 rounded-2xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-500">AI Predictions</span>
+            <i data-lucide="cpu" class="w-5 h-5 text-indigo-500"></i>
+          </div>
+          <p class="text-2xl font-semibold">9,140</p>
+          <span class="text-green-500 text-sm">+5.6% accuracy growth</span>
+        </div>
+    
+        <div class="bg-white shadow-md p-5 rounded-2xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-500">Revenue Impact</span>
+            <i data-lucide="trending-up" class="w-5 h-5 text-indigo-500"></i>
+          </div>
+          <p class="text-2xl font-semibold">$72,410</p>
+          <span class="text-green-500 text-sm">+12.1% increase</span>
+        </div>
+    
+        <div class="bg-white shadow-md p-5 rounded-2xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-gray-500">Model Uptime</span>
+            <i data-lucide="clock" class="w-5 h-5 text-indigo-500"></i>
+          </div>
+          <p class="text-2xl font-semibold">99.97%</p>
+          <span class="text-green-500 text-sm">Stable performance</span>
+        </div>
+      </div>
+    
+      <!-- CHARTS -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-white rounded-2xl shadow-md p-5">
+          <h3 class="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-indigo-500"></i>
+            System Performance
+          </h3>
+          <canvas id="performanceChart" height="120"></canvas>
+        </div>
+    
+        <div class="bg-white rounded-2xl shadow-md p-5">
+          <h3 class="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+            <i data-lucide="line-chart" class="w-5 h-5 text-indigo-500"></i>
+            User Growth Trend
+          </h3>
+          <canvas id="userChart" height="120"></canvas>
+        </div>
+      </div>
     </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // === Charts ===
+      const perfCtx = document.getElementById('performanceChart').getContext('2d');
+      new Chart(perfCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          datasets: [{
+            label: 'Processing Speed (ms)',
+            data: [210, 190, 180, 160, 175, 200, 150],
+            borderRadius: 8,
+            backgroundColor: 'rgba(99, 102, 241, 0.7)'
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+    
+      const userCtx = document.getElementById('userChart').getContext('2d');
+      new Chart(userCtx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          datasets: [{
+            label: 'Active Users',
+            data: [3200, 3500, 3700, 4100, 4300, 4580, 4820],
+            fill: true,
+            tension: 0.4,
+            borderColor: 'rgba(99, 102, 241, 1)',
+            backgroundColor: 'rgba(99, 102, 241, 0.1)'
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+    
+      lucide.createIcons();
+    </script>
   </div>
 
   <script>

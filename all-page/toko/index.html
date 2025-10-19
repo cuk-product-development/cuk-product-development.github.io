@@ -15,7 +15,6 @@
       "AI-dashboard": { title: "AI Dashboard", icon: "layout-dashboard", desc: "Dashboard cerdas berbasis AI untuk monitoring performa sistem dan pengguna.", keywords: "AI dashboard, sistem monitoring, data AI, analytics system" },
       "AI-finance": { title: "AI Finance", icon: "dollar-sign", desc: "Sistem keuangan modern berbasis AI untuk prediksi, laporan, dan efisiensi finansial.", keywords: "AI finance, keuangan AI, financial dashboard, smart finance" },
       "AI-inbox": { title: "AI Inbox", icon: "inbox", desc: "Inbox AI untuk mengelola pesan otomatis dengan kecerdasan buatan.", keywords: "AI inbox, pesan AI, chatbot, komunikasi pintar" },
-      "AI-profile": { title: "AI Profile", icon: "user", desc: "Profil cerdas dengan analisis data pengguna berbasis AI.", keywords: "AI profile, user AI, profil pengguna, data analysis" },
       "akses-room": { title: "Akses Room", icon: "door-open", desc: "Sistem akses ruangan otomatis berbasis keamanan AI.", keywords: "akses ruangan, security AI, door system" },
       "bank": { title: "Bank", icon: "banknote", desc: "Kelola informasi bank dan transaksi keuangan secara efisien.", keywords: "bank, transaksi, keuangan digital" },
       "finance": { title: "Finance", icon: "wallet", desc: "Sistem keuangan lengkap untuk pengelolaan bisnis modern.", keywords: "finance, keuangan, laporan finansial" },
@@ -45,12 +44,12 @@
     const currentPage = Object.keys(pages).find(k => path.includes(k)) || "AI-analytics";
     const data = pages[currentPage];
 
-    document.title = `${data.title} — All Example`;
+    document.title = `${data.title} — CUK-Prodev`;
 
     document.write(`
       <meta name="description" content="${data.desc}">
       <meta name="keywords" content="${data.keywords}">
-      <meta property="og:title" content="${data.title} — All Example">
+      <meta property="og:title" content="${data.title} — CUK-Prodev">
       <meta property="og:description" content="${data.desc}">
       <meta property="og:type" content="website">
       <meta name="robots" content="index, follow">
@@ -89,7 +88,7 @@
   <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white/80 backdrop-blur-lg shadow-xl flex flex-col justify-between border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
     <div>
       <div class="p-6 border-b border-gray-100 flex items-center justify-between">
-        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">All Example</h1>
+        <h1 class="text-3xl font-extrabold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">CUK-Prodev</h1>
         <button id="closeSidebar" class="lg:hidden"><i data-lucide="x"></i></button>
       </div>
 
