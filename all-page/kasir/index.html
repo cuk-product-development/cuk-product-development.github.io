@@ -23,7 +23,7 @@
       "hris-penilaian": { title: "HRIS Penilaian", icon: "star", desc: "Penilaian kinerja karyawan berbasis AI dan HRIS.", keywords: "penilaian HRIS, AI HR, evaluasi kinerja" },
       "inventory": { title: "Inventory", icon: "boxes", desc: "Sistem manajemen stok dan barang dengan data real-time.", keywords: "inventory, stok barang, warehouse" },
       "jasa-kirim": { title: "Jasa Kirim", icon: "truck", desc: "Kelola pengiriman barang dan jasa logistik dengan mudah.", keywords: "jasa kirim, logistik, pengiriman barang" },
-      "kasir": { title: "Kasir", icon: "shopping-cart", desc: "Sistem kasir digital dengan fitur laporan penjualan otomatis.", keywords: "kasir digital, POS, sistem kasir" },
+      
       "market": { title: "Market", icon: "store", desc: "Platform pasar digital untuk pengelolaan produk dan penjualan.", keywords: "marketplace, jual beli, e-commerce" },
       "medsos": { title: "Medsos", icon: "share-2", desc: "Manajemen media sosial bisnis dalam satu dashboard terpadu.", keywords: "medsos, social media, manajemen konten" },
       "meeting": { title: "Meeting", icon: "calendar", desc: "Sistem rapat digital dengan integrasi kalender dan peserta.", keywords: "meeting, jadwal rapat, online meeting" },
@@ -109,12 +109,180 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+   
+    <main class="flex-1 flex flex-col items-center justify-start fade-in p-6">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <i data-lucide="shopping-cart" class="text-indigo-600 w-6 h-6"></i> Aplikasi Kasir
+      </h2>
+    
+      <!-- FORM INPUT PRODUK -->
+      <div class="bg-white p-6 rounded-2xl shadow-md w-full max-w-md mb-6">
+        <div class="mb-4">
+          <label class="block text-gray-700 font-medium mb-1">Nama Barang</label>
+          <input id="namaBarang" type="text" placeholder="Masukkan nama barang" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-indigo-200" />
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-medium mb-1">Harga (Rp)</label>
+          <input id="hargaBarang" type="number" placeholder="Masukkan harga" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-indigo-200" />
+        </div>
+        <div class="flex justify-between items-center">
+          <button id="addManual" class="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg w-[48%] flex items-center justify-center gap-2">
+            <i data-lucide="plus-circle"></i> Tambah Manual
+          </button>
+          <button id="openScanner" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg w-[48%] flex items-center justify-center gap-2">
+            <i data-lucide="scan"></i> Scan Barcode
+          </button>
+        </div>
+      </div>
+    
+      <!-- SCANNER -->
+      <div id="scanner" class="hidden bg-white p-4 rounded-2xl shadow-md mb-6 w-full max-w-md">
+        <p class="text-gray-600 mb-2">Arahkan kamera ke barcode...</p>
+        <div id="scanner-container" class="overflow-hidden rounded-xl"></div>
+        <button id="closeScanner" class="mt-3 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg w-full flex items-center justify-center gap-2">
+          <i data-lucide="x-circle"></i> Tutup Scanner
+        </button>
+      </div>
+    
+      <!-- TABEL PRODUK -->
+      <div class="bg-white p-6 rounded-2xl shadow-md w-full max-w-2xl">
+        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center gap-2">
+          <i data-lucide="list"></i> Daftar Barang
+        </h3>
+        <table class="w-full border border-gray-200 rounded-lg text-left mb-4">
+          <thead class="bg-indigo-50 text-gray-700">
+            <tr>
+              <th class="p-2 border">No</th>
+              <th class="p-2 border">Nama</th>
+              <th class="p-2 border">Harga (Rp)</th>
+            </tr>
+          </thead>
+          <tbody id="tabelKasir" class="text-gray-600"></tbody>
+        </table>
+    
+        <div class="flex justify-between items-center text-lg font-semibold text-gray-700 border-t pt-3">
+          <span>Total:</span>
+          <span id="totalHarga">Rp 0</span>
+        </div>
+    
+        <button id="bayarBtn" class="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg w-full flex items-center justify-center gap-2">
+          <i data-lucide="credit-card"></i> Bayar
+        </button>
+      </div>
+    
+      <script>
+        const tabelKasir = document.getElementById("tabelKasir");
+        const namaBarang = document.getElementById("namaBarang");
+        const hargaBarang = document.getElementById("hargaBarang");
+        const addManual = document.getElementById("addManual");
+        const openScanner = document.getElementById("openScanner");
+        const closeScanner = document.getElementById("closeScanner");
+        const scanner = document.getElementById("scanner");
+        const totalHargaEl = document.getElementById("totalHarga");
+        const bayarBtn = document.getElementById("bayarBtn");
+    
+        let daftarBarang = [];
+        let scannerActive = false;
+    
+        // === Tambah Manual ===
+        addManual.addEventListener("click", () => {
+          const nama = namaBarang.value.trim();
+          const harga = parseFloat(hargaBarang.value);
+          if (!nama || isNaN(harga)) return alert("Isi nama dan harga barang!");
+    
+          daftarBarang.push({ nama, harga });
+          renderTabel();
+          namaBarang.value = "";
+          hargaBarang.value = "";
+        });
+    
+        // === Render Tabel & Total ===
+        function renderTabel() {
+          tabelKasir.innerHTML = daftarBarang
+            .map((b, i) => `
+              <tr class="hover:bg-gray-50">
+                <td class="border p-2">${i + 1}</td>
+                <td class="border p-2">${b.nama}</td>
+                <td class="border p-2">Rp ${b.harga.toLocaleString()}</td>
+              </tr>
+            `)
+            .join("");
+    
+          const total = daftarBarang.reduce((sum, b) => sum + b.harga, 0);
+          totalHargaEl.textContent = "Rp " + total.toLocaleString();
+        }
+    
+        // === Scan Barcode ===
+        openScanner.addEventListener("click", () => {
+          scanner.classList.remove("hidden");
+          if (!scannerActive) startScanner();
+        });
+    
+        closeScanner.addEventListener("click", () => {
+          stopScanner();
+          scanner.classList.add("hidden");
+        });
+    
+        function startScanner() {
+          scannerActive = true;
+          Quagga.init({
+            inputStream: {
+              name: "Live",
+              type: "LiveStream",
+              target: document.querySelector("#scanner-container"),
+              constraints: { facingMode: "environment" }
+            },
+            decoder: { readers: ["code_128_reader", "ean_reader", "ean_8_reader"] },
+          }, err => {
+            if (err) {
+              console.error(err);
+              alert("Gagal membuka kamera.");
+              scannerActive = false;
+              return;
+            }
+            Quagga.start();
+          });
+    
+          Quagga.onDetected(result => {
+            const kode = result.codeResult.code;
+            alert("Barcode terdeteksi: " + kode);
+            daftarBarang.push({
+              nama: "Barang #" + kode,
+              harga: Math.floor(Math.random() * 50000) + 10000
+            });
+            renderTabel();
+            stopScanner();
+            scanner.classList.add("hidden");
+          });
+        }
+    
+        function stopScanner() {
+          // if (scannerActive) {
+          //   Quagga.stop();
+          //   const video = document.querySelector("#scanner-container video");
+          //   if (video && video.srcObject) {
+          //     const tracks = video.srcObject.getTracks();
+          //     tracks.forEach(t => t.stop());
+          //     video.srcObject = null;
+          //   }
+          //   scannerActive = false;
+          // }
+          location.reload()
+        }
+    
+        // === Bayar (Reset) ===
+        bayarBtn.addEventListener("click", () => {
+          if (daftarBarang.length === 0) return alert("Belum ada barang!");
+          alert("Transaksi berhasil!\nTotal: " + totalHargaEl.textContent);
+          daftarBarang = [];
+          renderTabel();
+        });
+    
+        lucide.createIcons();
+      </script>
     </main>
+    
+    
   </div>
 
   <script>

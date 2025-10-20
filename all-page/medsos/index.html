@@ -23,7 +23,7 @@
       "hris-penilaian": { title: "HRIS Penilaian", icon: "star", desc: "Penilaian kinerja karyawan berbasis AI dan HRIS.", keywords: "penilaian HRIS, AI HR, evaluasi kinerja" },
       "inventory": { title: "Inventory", icon: "boxes", desc: "Sistem manajemen stok dan barang dengan data real-time.", keywords: "inventory, stok barang, warehouse" },
       "jasa-kirim": { title: "Jasa Kirim", icon: "truck", desc: "Kelola pengiriman barang dan jasa logistik dengan mudah.", keywords: "jasa kirim, logistik, pengiriman barang" },
-      "kasir": { title: "Kasir", icon: "shopping-cart", desc: "Sistem kasir digital dengan fitur laporan penjualan otomatis.", keywords: "kasir digital, POS, sistem kasir" },
+      
       "market": { title: "Market", icon: "store", desc: "Platform pasar digital untuk pengelolaan produk dan penjualan.", keywords: "marketplace, jual beli, e-commerce" },
       "medsos": { title: "Medsos", icon: "share-2", desc: "Manajemen media sosial bisnis dalam satu dashboard terpadu.", keywords: "medsos, social media, manajemen konten" },
       "meeting": { title: "Meeting", icon: "calendar", desc: "Sistem rapat digital dengan integrasi kalender dan peserta.", keywords: "meeting, jadwal rapat, online meeting" },
@@ -109,12 +109,234 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="flex-1 flex flex-col items-center justify-start p-6 bg-gradient-to-br from-gray-50 to-indigo-50">
+      <div class="w-full max-w-2xl">
+        <header class="flex items-center justify-between mb-4">
+          <h1 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+            <i data-lucide="x" class="text-sky-500 w-6 h-6"></i> CUK
+          </h1>
+          <small class="text-sm text-gray-500">@cuk-prodev</small>
+        </header>
+    
+        <!-- Compose box -->
+        <div class="bg-white rounded-2xl shadow p-4 mb-4">
+          <div class="flex gap-3">
+            <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">CP</div>
+            <div class="flex-1">
+              <textarea id="composeInput" rows="3" maxlength="280" placeholder="Apa yang sedang terjadi?" class="w-full resize-none border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200"></textarea>
+              
+              <!-- preview image -->
+              <div id="imagePreview" class="mt-3 hidden">
+                <img id="previewImg" src="" alt="preview" class="rounded-xl max-h-80 object-cover border border-gray-200"/>
+                <button id="removeImage" class="mt-2 text-sm text-red-500 hover:underline">Hapus gambar</button>
+              </div>
+    
+              <div class="mt-3 flex items-center justify-between">
+                <div class="flex items-center gap-3 text-sm text-gray-500">
+                  <label for="imageInput" class="flex items-center gap-2 cursor-pointer hover:text-sky-600">
+                    <i data-lucide="image"></i> Gambar
+                  </label>
+                  <input type="file" id="imageInput" accept="image/*" class="hidden">
+                </div>
+                <div class="flex items-center gap-3">
+                  <span id="charCount" class="text-sm text-gray-400">0/280</span>
+                  <button id="postBtn" class="bg-sky-600 hover:bg-sky-700 text-white px-4 py-1.5 rounded-full disabled:opacity-60" disabled>Posting</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Timeline list -->
+        <div id="timeline" class="space-y-4"></div>
+    
+        <div class="flex justify-center mt-6">
+          <button id="loadMore" class="bg-white border border-gray-200 px-4 py-2 rounded-full hover:shadow">Muat lebih banyak</button>
+        </div>
+      </div>
+    
+      <script>
+        function genId() {
+          return 'p_' + Math.random().toString(36).slice(2,9);
+        }
+      
+        function timeAgo(ts) {
+          const s = Math.floor((Date.now() - ts) / 1000);
+          if (s < 5) return 'baru saja';
+          if (s < 60) return s + 's';
+          const m = Math.floor(s / 60);
+          if (m < 60) return m + 'm';
+          const h = Math.floor(m / 60);
+          if (h < 24) return h + 'h';
+          return Math.floor(h / 24) + 'd';
+        }
+      
+        // === POST DEFAULT (orang lain)
+        const defaultPosts = [
+          {
+            id: genId(),
+            name: "Eko Prasetyo",
+            handle: "@eko_dev",
+            text: "Baru selesai ngoding AI Dashboard. 🔥 Tailwind emang gila sih!",
+            createdAt: Date.now() - 1000 * 60 * 30,
+            likes: 12,
+            image: ""
+          },
+          {
+            id: genId(),
+            name: "Cuk Prodev",
+            handle: "@cukprodev",
+            text: "Proyek Kasir Digital sudah bisa scan barcode dan input manual 💳",
+            createdAt: Date.now() - 1000 * 60 * 60,
+            likes: 23,
+            image: ""
+          },
+          {
+            id: genId(),
+            name: "AI Bot",
+            handle: "@aibot",
+            text: "Prediksi penjualan minggu depan naik 15% 📈",
+            createdAt: Date.now() - 1000 * 60 * 60 * 2,
+            likes: 8,
+            image: ""
+          }
+        ];
+      
+        // === SIMPAN DI LOCALSTORAGE
+        function savePosts() {
+          localStorage.setItem("userPosts", JSON.stringify(userPosts));
+        }
+      
+        function loadPosts() {
+          try {
+            return JSON.parse(localStorage.getItem("userPosts")) || [];
+          } catch {
+            return [];
+          }
+        }
+      
+        let userPosts = loadPosts();
+        let renderLimit = 5;
+      
+        function escapeHtml(unsafe) {
+          return String(unsafe)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+        }
+      
+        function renderTimeline() {
+          const allPosts = [...userPosts, ...defaultPosts];
+          const timeline = document.getElementById('timeline');
+          const toRender = allPosts.slice(0, renderLimit);
+          timeline.innerHTML = toRender.map(post => `
+            <article class="bg-white p-4 rounded-2xl shadow-sm hover:shadow transition">
+              <div class="flex gap-3">
+                <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-700">${post.name[0]}</div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="font-semibold text-gray-800">${escapeHtml(post.name)}</span>
+                      <span class="text-sm text-gray-500">${escapeHtml(post.handle)}</span>
+                      <span class="text-sm text-gray-400">· ${timeAgo(post.createdAt)}</span>
+                    </div>
+                  </div>
+      
+                  <p class="mt-2 text-gray-700">${escapeHtml(post.text)}</p>
+                  ${post.image ? `<img src="${post.image}" alt="post image" class="mt-3 rounded-xl border border-gray-200 max-h-96 object-cover w-full" />` : ''}
+      
+                  <div class="mt-3 flex items-center gap-6 text-sm text-gray-500">
+                    <button class="flex items-center gap-2 hover:text-blue-600" onclick="onLike('${post.id}')">
+                      <i data-lucide="heart"></i> <span id="l_${post.id}">${post.likes}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
+          `).join('');
+          lucide.createIcons();
+        }
+      
+        function onLike(id) {
+          const all = [...userPosts, ...defaultPosts];
+          const idx = all.findIndex(p => p.id === id);
+          if (idx === -1) return;
+          all[idx].likes++;
+          document.getElementById('l_' + id).textContent = all[idx].likes;
+        }
+      
+        // === COMPOSE AREA
+        const composeInput = document.getElementById('composeInput');
+        const postBtn = document.getElementById('postBtn');
+        const charCount = document.getElementById('charCount');
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
+        const removeImage = document.getElementById('removeImage');
+      
+        let imageData = null;
+      
+        imageInput.addEventListener('change', (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+              imageData = ev.target.result;
+              previewImg.src = imageData;
+              imagePreview.classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+      
+        removeImage.addEventListener('click', () => {
+          imageData = null;
+          previewImg.src = '';
+          imageInput.value = '';
+          imagePreview.classList.add('hidden');
+        });
+      
+        composeInput.addEventListener('input', () => {
+          charCount.textContent = `${composeInput.value.length}/280`;
+          postBtn.disabled = composeInput.value.trim().length === 0 && !imageData;
+        });
+      
+        postBtn.addEventListener('click', () => {
+          const text = composeInput.value.trim();
+          if (!text && !imageData) return;
+          const newPost = {
+            id: genId(),
+            name: "Kamu",
+            handle: "@kamu",
+            text,
+            createdAt: Date.now(),
+            likes: 0,
+            image: imageData
+          };
+          userPosts.unshift(newPost);
+          savePosts();
+          composeInput.value = '';
+          charCount.textContent = '0/280';
+          imageData = null;
+          imageInput.value = '';
+          imagePreview.classList.add('hidden');
+          postBtn.disabled = true;
+          renderTimeline();
+        });
+      
+        document.getElementById('loadMore').addEventListener('click', () => {
+          renderLimit += 3;
+          renderTimeline();
+        });
+      
+        renderTimeline();
+      </script>
+      
+      <script>lucide.createIcons();</script>
     </main>
+    
   </div>
 
   <script>
