@@ -169,6 +169,7 @@ body {
 </style>
 
 <script src="https://kit.fontawesome.com/a2d9a64c1a.js" crossorigin="anonymous"></script>
+
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -332,20 +333,20 @@ document.addEventListener("click", (e) => {
     const menuBtn = document.getElementById("menu-btn");
     const navMenu = document.getElementById("nav-menu");
     
-    menuBtn.addEventListener("click", () => {
-        navMenu.classList.toggle("hidden");
-        navMenu.classList.toggle("flex");
-        navMenu.classList.toggle("flex-col");
-        navMenu.classList.toggle("absolute");
-        navMenu.classList.toggle("top-16");
-        navMenu.classList.toggle("left-0");
-        navMenu.classList.toggle("w-full");
-        navMenu.classList.toggle("bg-[#06122b]/95");
-        navMenu.classList.toggle("p-4");
-        navMenu.classList.toggle("gap-4");
-        navMenu.classList.toggle("border-t");
-        navMenu.classList.toggle("border-white/10");
-    });
+    // menuBtn.addEventListener("click", () => {
+    //     navMenu.classList.toggle("hidden");
+    //     navMenu.classList.toggle("flex");
+    //     navMenu.classList.toggle("flex-col");
+    //     navMenu.classList.toggle("absolute");
+    //     navMenu.classList.toggle("top-16");
+    //     navMenu.classList.toggle("left-0");
+    //     navMenu.classList.toggle("w-full");
+    //     navMenu.classList.toggle("bg-[#06122b]/95");
+    //     navMenu.classList.toggle("p-4");
+    //     navMenu.classList.toggle("gap-4");
+    //     navMenu.classList.toggle("border-t");
+    //     navMenu.classList.toggle("border-white/10");
+    // });
     </script>
     
 <!-- HERO (Luxury Modern Version) -->
@@ -499,7 +500,12 @@ document.addEventListener("click", (e) => {
     </div>
   </section>
   <script src="https://kit.fontawesome.com/a2d9a64c1a.js" crossorigin="anonymous"></script>
-  
+  <!-- <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  /> -->
+
+
 
   <!-- VIDEO -->
   <section class="max-w-7xl mx-auto px-6 py-12">
@@ -725,6 +731,102 @@ document.addEventListener("click", (e) => {
       </div>
     </div>
   </section>
+
+<!-- === TECHNOLOGY STACK === -->
+<section id="technology" class="relative max-w-7xl mx-auto px-6 py-16 text-center bg-gradient-to-b from-slate-900 to-slate-800">
+  <h2 class="text-3xl font-bold text-white mb-10">Our Core Technology</h2>
+
+  <!-- Panah kiri -->
+  <button id="techPrevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-lg transition" style="margin-top: 25px;">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+
+  <!-- Container scroll -->
+  <div id="techScrollBox" class="flex overflow-x-auto gap-6 pb-6 snap-x snap-mandatory scrollbar-hide scroll-smooth">
+    <!-- Item -->
+    <div class="min-w-[45%] sm:min-w-[22%] snap-center bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-lg hover:bg-white/20 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="w-14 h-14">
+    </div>
+
+    <div class="min-w-[45%] sm:min-w-[22%] snap-center bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-lg hover:bg-white/20 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" class="w-14 h-14">
+    </div>
+
+    <div class="min-w-[45%] sm:min-w-[22%] snap-center bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-lg hover:bg-white/20 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-14 h-14">
+    </div>
+
+    <div class="min-w-[45%] sm:min-w-[22%] snap-center bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-lg hover:bg-white/20 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" class="w-14 h-14 invert">
+    </div>
+
+    <div class="min-w-[45%] sm:min-w-[22%] snap-center bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-lg hover:bg-white/20 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-14 h-14">
+    </div>
+
+    <div class="min-w-[45%] sm:min-w-[22%] snap-center bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-lg hover:bg-white/20 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" class="w-14 h-14 invert">
+    </div>
+
+    <div class="min-w-[45%] sm:min-w-[22%] snap-center bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-lg hover:bg-white/20 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" class="w-14 h-14">
+    </div>
+
+    <div class="min-w-[45%] sm:min-w-[22%] snap-center bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-lg hover:bg-white/20 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-14 h-14">
+    </div>
+
+    <div class="min-w-[45%] sm:min-w-[22%] snap-center bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-lg hover:bg-white/20 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-14 h-14">
+    </div>
+
+    <div class="min-w-[45%] sm:min-w-[22%] snap-center bg-white/10 backdrop-blur-xl rounded-2xl p-5 shadow-lg hover:bg-white/20 transition-transform duration-300 hover:scale-105 flex items-center justify-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-14 h-14">
+    </div>
+  </div>
+
+  <!-- Panah kanan -->
+  <button id="techNextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-lg transition" style="margin-top: 25px;">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</section>
+
+<!-- Hilangkan scrollbar -->
+<style>
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<script>
+  const techScrollBox = document.getElementById("techScrollBox");
+  const techNextBtn = document.getElementById("techNextBtn");
+  const techPrevBtn = document.getElementById("techPrevBtn");
+
+  function techScrollNext() {
+    techScrollBox.scrollBy({ left: techScrollBox.offsetWidth / 2, behavior: "smooth" });
+  }
+  function techScrollPrev() {
+    techScrollBox.scrollBy({ left: -techScrollBox.offsetWidth / 2, behavior: "smooth" });
+  }
+
+  techNextBtn.addEventListener("click", techScrollNext);
+  techPrevBtn.addEventListener("click", techScrollPrev);
+
+  // Auto slide looping
+  setInterval(() => {
+    if (techScrollBox.scrollLeft + techScrollBox.offsetWidth >= techScrollBox.scrollWidth - 10) {
+      techScrollBox.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      techScrollNext();
+    }
+  }, 3000);
+</script>
+
+
   
   <!-- CONTACT -->
 <section id="contact" class="max-w-7xl mx-auto px-6 py-12">
