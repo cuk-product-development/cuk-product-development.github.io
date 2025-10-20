@@ -109,12 +109,308 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="flex-1 flex flex-col items-center justify-start bg-gray-900 text-gray-100 min-h-screen p-6">
+      <div class="w-full max-w-6xl">
+        <!-- Header -->
+        <header class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <div class="bg-indigo-600 rounded-full w-10 h-10 flex items-center justify-center font-bold">MR</div>
+            <div>
+              <h1 class="text-lg font-semibold">Meeting Room — Ruang 1</h1>
+              <p class="text-sm text-gray-400">Host: CUK-Prodev · 12 peserta</p>
+            </div>
+          </div>
+    
+          <div class="flex items-center gap-3">
+            <button id="toggleSidebarBtn" class="bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-md flex items-center gap-2">
+              <i data-lucide="users"></i> Peserta/Chat
+            </button>
+            <button id="leaveBtn" class="bg-red-600 hover:bg-red-700 px-3 py-2 rounded-md flex items-center gap-2">
+              <i data-lucide="phone-off"></i> Keluar
+            </button>
+          </div>
+        </header>
+    
+        <!-- Main grid + sidebar -->
+        <div class="flex gap-4">
+          <!-- Video area -->
+          <section id="videoArea" class="flex-1 bg-gray-800 rounded-2xl p-4">
+            <div id="videosGrid" class="grid gap-3 justify-center items-center">
+              <!-- Video tiles inserted here -->
+            </div>
+    
+            <!-- Toolbar -->
+            <div class="mt-4 bg-gray-900/50 backdrop-blur-sm p-3 rounded-lg flex items-center justify-center gap-4">
+              <button id="micBtn" class="control-btn bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md flex items-center gap-2">
+                <i data-lucide="mic"></i> <span id="micLabel">Mic On</span>
+              </button>
+    
+              <button id="camBtn" class="control-btn bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md flex items-center gap-2">
+                <i data-lucide="video"></i> <span id="camLabel">Camera On</span>
+              </button>
+    
+              <button id="shareBtn" class="control-btn bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md flex items-center gap-2">
+                <i data-lucide="monitor"></i> Share Screen
+              </button>
+    
+              <button id="toggleGridBtn" class="control-btn bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md flex items-center gap-2">
+                <i data-lucide="grid"></i> Grid
+              </button>
+            </div>
+          </section>
+    
+          <!-- Sidebar -->
+          <aside id="sidebar" class="w-80 bg-gray-800 rounded-2xl p-4 hidden flex-col">
+            <div class="mb-3 flex items-center justify-between">
+              <h3 class="font-semibold">Peserta (12)</h3>
+              <button id="closeSidebarSmall" class="text-gray-400 hover:text-white"><i data-lucide="x"></i></button>
+            </div>
+    
+            <div id="participants" class="space-y-2 overflow-auto max-h-60 mb-4">
+              <!-- participant list -->
+            </div>
+    
+            <div class="border-t border-gray-700 pt-3">
+              <h4 class="text-sm text-gray-300 mb-2">Chat</h4>
+              <div id="chatBox" class="bg-gray-900/40 rounded-md p-3 text-sm space-y-2 overflow-auto max-h-48 mb-3"></div>
+              <div class="flex gap-2">
+                <input id="chatInput" type="text" placeholder="Ketik pesan..." class="flex-1 bg-gray-900 border border-gray-700 rounded-md px-3 py-2 text-sm" />
+                <button id="sendChat" class="bg-indigo-600 hover:bg-indigo-700 px-3 py-2 rounded-md">Kirim</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    
+      <script>
+        // ====== Config / Dummy participants ======
+        const dummyParticipants = [
+          { id: 'u1', name: 'Eko Prasetyo', muted: false },
+          { id: 'u2', name: 'Cuk Prodev', muted: true },
+          { id: 'u3', name: 'Siti', muted: false },
+          { id: 'u4', name: 'Budi', muted: true },
+          { id: 'u5', name: 'Aulia', muted: false },
+          { id: 'u6', name: 'Rian', muted: false },
+          { id: 'u7', name: 'Nina', muted: true },
+          { id: 'u8', name: 'Dedi', muted: false },
+          { id: 'u9', name: 'Tina', muted: false },
+          { id: 'u10', name: 'Admin', muted: false },
+          { id: 'u11', name: 'Guest1', muted: true },
+          { id: 'u12', name: 'Guest2', muted: true }
+        ];
+    
+        const videosGrid = document.getElementById('videosGrid');
+        const participantsEl = document.getElementById('participants');
+        const chatBox = document.getElementById('chatBox');
+        const chatInput = document.getElementById('chatInput');
+        const sendChat = document.getElementById('sendChat');
+    
+        let localStream = null;
+        let micOn = true;
+        let camOn = true;
+        let screenSharing = false;
+    
+        // ====== Layout helpers ======
+        function updateGridColumns(count) {
+          // simple responsive grid sizing similar to Zoom
+          let cols = 1;
+          if (count === 1) cols = 1;
+          else if (count === 2) cols = 2;
+          else if (count <= 4) cols = 2;
+          else if (count <= 9) cols = 3;
+          else cols = 4;
+          videosGrid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+        }
+    
+        // ====== Render dummy participants (tiles) ======
+        function renderTiles() {
+          // include local user as first tile (actual video)
+          const tiles = [];
+    
+          // local tile placeholder
+          tiles.push({ id: 'me', name: 'Kamu', isLocal: true });
+    
+          // other participants (dummy)
+          dummyParticipants.forEach(p => tiles.push({ id: p.id, name: p.name, muted: p.muted }));
+    
+          videosGrid.innerHTML = tiles.map(t => `
+            <div class="relative bg-gray-700 rounded-lg overflow-hidden flex flex-col items-center justify-center p-2" id="tile_${t.id}">
+              <div class="w-full h-48 bg-black flex items-center justify-center ${t.isLocal ? '' : 'opacity-90'}">
+                ${t.isLocal ? `<video autoplay muted playsinline id="localVideo" class="w-full h-full object-cover"></video>` 
+                            : `<div class="text-center px-3">
+                                 <div class="w-16 h-16 rounded-full bg-gray-600 mx-auto flex items-center justify-center text-xl font-semibold">${t.name.slice(0,1)}</div>
+                                 <div class="mt-2 text-sm">${t.name}</div>
+                               </div>`}
+              </div>
+              <div class="w-full flex items-center justify-between mt-2 px-2">
+                <div class="text-sm text-gray-200">${t.name}${t.isLocal ? ' (Anda)' : ''}</div>
+                <div class="text-xs text-gray-400">${t.isLocal ? '' : (Math.random() > 0.7 ? 'Speaker' : '')}</div>
+              </div>
+            </div>
+          `).join('');
+    
+          updateGridColumns(tiles.length);
+        }
+    
+        // ====== Participants list render ======
+        function renderParticipantsList() {
+          participantsEl.innerHTML = dummyParticipants.map(p => `
+            <div class="flex items-center justify-between bg-gray-900/20 px-3 py-2 rounded-md">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">${p.name.slice(0,1)}</div>
+                <div>
+                  <div class="text-sm font-medium">${p.name}</div>
+                  <div class="text-xs text-gray-400">${p.muted ? 'Muted' : 'Online'}</div>
+                </div>
+              </div>
+              <div class="text-sm text-gray-400">${p.muted ? '<i data-lucide=\"mic-off\"></i>' : '<i data-lucide=\"mic\"></i>'}</div>
+            </div>
+          `).join('');
+          lucide.createIcons();
+        }
+    
+        // ====== Init local camera ======
+        async function startLocalCamera() {
+          try {
+            localStream = await navigator.mediaDevices.getUserMedia({ video: { width: { ideal: 1280 } }, audio: true });
+            const v = document.getElementById('localVideo');
+            if (v) v.srcObject = localStream;
+            micOn = true; camOn = true;
+            updateControls();
+          } catch (err) {
+            console.warn('Camera access denied or not available:', err);
+            // still render tiles without local video
+          }
+        }
+    
+        // ====== Control handlers ======
+        const micBtn = document.getElementById('micBtn');
+        const camBtn = document.getElementById('camBtn');
+        const shareBtn = document.getElementById('shareBtn');
+        const leaveBtn = document.getElementById('leaveBtn');
+        const toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
+        const meetingSidebar = document.getElementById('sidebar');
+        const closeSidebarSmall = document.getElementById('closeSidebarSmall');
+
+        const toggleGridBtn = document.getElementById('toggleGridBtn');
+    
+        function updateControls() {
+          micBtn.innerHTML = `<i data-lucide="${micOn ? 'mic' : 'mic-off'}"></i> <span id="micLabel">${micOn ? 'Mic On' : 'Mic Off'}</span>`;
+          camBtn.innerHTML = `<i data-lucide="${camOn ? 'video' : 'video-off'}"></i> <span id="camLabel">${camOn ? 'Camera On' : 'Camera Off'}</span>`;
+          lucide.createIcons();
+          // toggle actual tracks
+          if (localStream) {
+            localStream.getAudioTracks().forEach(t => t.enabled = micOn);
+            localStream.getVideoTracks().forEach(t => t.enabled = camOn);
+          }
+        }
+    
+        micBtn.addEventListener('click', () => {
+          micOn = !micOn;
+          updateControls();
+        });
+    
+        camBtn.addEventListener('click', () => {
+          camOn = !camOn;
+          updateControls();
+          // if camera turned off visually hide local video element
+          const localV = document.getElementById('localVideo');
+          if (localV) localV.style.display = camOn ? 'block' : 'none';
+        });
+    
+        shareBtn.addEventListener('click', async () => {
+          if (screenSharing) {
+            // stop screen share
+            screenSharing = false;
+            // no persistent stream stored here in demo
+            shareBtn.innerHTML = `<i data-lucide="monitor"></i> Share Screen`;
+            lucide.createIcons();
+            alert('Berhenti berbagi layar (demo).');
+            return;
+          }
+          try {
+            const ds = await navigator.mediaDevices.getDisplayMedia({ video: true });
+            screenSharing = true;
+            shareBtn.innerHTML = `<i data-lucide="monitor-off"></i> Stop Share`;
+            lucide.createIcons();
+            // demo: show shared stream in local tile
+            const localV = document.getElementById('localVideo');
+            if (localV) localV.srcObject = ds;
+            ds.getVideoTracks()[0].addEventListener('ended', () => {
+              // restore camera after stop
+              screenSharing = false;
+              shareBtn.innerHTML = `<i data-lucide="monitor"></i> Share Screen`;
+              lucide.createIcons();
+              if (localStream && localV) localV.srcObject = localStream;
+            });
+          } catch (err) {
+            console.warn('Share screen canceled or not supported', err);
+          }
+        });
+    
+        leaveBtn.addEventListener('click', () => {
+          if (confirm('Keluar dari meeting?')) {
+            // stop local tracks
+            if (localStream) {
+              localStream.getTracks().forEach(t => t.stop());
+              localStream = null;
+            }
+            location.reload();
+          }
+        });
+    
+        toggleSidebarBtn.addEventListener('click', () => {
+          // sidebar.classList.toggle('hidden');
+          meetingSidebar.classList.toggle('hidden');
+        });
+        closeSidebarSmall.addEventListener('click', () => sidebar.classList.add('hidden'));
+    
+        toggleGridBtn.addEventListener('click', () => {
+          // simple switch between compact and roomy tiles
+          const current = videosGrid.style.gridAutoRows || '';
+          if (current === '1fr') {
+            videosGrid.style.gridAutoRows = '200px';
+          } else {
+            videosGrid.style.gridAutoRows = '1fr';
+          }
+        });
+    
+        // ====== Chat ======
+        sendChat.addEventListener('click', sendChatMessage);
+        chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendChatMessage(); });
+    
+        function sendChatMessage() {
+          const txt = chatInput.value.trim();
+          if (!txt) return;
+          const el = document.createElement('div');
+          el.className = 'text-sm bg-gray-900/30 px-3 py-2 rounded-md';
+          el.innerHTML = `<div class="text-xs text-gray-400">Anda • sekarang</div><div>${escapeHtml(txt)}</div>`;
+          chatBox.appendChild(el);
+          chatBox.scrollTop = chatBox.scrollHeight;
+          chatInput.value = '';
+        }
+    
+        // ====== Utility: escapeHtml ======
+        function escapeHtml(unsafe) {
+          return String(unsafe)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+        }
+    
+        // ====== Init render ======
+        renderTiles();
+        renderParticipantsList();
+        startLocalCamera();
+    
+        // ensure lucide icons present
+        lucide.createIcons();
+      </script>
     </main>
+    
+    
   </div>
 
   <script>

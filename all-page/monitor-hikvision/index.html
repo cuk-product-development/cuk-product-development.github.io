@@ -109,12 +109,121 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="flex flex-col md:flex-row gap-6 p-6 bg-gray-50 min-h-screen">
+
+      <!-- === SIDEBAR CAMERA LIST === -->
+      <aside id="hikSidebar" class="w-full md:w-64 bg-white rounded-2xl shadow-md p-4 border border-gray-100 overflow-y-auto">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-lg font-semibold text-gray-800">Daftar Kamera</h2>
+          <button id="closeHikSidebar" class="md:hidden text-gray-500 hover:text-black">
+            ✖
+          </button>
+        </div>
+        <ul id="cameraList" class="space-y-3">
+          <li class="flex items-center justify-between">
+            <span class="text-gray-700">Lobby Utama</span>
+            <span class="text-green-500 text-sm">Online</span>
+          </li>
+          <li class="flex items-center justify-between">
+            <span class="text-gray-700">Pintu Masuk</span>
+            <span class="text-green-500 text-sm">Online</span>
+          </li>
+          <li class="flex items-center justify-between">
+            <span class="text-gray-700">Parkiran</span>
+            <span class="text-red-500 text-sm">Offline</span>
+          </li>
+          <li class="flex items-center justify-between">
+            <span class="text-gray-700">Gudang</span>
+            <span class="text-green-500 text-sm">Online</span>
+          </li>
+        </ul>
+      </aside>
+    
+      <!-- === MAIN MONITORING === -->
+      <section class="flex-1 bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex flex-col">
+        <div class="flex justify-between items-center mb-4">
+          <h1 class="text-2xl font-semibold text-gray-800">Monitoring Hikvision</h1>
+          <button id="toggleHikSidebar" class="md:hidden px-3 py-2 bg-gray-100 rounded-lg text-gray-700 hover:bg-gray-200">
+            Kamera
+          </button>
+        </div>
+    
+        <!-- === LIVE FEED GRID === -->
+        <div id="cameraGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 flex-1">
+          <!-- Kamera 1 -->
+          <div class="relative bg-black rounded-xl overflow-hidden">
+            <video autoplay muted loop class="w-full h-full object-cover opacity-80">
+              <source src="https://cdn.pixabay.com/video/2020/03/30/35210-400056308_large.mp4" type="video/mp4" />
+            </video>
+            <div class="absolute bottom-2 left-2 bg-gray-900 text-white text-xs px-2 py-1 rounded">
+              Lobby Utama
+            </div>
+            <div class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">LIVE</div>
+          </div>
+    
+          <!-- Kamera 2 -->
+          <div class="relative bg-black rounded-xl overflow-hidden">
+            <video autoplay muted loop class="w-full h-full object-cover opacity-80">
+              <source src="https://cdn.pixabay.com/video/2020/04/06/35749-402822823_large.mp4" type="video/mp4" />
+            </video>
+            <div class="absolute bottom-2 left-2 bg-gray-900 text-white text-xs px-2 py-1 rounded">
+              Pintu Masuk
+            </div>
+            <div class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">LIVE</div>
+          </div>
+    
+          <!-- Kamera 3 -->
+          <div class="relative bg-black rounded-xl overflow-hidden" style="min-height: 150px;">
+            <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-800">
+              🚫 Offline
+            </div>
+            <div class="absolute bottom-2 left-2 bg-gray-900 text-white text-xs px-2 py-1 rounded">
+              Parkiran
+            </div>
+          </div>
+    
+          <!-- Kamera 4 -->
+          <div class="relative bg-black rounded-xl overflow-hidden">
+            <video autoplay muted loop class="w-full h-full object-cover opacity-80">
+              <source src="https://cdn.pixabay.com/video/2023/03/10/153055-809833626_large.mp4" type="video/mp4" />
+            </video>
+            <div class="absolute bottom-2 left-2 bg-gray-900 text-white text-xs px-2 py-1 rounded">
+              Gudang
+            </div>
+            <div class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">LIVE</div>
+          </div>
+        </div>
+    
+        <!-- === ACTION BAR === -->
+        <div class="mt-6 flex flex-wrap justify-center gap-4">
+          <button class="px-5 py-3 bg-gray-200 rounded-full hover:bg-gray-300 transition">🔁 Refresh</button>
+          <button class="px-5 py-3 bg-gray-200 rounded-full hover:bg-gray-300 transition">📸 Capture</button>
+          <button class="px-5 py-3 bg-gray-200 rounded-full hover:bg-gray-300 transition">🎞 Rekam</button>
+          <button class="px-5 py-3 bg-red-500 text-white rounded-full hover:bg-red-600 transition">🚪 Keluar</button>
+        </div>
+      </section>
+    
+      <script>
+        // === Sidebar Toggle Hikvision ===
+        const hikSidebar = document.getElementById("hikSidebar");
+        const toggleHikSidebar = document.getElementById("toggleHikSidebar");
+        const closeHikSidebar = document.getElementById("closeHikSidebar");
+    
+        toggleHikSidebar?.addEventListener("click", () => {
+          hikSidebar.classList.toggle("hidden");
+        });
+    
+        closeHikSidebar?.addEventListener("click", () => {
+          hikSidebar.classList.add("hidden");
+        });
+    
+        // === Simulasi Tombol Refresh ===
+        document.querySelector("button:contains('Refresh')")?.addEventListener("click", () => {
+          location.reload();
+        });
+      </script>
     </main>
+    
   </div>
 
   <script>
