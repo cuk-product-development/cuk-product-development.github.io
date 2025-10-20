@@ -32,7 +32,7 @@
       "parkir": { title: "Parkir", icon: "car", desc: "Sistem parkir digital untuk manajemen kendaraan otomatis.", keywords: "parkir, manajemen kendaraan, parkir digital" },
       "rm": { title: "RM", icon: "briefcase", desc: "Relationship Management untuk pelanggan & bisnis.", keywords: "RM, customer management, CRM" },
       "sales": { title: "Sales", icon: "bar-chart-3", desc: "Kelola data penjualan dan laporan performa bisnis.", keywords: "sales, penjualan, laporan bisnis" },
-      "server": { title: "Server", icon: "server", desc: "Manajemen server dan sistem jaringan terpusat.", keywords: "server, network, management" },
+      
       "Sustainability-Dashboard": { title: "Sustainability", icon: "leaf", desc: "Pantau data keberlanjutan bisnis dan energi hijau.", keywords: "sustainability, lingkungan, green tech" },
       "toko": { title: "Toko", icon: "shopping-bag", desc: "Kelola toko fisik dan digital dengan dashboard modern.", keywords: "toko, e-commerce, retail" },
       "transaksi-bank": { title: "Transaksi Bank", icon: "credit-card", desc: "Kelola transaksi bank dan laporan keuangan otomatis.", keywords: "transaksi bank, keuangan, finance" },
@@ -109,12 +109,131 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="flex flex-col gap-6 p-6 bg-gray-50 min-h-screen">
+      <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-semibold text-gray-800">Kasir Parkir</h1>
+        <button id="addVehicleBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+          ➕ Tambah Kendaraan
+        </button>
+      </div>
+    
+      <!-- STATUS TOTAL -->
+      <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-2xl shadow-md text-center">
+          <p class="text-gray-500 text-sm">Mobil Parkir</p>
+          <h2 id="countMobil" class="text-2xl font-bold text-indigo-600">0</h2>
+        </div>
+        <div class="bg-white p-5 rounded-2xl shadow-md text-center">
+          <p class="text-gray-500 text-sm">Motor Parkir</p>
+          <h2 id="countMotor" class="text-2xl font-bold text-indigo-600">0</h2>
+        </div>
+        <div class="bg-white p-5 rounded-2xl shadow-md text-center">
+          <p class="text-gray-500 text-sm">Pendapatan Hari Ini</p>
+          <h2 id="income" class="text-2xl font-bold text-green-600">Rp 0</h2>
+        </div>
+        <div class="bg-white p-5 rounded-2xl shadow-md text-center">
+          <p class="text-gray-500 text-sm">Total Check-Out</p>
+          <h2 id="checkoutCount" class="text-2xl font-bold text-gray-800">0</h2>
+        </div>
+      </section>
+    
+      <!-- CARD KENDARAAN -->
+      <section id="vehicleList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></section>
+    
+      <script>
+        // ==== DATA DUMMY ====
+        const vehicles = [
+          { id: 1, jenis: "Mobil", plat: "B 1234 ABC", waktuMasuk: new Date(), status: "Masuk" },
+          { id: 2, jenis: "Motor", plat: "D 9876 XYZ", waktuMasuk: new Date(), status: "Masuk" },
+        ];
+    
+        let totalIncome = 0;
+        let checkoutTotal = 0;
+    
+        const tarif = { Mobil: 5000, Motor: 3000 };
+        const vehicleList = document.getElementById("vehicleList");
+    
+        function renderCards() {
+          vehicleList.innerHTML = "";
+          vehicles.forEach((v) => {
+            const durasi =
+              v.status === "Masuk"
+                ? Math.floor((new Date() - v.waktuMasuk) / 60000)
+                : Math.floor((v.waktuKeluar - v.waktuMasuk) / 60000);
+            const biaya = v.status === "Keluar" ? `Rp ${v.biaya.toLocaleString()}` : "-";
+            vehicleList.innerHTML += `
+              <div class="bg-white p-5 rounded-2xl shadow-md border border-gray-100 flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-semibold ${
+                      v.jenis === "Mobil" ? "text-blue-600" : "text-purple-600"
+                    }">${v.jenis}</span>
+                    <span class="text-xs ${
+                      v.status === "Masuk" ? "bg-green-100 text-green-700" : "bg-gray-200 text-gray-700"
+                    } px-2 py-1 rounded-full">${v.status}</span>
+                  </div>
+                  <p class="text-lg font-bold text-gray-800">${v.plat}</p>
+                  <p class="text-gray-500 text-sm mt-1">Masuk: ${v.waktuMasuk.toLocaleTimeString()}</p>
+                  <p class="text-gray-500 text-sm">Durasi: ${durasi} menit</p>
+                  <p class="text-gray-700 text-sm font-medium mt-1">Biaya: ${biaya}</p>
+                </div>
+                <div class="mt-3 flex gap-2">
+                  ${
+                    v.status === "Masuk"
+                      ? `<button onclick="checkout(${v.id})" class="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg">Check-Out</button>`
+                      : `<button disabled class="flex-1 bg-gray-300 text-gray-600 py-2 rounded-lg">Selesai</button>`
+                  }
+                </div>
+              </div>
+            `;
+          });
+    
+          updateSummary();
+        }
+    
+        function updateSummary() {
+          const mobilCount = vehicles.filter((v) => v.jenis === "Mobil" && v.status === "Masuk").length;
+          const motorCount = vehicles.filter((v) => v.jenis === "Motor" && v.status === "Masuk").length;
+          document.getElementById("countMobil").innerText = mobilCount;
+          document.getElementById("countMotor").innerText = motorCount;
+          document.getElementById("income").innerText = "Rp " + totalIncome.toLocaleString();
+          document.getElementById("checkoutCount").innerText = checkoutTotal;
+        }
+    
+        function checkout(id) {
+          const v = vehicles.find((x) => x.id === id);
+          if (v && v.status === "Masuk") {
+            v.status = "Keluar";
+            v.waktuKeluar = new Date();
+            const durasi = Math.ceil((v.waktuKeluar - v.waktuMasuk) / 60000);
+            v.biaya = tarif[v.jenis] * Math.max(1, Math.ceil(durasi / 60));
+            totalIncome += v.biaya;
+            checkoutTotal++;
+            renderCards();
+          }
+        }
+    
+        // Tambah kendaraan manual
+        document.getElementById("addVehicleBtn").addEventListener("click", () => {
+          const jenis = prompt("Jenis kendaraan (Mobil/Motor):");
+          const plat = prompt("Masukkan plat nomor:");
+          if (!jenis || !plat) return;
+          vehicles.push({
+            id: vehicles.length + 1,
+            jenis: jenis.charAt(0).toUpperCase() + jenis.slice(1).toLowerCase(),
+            plat: plat.toUpperCase(),
+            waktuMasuk: new Date(),
+            status: "Masuk",
+          });
+          renderCards();
+        });
+    
+        // Render awal
+        renderCards();
+        setInterval(renderCards, 60000); // update durasi setiap 1 menit
+      </script>
     </main>
+    
   </div>
 
   <script>

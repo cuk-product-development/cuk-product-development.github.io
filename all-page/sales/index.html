@@ -32,7 +32,7 @@
       "parkir": { title: "Parkir", icon: "car", desc: "Sistem parkir digital untuk manajemen kendaraan otomatis.", keywords: "parkir, manajemen kendaraan, parkir digital" },
       "rm": { title: "RM", icon: "briefcase", desc: "Relationship Management untuk pelanggan & bisnis.", keywords: "RM, customer management, CRM" },
       "sales": { title: "Sales", icon: "bar-chart-3", desc: "Kelola data penjualan dan laporan performa bisnis.", keywords: "sales, penjualan, laporan bisnis" },
-      "server": { title: "Server", icon: "server", desc: "Manajemen server dan sistem jaringan terpusat.", keywords: "server, network, management" },
+      
       "Sustainability-Dashboard": { title: "Sustainability", icon: "leaf", desc: "Pantau data keberlanjutan bisnis dan energi hijau.", keywords: "sustainability, lingkungan, green tech" },
       "toko": { title: "Toko", icon: "shopping-bag", desc: "Kelola toko fisik dan digital dengan dashboard modern.", keywords: "toko, e-commerce, retail" },
       "transaksi-bank": { title: "Transaksi Bank", icon: "credit-card", desc: "Kelola transaksi bank dan laporan keuangan otomatis.", keywords: "transaksi bank, keuangan, finance" },
@@ -109,12 +109,135 @@
       </div>
     </header>
 
-    <main class="flex-1 flex flex-col items-center text-center fade-in" style="margin: auto;margin-top: 100px;max-width: 300px;">
-      <i data-lucide="settings" class="w-16 h-16 text-indigo-500 animate-spin mb-4"></i>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-2">Halaman dalam Perawatan</h2>
-      <p class="text-gray-500">Kami sedang melakukan pembaruan sistem. Silakan kembali lagi nanti.</p>
-      <a href="../../" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg mt-4">Kembali ke halaman utama</a>
+    <main class="p-6 bg-white min-h-screen">
+      <h1 class="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <i data-lucide="bar-chart-3" class="w-7 h-7 text-indigo-600"></i>
+        Dashboard Penjualan & AI Rekomendasi
+      </h1>
+    
+      <!-- === STATISTIK RINGKAS === -->
+      <section class="grid grid-cols-2 sm:grid-cols-4 gap-5 mb-10">
+        <div class="p-5 border rounded-2xl bg-gray-50 shadow-sm flex flex-col items-start">
+          <i data-lucide="shopping-bag" class="w-6 h-6 text-green-600 mb-2"></i>
+          <p class="text-gray-500 text-sm">Total Penjualan</p>
+          <h2 class="text-2xl font-bold text-gray-800">Rp 85.450.000</h2>
+        </div>
+        <div class="p-5 border rounded-2xl bg-gray-50 shadow-sm flex flex-col items-start">
+          <i data-lucide="users" class="w-6 h-6 text-blue-600 mb-2"></i>
+          <p class="text-gray-500 text-sm">Total Pelanggan</p>
+          <h2 class="text-2xl font-bold text-gray-800">1.243</h2>
+        </div>
+        <div class="p-5 border rounded-2xl bg-gray-50 shadow-sm flex flex-col items-start">
+          <i data-lucide="trending-up" class="w-6 h-6 text-yellow-600 mb-2"></i>
+          <p class="text-gray-500 text-sm">Pertumbuhan</p>
+          <h2 class="text-2xl font-bold text-gray-800">+18%</h2>
+        </div>
+        <div class="p-5 border rounded-2xl bg-gray-50 shadow-sm flex flex-col items-start">
+          <i data-lucide="dollar-sign" class="w-6 h-6 text-purple-600 mb-2"></i>
+          <p class="text-gray-500 text-sm">Keuntungan Bulan Ini</p>
+          <h2 class="text-2xl font-bold text-gray-800">Rp 21.300.000</h2>
+        </div>
+      </section>
+    
+      <!-- === GRAFIK PENJUALAN === -->
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          <i data-lucide="activity" class="w-5 h-5 text-indigo-600"></i>
+          Statistik Penjualan
+        </h2>
+        <canvas id="salesChart" class="w-full h-64 bg-gray-50 p-3 rounded-2xl border"></canvas>
+      </section>
+    
+      <!-- === PRODUK TERLARIS === -->
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          <i data-lucide="star" class="w-5 h-5 text-yellow-500"></i>
+          Produk Terlaris
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-5">
+          <div class="p-4 bg-gray-50 border rounded-xl shadow-sm flex flex-col items-center">
+            <i data-lucide="coffee" class="w-8 h-8 text-brown-600 mb-2"></i>
+            <p class="text-gray-800 font-medium">Kopi Hitam</p>
+            <p class="text-gray-500 text-sm">1.230 Terjual</p>
+          </div>
+          <div class="p-4 bg-gray-50 border rounded-xl shadow-sm flex flex-col items-center">
+            <i data-lucide="drumstick" class="w-8 h-8 text-orange-600 mb-2"></i>
+            <p class="text-gray-800 font-medium">Ayam Bakar</p>
+            <p class="text-gray-500 text-sm">980 Terjual</p>
+          </div>
+          <div class="p-4 bg-gray-50 border rounded-xl shadow-sm flex flex-col items-center">
+            <i data-lucide="cup-soda" class="w-8 h-8 text-cyan-600 mb-2"></i>
+            <p class="text-gray-800 font-medium">Es Teh Manis</p>
+            <p class="text-gray-500 text-sm">870 Terjual</p>
+          </div>
+          <div class="p-4 bg-gray-50 border rounded-xl shadow-sm flex flex-col items-center">
+            <i data-lucide="pizza" class="w-8 h-8 text-red-600 mb-2"></i>
+            <p class="text-gray-800 font-medium">Pizza Mini</p>
+            <p class="text-gray-500 text-sm">600 Terjual</p>
+          </div>
+        </div>
+      </section>
+    
+      <!-- === AI REKOMENDASI === -->
+      <section>
+        <h2 class="text-xl font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          <i data-lucide="brain" class="w-5 h-5 text-pink-600"></i>
+          Rekomendasi AI
+        </h2>
+        <div class="p-6 bg-gradient-to-br from-pink-50 to-indigo-50 border rounded-2xl shadow-sm">
+          <div class="flex items-start gap-4">
+            <i data-lucide="bot" class="w-10 h-10 text-indigo-600"></i>
+            <div>
+              <p class="text-gray-700 text-base mb-2">
+                Berdasarkan tren minggu ini, penjualan kopi meningkat <span class="font-semibold text-green-600">+24%</span>.
+                AI merekomendasikan untuk meningkatkan stok bahan kopi & buat promo “Morning Coffee Deal ☕”.
+              </p>
+              <p class="text-gray-600 text-sm">
+                Produk dengan potensi naik minggu depan: 
+                <span class="font-semibold text-indigo-700">Pizza Mini</span> & 
+                <span class="font-semibold text-indigo-700">Es Teh Manis</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+    
+    <!-- === SCRIPT === -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      lucide.createIcons();
+    
+      // === CHART DATA ===
+      const ctx = document.getElementById('salesChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt'],
+          datasets: [{
+            label: 'Total Penjualan (Rp)',
+            data: [5000000, 7200000, 8300000, 9500000, 10300000, 11200000, 9800000, 12000000, 13400000, 14500000],
+            borderWidth: 2,
+            borderColor: '#4F46E5',
+            backgroundColor: 'rgba(99,102,241,0.15)',
+            fill: true,
+            tension: 0.3,
+            pointRadius: 4,
+            pointBackgroundColor: '#4F46E5',
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true }
+          },
+          plugins: {
+            legend: { display: false }
+          }
+        }
+      });
+    </script>
+    
   </div>
 
   <script>
