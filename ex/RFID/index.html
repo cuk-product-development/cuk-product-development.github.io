@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mutual Synergy | RFID Applications</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    background-color: #f8fafc;
+  }
+
+  /* Header states */
+  header {
+    transition: all 0.4s ease;
+  }
+  .nav-transparent {
+    background: transparent;
+    color: white;
+  }
+  .nav-white {
+    background: #ffffff;
+    color: #0b3d91;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  }
+  .nav-white a {
+    color: #0b3d91 !important;
+  }
+  .nav-white a:hover {
+    color: #ff7b00 !important;
+  }
+
+  /* Hero section */
+  .hero-gradient {
+    background: linear-gradient(135deg, #003780 0%, #0655b2 45%, #007aff 100%);
+  }
+
+  /* Card hover */
+  .card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 80, 180, 0.1);
+    border-color: rgba(0, 122, 255, 0.3);
+  }
+
+  /* Footer gradient */
+  .footer-gradient {
+    background: linear-gradient(180deg, #0c2340 0%, #001a33 100%);
+  }
+</style>
+</head>
+
+<body class="antialiased text-gray-800">
+<!-- HEADER -->
+<header id="header" class="fixed w-full z-50 bg-white shadow-sm text-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      <!-- Logo -->
+      <a href="../" class="flex items-center gap-3">
+        <img src="../pic/mutual-logo.png" alt="Mutual Synergy Logo" class="h-9" />
+      </a>
+  
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="../" class="hover:text-orange-500 transition">Home</a>
+        <a href="#" class="text-orange-600 border-b-2 border-orange-500 pb-1">RFID Solutions</a>
+        <a href="../network" class="hover:text-orange-500 transition">Network & Security</a>
+        <a href="../../" class="hover:text-orange-500 transition">Software</a>
+        <a href="../contact" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-md text-white font-semibold shadow">Contact Us</a>
+      </nav>
+  
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-inner">
+      <nav class="flex flex-col p-4 space-y-4 text-sm font-medium text-gray-800">
+        <a href="../" class="hover:text-orange-500 transition">Home</a>
+        <a href="#" class="text-orange-600">RFID Solutions</a>
+        <a href="../network" class="hover:text-orange-500 transition">Network & Security</a>
+        <a href="../../" class="hover:text-orange-500 transition">Software</a>
+        <a href="../contact" class="hover:text-orange-500 transition">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+  
+  <script>
+    // Toggle mobile menu
+    document.getElementById('menu-btn').addEventListener('click', function () {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+  
+
+<!-- HERO -->
+<section class="hero-gradient text-white text-center py-36" style="background: #418cce !important;">
+  <div class="max-w-3xl mx-auto px-6">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">RFID Applications</h1>
+    <p class="text-blue-100 text-lg leading-relaxed">
+      Discover how Mutual Synergy’s RFID technology delivers real-world efficiency across industries —
+      from logistics to healthcare, manufacturing, and security.
+    </p>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+  <div class="text-center max-w-3xl mx-auto mb-14">
+    <p class="text-gray-600 text-lg leading-relaxed">
+      The complexity of business operations today requires integrated solutions for better control and efficiency.
+      RFID technology — a superior and modern way to identify and track assets — helps you achieve that.
+    </p>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Jewelry Tracking & Management</h3>
+      <p class="text-gray-600 mt-2 text-sm">Use Mutual Synergy’s customizable solution to track jewelry, detect theft, and manage inventory efficiently.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Asset Identification & Tracking</h3>
+      <p class="text-gray-600 mt-2 text-sm">Instantly determine the general location of tagged assets within your workspace.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Time & Attendance</h3>
+      <p class="text-gray-600 mt-2 text-sm">Automate attendance and track employee movement accurately with RFID integration.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Document Tracking & Authentication</h3>
+      <p class="text-gray-600 mt-2 text-sm">Keep your important files secure and easily traceable within your office network.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Hospital Management</h3>
+      <p class="text-gray-600 mt-2 text-sm">Ensure patient safety and operational efficiency with RFID-enabled healthcare systems.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Fleet & Goods Tracking</h3>
+      <p class="text-gray-600 mt-2 text-sm">Monitor vehicle and goods movement in real time to prevent loss and improve logistics.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Animal Tracking</h3>
+      <p class="text-gray-600 mt-2 text-sm">Easily track animal data for research, breeding, or wildlife protection purposes.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Event Management</h3>
+      <p class="text-gray-600 mt-2 text-sm">Simplify event registration and attendee tracking with efficient RFID tagging.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Library Management</h3>
+      <p class="text-gray-600 mt-2 text-sm">Automate book borrowing and inventory management using RFID tags and readers.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Supply Chain Management</h3>
+      <p class="text-gray-600 mt-2 text-sm">Track goods from factory to customer seamlessly for full visibility and control.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Parking Management</h3>
+      <p class="text-gray-600 mt-2 text-sm">Improve parking efficiency and security with automatic identification systems.</p>
+    </div>
+    <div class="card bg-white rounded-xl p-6 shadow-sm">
+      <h3 class="font-semibold text-blue-700">Manufacturing Process Tracking</h3>
+      <p class="text-gray-600 mt-2 text-sm">Enhance operational control by tracking each phase of your production process.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-gradient text-slate-200 pt-16 pb-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-12">
+    <div>
+      <h3 class="text-lg font-semibold text-white">About Us</h3>
+      <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+        Founded in 2011, Mutual Synergy is a pioneer in RFID productivity and automation solutions.
+        Providing customized Passive and Active RFID systems for inventory, asset, RTLS, and security
+        applications in Indonesia.
+      </p>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-white">Recent News</h3>
+      <ul class="mt-4 space-y-3 text-sm text-slate-300">
+        <li><b class="text-white">Mutual Synergy Secures UTC Aerospace RFID Contract</b><br><span class="text-xs text-slate-400">25 June 2015</span></li>
+        <li><b class="text-white">CAAS Names Mutual Synergy as Tech Lead for RFID Consortium</b><br><span class="text-xs text-slate-400">10 June 2015</span></li>
+        <li><b class="text-white">Awarded SMRT RFID Asset Management Project</b><br><span class="text-xs text-slate-400">8 May 2015</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-white">Contact Us</h3>
+      <p class="mt-4 text-sm leading-relaxed text-slate-300">
+        <b>Mutual Synergy (Pte.) Ltd.</b><br>
+        Loka Karya Office 2nd Floor<br>
+        Jl. Kramat Raya No.38B, Senen, Jakarta 10420<br>
+        Phone: (+62)21-21393873<br>
+        Email: <a href="mailto:info@mutualsynergy.co.id" class="text-orange-400 hover:underline">info@mutualsynergy.co.id</a>
+      </p>
+    </div>
+  </div>
+  <div class="border-t border-slate-700 mt-10 pt-4 text-center text-xs text-slate-400">
+    © 2011–<span id="year"></span> Mutual Synergy (Pte.) Ltd. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+window.addEventListener('scroll', function() {
+  const header = document.getElementById('header');
+  if (window.scrollY > 50) {
+    header.classList.add('nav-white');
+    header.classList.remove('nav-transparent', 'text-white');
+  } else {
+    header.classList.remove('nav-white');
+    header.classList.add('nav-transparent', 'text-white');
+  }
+});
+</script>
+
+</body>
+</html>

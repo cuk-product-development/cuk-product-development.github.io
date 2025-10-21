@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us | Mutual Synergy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+  <!-- HEADER -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <!-- Logo -->
+      <div class="flex items-center space-x-3">
+        <img src="../pic/mutual-logo.png" alt="Mutual Synergy Logo" class="h-10">
+        <!-- <span class="text-xl font-semibold text-gray-900">
+          MUTUAL<span class="text-orange-500">SYNERGY</span>
+        </span> -->
+      </div>
+  
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-8 font-medium">
+        <a href="../" class="hover:text-orange-500 transition">Home</a>
+        <a href="../RFID" class="hover:text-orange-500 transition">RFID Solutions</a>
+        <a href="../network" class="hover:text-orange-500 transition">Network & Security</a>
+        <a href="../../" class="hover:text-orange-500 transition">Software</a>
+        <a href="#" class="text-orange-600 border-b-2 border-orange-500 pb-1">Contact Us</a>
+      </nav>
+  
+      <!-- Contact + Brochure -->
+      <div class="hidden md:block text-sm">
+        <a href="tel:+622121393873" class="text-gray-600 hover:text-orange-500">(+62)21-21393873</a> |
+        <a href="#" class="text-orange-500 hover:underline">BROCHURE</a>
+      </div>
+  
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden text-gray-800 focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+  
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+      <nav class="flex flex-col p-4 space-y-2 font-medium">
+        <a href="../" class="hover:text-orange-500 transition">Home</a>
+        <a href="../rfid" class="hover:text-orange-500 transition">RFID Solutions</a>
+        <a href="../network" class="hover:text-orange-500 transition">Network & Security</a>
+        <a href="../../" class="hover:text-orange-500 transition">Software</a>
+        <a href="#" class="text-orange-600 border-b-2 border-orange-500 pb-1">Contact Us</a>
+        <a href="tel:+622121393873" class="text-gray-600 mt-2">(+62)21-21393873</a>
+        <a href="#" class="text-orange-500 hover:underline">BROCHURE</a>
+      </nav>
+    </div>
+  </header>
+  
+  <script>
+    // Toggle mobile menu
+    document.getElementById('menu-btn').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+  
+
+  <!-- HERO -->
+  <section class="relative bg-cover bg-center text-white py-24" style="background-image: url('../pic/bg-network.jpg');">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative container mx-auto text-center px-6">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Contact Us</h1>
+      <p class="text-gray-200 text-lg">We’re here to help you connect your business to the future.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="container mx-auto px-6 py-20 grid md:grid-cols-2 gap-12">
+    <!-- Left: Contact Form -->
+    <div class="bg-white rounded-2xl shadow p-8">
+      <h2 class="text-2xl font-semibold text-blue-800 mb-6">Send Us a Message</h2>
+      <form action="https://formspree.io/f/xzzzzzzz" method="POST" class="space-y-5">
+        <!-- Ganti 'xzzzzzzz' dengan ID Formspree kamu -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Name</label>
+          <input type="text" name="name" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Email</label>
+          <input type="email" name="email" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Subject</label>
+          <input type="text" name="subject" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1">Message</label>
+          <textarea name="message" rows="5" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+        </div>
+        <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition w-full">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Right: Contact Info -->
+    <div class="space-y-8">
+      <div>
+        <h2 class="text-2xl font-semibold text-blue-800 mb-3">Our Office</h2>
+        <p class="text-gray-600 leading-relaxed">
+          <b>Mutual Synergy (Pte.) Ltd.</b><br>
+          Loka Karya Office 2nd Floor<br>
+          Jl. Kramat Raya No.38B, Senen, Jakarta 10420
+        </p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">Contact</h3>
+        <p class="text-gray-600">
+          Phone: <a href="tel:+622121393873" class="text-orange-500 hover:underline">(+62)21-21393873</a><br>
+          Email: <a href="mailto:info@mutualsynergy.co.id" class="text-orange-500 hover:underline">info@mutualsynergy.co.id</a>
+        </p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">Working Hours</h3>
+        <p class="text-gray-600">Monday – Friday: 09:00 – 18:00 WIB<br>Saturday – Sunday: Closed</p>
+      </div>
+      <!-- <div>
+        <h3 class="text-xl font-semibold text-blue-800 mb-2">Follow Us</h3>
+        <div class="flex space-x-4 text-xl">
+          <a href="#" class="text-gray-500 hover:text-orange-500 transition"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-gray-500 hover:text-orange-500 transition"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="text-gray-500 hover:text-orange-500 transition"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gradient-to-b from-blue-950 to-blue-900 text-slate-300 pt-16 pb-10">
+    <div class="container mx-auto grid md:grid-cols-3 gap-12 px-6">
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-3">About Us</h3>
+        <p class="text-sm leading-relaxed">
+          Founded in 2011, Mutual Synergy is a pioneer in RFID productivity and automation solutions.
+          Providing customized Passive and Active RFID systems for inventory, asset, RTLS, and security
+          applications in Indonesia.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-3">Recent News</h3>
+        <ul class="text-sm space-y-3">
+          <li><b class="text-white">Mutual Synergy Secures UTC Aerospace RFID Contract</b><br><span class="text-xs text-slate-400">25 June 2015</span></li>
+          <li><b class="text-white">CAAS Names Mutual Synergy as Tech Lead for RFID Consortium</b><br><span class="text-xs text-slate-400">10 June 2015</span></li>
+          <li><b class="text-white">Awarded SMRT RFID Asset Management Project</b><br><span class="text-xs text-slate-400">8 May 2015</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-3">Contact Us</h3>
+        <p class="text-sm leading-relaxed">
+          <b>Mutual Synergy (Pte.) Ltd.</b><br>
+          Loka Karya Office 2nd Floor<br>
+          Jl. Kramat Raya No.38B, Senen, Jakarta 10420<br>
+          Phone: (+62)21-21393873<br>
+          Email: <a href="mailto:info@mutualsynergy.co.id" class="text-orange-400 hover:underline">info@mutualsynergy.co.id</a>
+        </p>
+      </div>
+    </div>
+    <div class="border-t border-slate-700 mt-10 pt-4 text-center text-xs text-slate-400">
+      © 2011–<span id="year"></span> Mutual Synergy (Pte.) Ltd. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>

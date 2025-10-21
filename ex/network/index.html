@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mutual Synergy | Network & Security Solutions</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background-color: #f8fafc; }
+
+  header { transition: all 0.4s ease; }
+  .nav-transparent { background: transparent; color: white; }
+  .nav-white { background: #ffffff; color: #0b3d91; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+  .nav-white a { color: #0b3d91 !important; }
+  .nav-white a:hover { color: #ff7b00 !important; }
+
+  .footer-gradient {
+    background: linear-gradient(180deg, #0c2340 0%, #001a33 100%);
+  }
+
+  .card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 80, 180, 0.1);
+    border-color: rgba(0,122,255,0.3);
+  }
+</style>
+</head>
+
+<body class="antialiased text-gray-800">
+<!-- HEADER -->
+<header id="header" class="fixed w-full z-50 bg-white shadow-sm text-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      <!-- Logo -->
+      <a href="../" class="flex items-center gap-3">
+        <img src="../pic/mutual-logo.png" alt="Mutual Synergy Logo" class="h-9" />
+      </a>
+  
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="../" class="hover:text-orange-500 transition">Home</a>
+        <a href="../RFID" class="hover:text-orange-500 transition">RFID Solutions</a>
+        <a href="#" class="text-orange-600 border-b-2 border-orange-500 pb-1">Network & Security</a>
+        <a href="../../" class="hover:text-orange-500 transition">Software</a>
+        <a href="../contact" class="px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-md text-white font-semibold shadow">Contact Us</a>
+      </nav>
+  
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-inner">
+      <nav class="flex flex-col p-4 space-y-4 text-sm font-medium text-gray-800">
+        <a href="../" class="hover:text-orange-500 transition">Home</a>
+        <a href="../RFID" class="hover:text-orange-500 transition">RFID Solutions</a>
+        <a href="#" class="text-orange-600">Network & Security</a>
+        <a href="../../" class="text-orange-600">Software</a>
+        <a href="../contact" class="hover:text-orange-500 transition">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+  
+  <script>
+    // Toggle mobile menu
+    document.getElementById('menu-btn').addEventListener('click', function () {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+  
+
+<!-- HERO -->
+<section class="relative text-white text-center py-44 bg-cover bg-center" style="background-image: url('../pic/bg-network.jpg');">
+  <div class="absolute inset-0 bg-black/65"></div>
+  <div class="relative max-w-3xl mx-auto px-6">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow">Network & Security Solutions</h1>
+    <p class="text-blue-100 text-lg leading-relaxed">
+      Mutual Synergy provides a single-source solution for organizations seeking network monitoring and management expertise —
+      ensuring your network runs securely, efficiently, and at peak performance.
+    </p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+  <div class="text-center max-w-3xl mx-auto mb-14">
+    <h2 class="text-2xl font-bold text-blue-800 mb-4">Your Network. Our Priority.</h2>
+    <p class="text-gray-600 leading-relaxed">
+      Our Network Operations Center staff diligently monitors your network circuits and devices to ensure the highest level of security,
+      availability, and utilization. With Mutual Synergy, network management services free your organization to focus on core business
+      while we handle uptime, performance, and data protection.
+    </p>
+    <a href="../contact" class="inline-block mt-8 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg shadow">Talk to Us</a>
+  </div>
+
+  <!-- What's Included -->
+  <div class="mb-20">
+    <h3 class="text-xl font-bold text-blue-800 mb-4">What's Included?</h3>
+    <ul class="list-disc pl-6 text-gray-700 space-y-2">
+      <li><b>Performance Management</b> – 24x7x365 proactive network performance monitoring and throughput analysis with real-time notification.</li>
+      <li><b>Fault Management</b> – Connectivity troubleshooting and monitoring to quickly detect, diagnose, and resolve performance issues before users notice.</li>
+      <li><b>Configuration Management</b> – Detailed configuration and change reporting for identifying and auditing network requests.</li>
+      <li><b>Security Management</b> – Robust network security design and monitoring to keep your business resilient against threats.</li>
+      <li><b>Device Management</b> – Comprehensive SLAs including performance thresholds and incident response metrics.</li>
+    </ul>
+  </div>
+
+  <!-- Expertise -->
+  <div class="mb-20">
+    <h3 class="text-xl font-bold text-blue-800 mb-4">Expertise</h3>
+    <ul class="list-disc pl-6 text-gray-700 space-y-1">
+      <li>Site-to-site VPN design and implementation</li>
+      <li>Client VPN design and implementation</li>
+      <li>Cisco ISE</li>
+      <li>Fortinet security appliances</li>
+      <li>Fortigate Firewall</li>
+    </ul>
+  </div>
+
+  <!-- Technology Solutions -->
+  <div class="text-center">
+    <h3 class="text-xl font-bold text-blue-800 mb-8">Our Network & Security Technology Solutions</h3>
+    <div class="flex flex-wrap justify-center gap-8 items-center opacity-90">
+      <img src="../pic/fortinet-logo.png" class="h-8" alt="Fortinet" />
+      <img src="../pic/ruckus-logo.png" class="h-8" alt="Ruckus" />
+      <img src="../pic/avaya-logo.png" class="h-8" alt="Avaya" />
+      <img src="../pic/juniper-logo.png" class="h-8" alt="Juniper" />
+      <img src="../pic/ibm-logo.png" class="h-8" alt="IBM" />
+      <img src="../pic/yealink-logo.png" class="h-8" alt="Yealink" />
+      <img src="../pic/polycom-logo.png" class="h-8" alt="Polycom" />
+      <img src="../pic/riverbed-logo.png" class="h-8" alt="Riverbed" />
+      <img src="../pic/cisco-logo.png" class="h-8" alt="Cisco" />
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-gradient text-slate-200 pt-16 pb-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-12">
+    <div>
+      <h3 class="text-lg font-semibold text-white">About Us</h3>
+      <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+        Founded in 2011, Mutual Synergy is Indonesia’s leading RFID and network solutions provider.
+        Specializing in Passive and Active RFID, Asset Management, and Network Security Solutions.
+        Mutual Synergy is a member of the National RFID Center.
+      </p>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-white">Contact Us</h3>
+      <p class="mt-4 text-sm leading-relaxed text-slate-300">
+        <b>Mutual Synergy (Pte.) Ltd.</b><br>
+        Loka Karya Office 2nd Floor<br>
+        Jl. Kramat Raya No.38B, Senen, Jakarta 10420<br>
+        Phone: (+62)21-21393873<br>
+        Email: <a href="mailto:info@mutualsynergy.co.id" class="text-orange-400 hover:underline">info@mutualsynergy.co.id</a>
+      </p>
+    </div>
+    <div>
+      <h3 class="text-lg font-semibold text-white">Our Partners</h3>
+      <p class="mt-4 text-sm text-slate-300 leading-relaxed">
+        Trusted by global technology leaders including Cisco, Fortinet, IBM, Juniper, and Riverbed
+        to deliver enterprise-grade networking and security services.
+      </p>
+    </div>
+  </div>
+  <div class="border-t border-slate-700 mt-10 pt-4 text-center text-xs text-slate-400">
+    © 2011–<span id="year"></span> Mutual Synergy (Pte.) Ltd. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+window.addEventListener('scroll', function() {
+  const header = document.getElementById('header');
+  if (window.scrollY > 50) {
+    header.classList.add('nav-white');
+    header.classList.remove('nav-transparent', 'text-white');
+  } else {
+    header.classList.remove('nav-white');
+    header.classList.add('nav-transparent', 'text-white');
+  }
+});
+</script>
+
+</body>
+</html>
